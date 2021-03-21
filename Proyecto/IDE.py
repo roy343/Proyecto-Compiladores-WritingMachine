@@ -2,6 +2,7 @@ from tkinter import *
 import sys
 from tkinter import filedialog as fd
 from tkinter import messagebox as mb
+from lexer import lexicalAnalizer
 
 
 
@@ -24,7 +25,7 @@ class Gui:
 
         ################################################################################################################
 
-        self.MainWindow.title("DodeFast IDE")
+        self.MainWindow.title("TEC Writing Machine")
         self.MainWindow.geometry("1000x800")
         self.OptionBar = Canvas(self.MainWindow, width=1003, height=25, bg="#BDBDBD").place(x=-3, y=-3)
 
@@ -66,6 +67,8 @@ class Gui:
     def compileButtonClick(self):
         cadena = self.CodeTextArea.get("1.0", END)
         print(cadena)
+        lexicalAnalizer(cadena)
+
 
 
     def setCodeTextArea(self, output):
