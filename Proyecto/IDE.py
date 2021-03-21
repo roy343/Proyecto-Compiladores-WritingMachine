@@ -27,20 +27,20 @@ class Gui:
 
         self.MainWindow.title("TEC Writing Machine")
         self.MainWindow.geometry("1000x800")
-        self.OptionBar = Canvas(self.MainWindow, width=1003, height=25, bg="#BDBDBD").place(x=-3, y=-3)
+        self.OptionBar = Canvas(self.MainWindow, width=1003, height=1031, bg="white").place(x=-3, y=-3)
 
         # Buttons
-        Button(self.OptionBar, text="ABRIR", command=self.OpenButtonClick).place(x=5, y=1)
-        Button(self.OptionBar, text="GUARDAR", command=self.SaveButtonClick).place(x=70, y=1)
-        Button(self.OptionBar, text="COMPILAR", command=self.compileButtonClick).place(x=160, y=1)
-        Button(self.OptionBar, text="SALIR", command=lambda: self.MainWindow.destroy()).place(x=945, y=1)
+        Button(self.OptionBar, text="Abrir", bg="#37AF97", fg="black" , command=self.OpenButtonClick).place(x=5, y=2)
+        Button(self.OptionBar, text="Guardar ",bg="#37AF97", fg="black", command=self.SaveButtonClick).place(x=50, y=2)
+        Button(self.OptionBar, text="COMPILAR", bg="orange", fg="black", command=self.compileButtonClick).place(x=800, y=505)
+        Button(self.OptionBar, text="SALIR", bg="red", fg="black",command=lambda: self.MainWindow.destroy()).place(x=945, y=1)
 
         # Inserta las dos areas de texto
 
-        self.CodeTextArea = Text(self.MainWindow, bg='#E0F8F1')
-        self.CodeTextArea.place(x=10, y=30, width=980, height=500)
+        self.CodeTextArea = Text(self.MainWindow, bg='#FFFFFF')
+        self.CodeTextArea.place(x=10, y=30, width=980, height=470)
 
-        self.OutputTextArea = Text(self.MainWindow, bg='#E0F8F1')
+        self.OutputTextArea = Text(self.MainWindow, bg='#FFFFFF')
         self.OutputTextArea.place(x=10, y=535, width=980, height=260)
 
         self.MainWindow.mainloop()
@@ -62,6 +62,8 @@ class Gui:
             archi1.write(self.CodeTextArea.get("1.0", END))
             archi1.close()
             mb.showinfo("Información", "Los datos fueron guardados en la siguiente ruta: " + nombrearch + ".")
+
+
 
 
     def compileButtonClick(self):

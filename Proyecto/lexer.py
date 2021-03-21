@@ -1,20 +1,30 @@
 import ply.lex as lex
+from os import sys
 
-tokens = ['COMA', 'PUNTOCOMA','IGUAL', 'LPAREN', 'RPAREN',
+#Inicialización de tokens 
+
+tokens = ['COMA', 'PUNTOCOMA','IGUAL', 'LPAREN', 'RPAREN', #Símbolos exclusivos
           'ID', 'NUMERO',
-          'DIFERENTE', 'MAYOR', 'MENOR', 'MAYORIGUAL', 'MENORIGUAL', 'SUMA']
+          'DIFERENTE', 'MAYOR', 'MENOR', 'MAYORIGUAL', 'MENORIGUAL', 'SUMA','RESTA', 'MULTI', 'DIV'] #Operadores
 
+#Inicialización de palabras reservadas
 
 reservadas = {
-    'DEF':'Def' , 'PUT': 'Put', 'ADD':'Add', 'CONTINUEUP':'ContinueUp', 'CONTINUEDOWN': 'ContinueDown',
-    'CONTINUERIGHT': 'ContinueRight', 'CONTIUELEFT':'ContinueLeft', 'POS': 'Pos',
-    'POSX': 'PosX', 'POSY':'PosY', 'USECOLOR':'UseColor', 'DOWN': 'Down', 'BEGIN':'Begin',
-    'SPEED': 'Speed', 'RUN': 'Run', 'REPEAT': 'Repeat', 'IF':'If', 'IFELSE':'IfElse',
-    'UNTIL':'Until', 'WHILE':'While', 'EQUAL':'Equal', 'AND':'And', 'OR': 'Or',
-    'GREATER':'Greater', 'SMALLER':'Smaller', 'SUBSTR':'Substr', 'RANDOM':'Random','MULT':'Mult'
+    'Def':'DEF' , 'Put': 'PUT', 'Add':'ADD', 'ContinueUp':'CONTINUEUP', 'ContinueDown': 'CONTINUEDOWN',
+    'ContinuRight': 'CONTINUERIGHT', 'ContinueLeft':'CONTIUELEFT', 'Pos': 'POS',
+    'PosX': 'POSX', 'PosY':'POSY', 'UseColor':'USECOLOR', 'Down': 'DOWN', 'Begin':'BEGIN',
+    'Speed': 'SPEED', 'Run': 'RUN', 'Repeat': 'REPEAT', 'If':'IF', 'IfElse':'IFELSE',
+    'Until':'UNTIL', 'While':'WHILE', 'Equal':'EQUAL', 'And':'AND', 'Or': 'OR',
+    'Greater':'GREATER', 'Smaller':'SMALLER', 'Substr':'SUBSTR', 'Random':'RANDOM','Mult':'MULT'
 }
 
-t_ignore = ' \t'
+#Creación de lista de tokens y palabras reservadas
+
+tokens = list(reservadas.values()) + tokens
+
+#Asignación de simbolos a tokens
+
+t_ignore = ' \t'  #Espacio en blanco
 
 t_COMA = r','
 t_PUNTOCOMA = r';'
@@ -28,7 +38,7 @@ t_MAYORIGUAL = r'>='
 t_MENORIGUAL = r'<='
 t_SUMA = r'\+'
 t_RESTA = r'\-'
-t_MULT = r'\*'
+t_MULTI = r'\*'
 t_DIV = r'\/'
 
 
@@ -44,14 +54,20 @@ def t_newLine(t):
     r'\n+'
     t.lexer.lineno += len(t.value)
 
+
 def t_NUMERO(t):
     r'\d+'
     t.value = int(t.value)
     return t
+
+
     
 def t_error(t):
-    print("Caracter ilegal" % t.value[0])
-    t.lexer.skip(1)
+    print("Caracter ilegal: Error de sintaxis in line"+ str(t.lexer.lineno)+"'%s'" % t.value[0])       
+    #t.lexer.skip(1)
+    sys.exit(0)
+
+        
 
 def t_COMMENT(t):
     r'\#.*'
