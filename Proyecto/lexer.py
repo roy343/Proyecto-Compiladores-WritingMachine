@@ -5,7 +5,7 @@ from os import sys
 
 tokens = ['COMA', 'PUNTOCOMA','IGUAL', 'LPAREN', 'RPAREN', #Símbolos exclusivos
           'ID', 'NUMERO',
-          'DIFERENTE', 'MAYOR', 'MENOR', 'MAYORIGUAL', 'MENORIGUAL', 'SUMA','RESTA', 'MULTI', 'DIV'] #Operadores
+          'DIFERENTE', 'MAYOR', 'MENOR', 'MAYORIGUAL', 'MENORIGUAL', 'SUMA','RESTA', 'MULTI', 'DIV', 'ASSIGN'] #Operadores
 
 #Inicialización de palabras reservadas
 
@@ -15,7 +15,8 @@ reservadas = {
     'PosX': 'POSX', 'PosY':'POSY', 'UseColor':'USECOLOR', 'Down': 'DOWN', 'Begin':'BEGIN',
     'Speed': 'SPEED', 'Run': 'RUN', 'Repeat': 'REPEAT', 'If':'IF', 'IfElse':'IFELSE',
     'Until':'UNTIL', 'While':'WHILE', 'Equal':'EQUAL', 'And':'AND', 'Or': 'OR',
-    'Greater':'GREATER', 'Smaller':'SMALLER', 'Substr':'SUBSTR', 'Random':'RANDOM','Mult':'MULT'
+    'Greater':'GREATER', 'Smaller':'SMALLER', 'Substr':'SUBSTR', 'Random':'RANDOM','Mult':'MULT',
+    'Fin': 'FIN', 'Para': 'PARA'
 }
 
 #Creación de lista de tokens y palabras reservadas
@@ -29,6 +30,7 @@ t_ignore = ' \t'  #Espacio en blanco
 t_COMA = r','
 t_PUNTOCOMA = r';'
 t_IGUAL = r'='
+t_ASSIGN = r'=='
 t_LPAREN = r'\('
 t_RPAREN = r'\)'
 t_DIFERENTE = r'\!='
@@ -40,6 +42,18 @@ t_SUMA = r'\+'
 t_RESTA = r'\-'
 t_MULTI = r'\*'
 t_DIV = r'\/'
+
+def t_Para(t):
+    r'Para'
+    t.value = "PARA"
+    t.type = t.value
+    return t
+
+def t_Fin(t):
+    r'fin'
+    t.value = "FIN"
+    t.type = t.value
+    return t
 
 
 def t_ID(t):
@@ -70,7 +84,7 @@ def t_error(t):
         
 
 def t_COMMENT(t):
-    r'\#.*'
+    r'\--.*'
     pass
 
 def lexicalAnalizer(cadena):
