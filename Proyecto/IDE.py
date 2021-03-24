@@ -4,6 +4,7 @@ from tkinter import filedialog as fd
 from tkinter import messagebox as mb
 from lexer import lexicalAnalizer
 
+import os
 
 
 class Gui:
@@ -38,10 +39,12 @@ class Gui:
         # Inserta las dos areas de texto
 
         self.CodeTextArea = Text(self.MainWindow, bg='#FFFFFF')
-        self.CodeTextArea.place(x=10, y=30, width=980, height=470)
+        self.CodeTextArea.place(x=40, y=30, width=980, height=470)
 
         self.OutputTextArea = Text(self.MainWindow, bg='#FFFFFF')
-        self.OutputTextArea.place(x=10, y=535, width=980, height=260)
+        self.OutputTextArea.place(x=40, y=535, width=980, height=260)
+
+        
 
         self.MainWindow.mainloop()
 
@@ -64,13 +67,10 @@ class Gui:
             mb.showinfo("Información", "Los datos fueron guardados en la siguiente ruta: " + nombrearch + ".")
 
 
-
-
     def compileButtonClick(self):
         cadena = self.CodeTextArea.get("1.0", END)
-        print(cadena)
+        #print(cadena)
         lexicalAnalizer(cadena)
-
 
 
     def setCodeTextArea(self, output):
@@ -78,7 +78,12 @@ class Gui:
         self.CodeTextArea.insert(INSERT, output)
 
     def setOutputText(self, output):
-        self.OutputTextArea.insert(END, output)
+        self.OutputTextArea.insert(INSERT, output)
+
+
+
+
+
 
 
 IDE = Gui()
