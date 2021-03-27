@@ -69,8 +69,11 @@ class Gui:
 
     def compileButtonClick(self):
         cadena = self.CodeTextArea.get("1.0", END)
-        #print(cadena)
-        lexicalAnalizer(cadena)
+        lista = lexicalAnalizer(cadena)
+        print(lista)
+        for i in lista:
+            self.OutputTextArea.insert(INSERT, i)
+            self.OutputTextArea.insert(INSERT, '\n')
 
 
     def setCodeTextArea(self, output):
