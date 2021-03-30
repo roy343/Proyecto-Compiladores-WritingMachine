@@ -1,5 +1,34 @@
-Def Jugar23@23
-Add (4,5)
-While (3>1)
-abc = 2
-Random()
+Start:
+
+Def xcv;
+Def vf;
+Def bv;
+Def mnb;
+
+If
+	while var = 1 then
+		{
+
+		}
+	while var = 1 then 
+		{
+
+		}
+	while var = 1 then
+		{
+
+		}
+
+	IfElse
+	{
+
+	}
+EndIf;
+
+
+End;
+
+PROC  hola()
+PARA:
+
+FIN;

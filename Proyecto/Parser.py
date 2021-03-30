@@ -17,7 +17,7 @@ def p_Start(p):
 
 def p_Code(p):
     '''
-    code : INICIO DOSPUNTOS cuerpo FIN PUNTOCOMA procedimiento
+    code : START DOSPUNTOS cuerpo END PUNTOCOMA procedimiento
     '''
     p[0] = (p[3], p[6])
     print(p[3])
@@ -46,14 +46,14 @@ def p_Variable(p):
 
 def p_Variable1(p):
     '''
-    variable1 : DCL ID PUNTOCOMA
+    variable1 : DEF ID PUNTOCOMA
     '''
     p[0] = (p[1], p[2])
 
 
 def p_Variable2(p):
     '''
-    variable2 : DCL ID DEFAULT NUMERO PUNTOCOMA
+    variable2 : DEF ID DEFAULT NUMERO PUNTOCOMA
     '''
     p[0] = (p[1], p[2], p[3], p[4])
 
@@ -65,7 +65,7 @@ def p_expresion(p):
             | repita expresion
             | hacer expresion
             | funcion expresion
-            | llamarProc expresion
+
             | empty empty
     '''
     if (p[2] != '$'):
@@ -73,17 +73,18 @@ def p_expresion(p):
     else:
         p[0] = p[1]
 
+#| llamarProc expresion
 
 def p_condicion1(p):
     '''
-    condicion1 : ENCASO cond1Aux1 FINENCASO PUNTOCOMA
+    condicion1 : IF cond1Aux1 ENDIF PUNTOCOMA
     '''
     p[0] = (p[1], p[2], p[3])
 
 
 def p_cond1Aux1(p):
     '''
-    cond1Aux1 : cond1Aux2 SINO LLAVE_IZQ expresion LLAVE_DER
+    cond1Aux1 : cond1Aux2 IFELSE LLAVE_IZQ expresion LLAVE_DER
             | empty empty empty empty empty
     '''
     if (p[5] != '$'):
@@ -94,7 +95,7 @@ def p_cond1Aux1(p):
 
 def p_cond1Aux2(p):
     '''
-    cond1Aux2 : CUANDO ID condicion sentencia ENTONS LLAVE_IZQ expresion LLAVE_DER cond1Aux2
+    cond1Aux2 : WHILE ID condicion sentencia THEN LLAVE_IZQ expresion LLAVE_DER cond1Aux2
             | empty empty empty empty empty empty empty empty empty
     '''
     if p[9] != '$':
@@ -107,14 +108,14 @@ def p_cond1Aux2(p):
 
 def p_condicion2(p):
     '''
-    condicion2 : ENCASO ID cond2Aux1 FINENCASO PUNTOCOMA
+    condicion2 : IF ID cond2Aux1 ENDIF PUNTOCOMA
     '''
     p[0] = (p[1], p[2], p[3], p[4])
 
 
 def p_cond2Aux1(p):
     '''
-    cond2Aux1 : cond2Aux2 SINO LLAVE_IZQ expresion LLAVE_DER
+    cond2Aux1 : cond2Aux2 IFELSE LLAVE_IZQ expresion LLAVE_DER
                 | empty empty empty empty empty
     '''
     if (p[5] != '$'):
@@ -125,7 +126,7 @@ def p_cond2Aux1(p):
 
 def p_cond2Aux2(p):
     '''
-        cond2Aux2 : CUANDO  condicion sentencia ENTONS LLAVE_IZQ expresion LLAVE_DER cond2Aux2
+        cond2Aux2 : WHILE  condicion sentencia THEN LLAVE_IZQ expresion LLAVE_DER cond2Aux2
                 | empty empty empty empty empty empty empty empty
         '''
     if p[8] != '$':
@@ -159,30 +160,31 @@ def p_sentencia(p):
 
 def p_repita(p):
     '''
-     repita : REPITA LLAVE_IZQ expresion LLAVE_DER HASTAENCONTRAR ID condicion sentencia PUNTOCOMA
+     repita : REPEAT LLAVE_IZQ expresion LLAVE_DER PUNTOCOMA
     '''
-    p[0] = (p[1], p[3], p[5], p[6], p[7], p[8])
+    p[0] = (p[1], p[3])
 
 
 def p_hacer(p):
     '''
-    hacer : DESDE ID IGUAL sentencia HASTA sentencia HAGA LLAVE_IZQ expresion LLAVE_DER FINDESDE PUNTOCOMA
+    hacer : RUN LLAVE_IZQ expresion LLAVE_DER  PUNTOCOMA
     '''
-    p[0] = (p[1], p[2], p[4], p[5], p[6], p[7], p[9], p[11])
+    p[0] = (p[1], p[3])
 
-
+#DESDE ID IGUAL sentencia HASTA sentencia
+    
 def p_funcion(p):
     '''
-    funcion : Aleatorio
+    funcion : Random
             | Mover
             | funcionAlge
     '''
     p[0] = p[1]
 
 
-def p_aleatorio(p):
+def p_random(p):
     '''
-    Aleatorio : ALEATORIO PARENTESIS_IZQ PARENTESIS_DER PUNTOCOMA
+    Random : RANDOM PARENTESIS_IZQ sentencia PARENTESIS_DER PUNTOCOMA
     '''
     p[0] = p[1]
 
@@ -195,8 +197,8 @@ def p_mover(p):
 
 
 def p_ParamMover(p):
-    '''
-    paramMover : AF
+   '''
+   paramMover : AF
                 | F
                 | DFA
                 | IFA
@@ -209,7 +211,7 @@ def p_ParamMover(p):
                 | IAB
                 | AA
     '''
-    p[0] = p[1]
+   p[0] = p[1]
 
 
 def p_funcion_Alge(p):
@@ -224,7 +226,7 @@ def p_funcion_Alge(p):
 
 def p_procedimiento(p):
     '''
-        procedimiento : PROC ID PARENTESIS_IZQ parametro PARENTESIS_DER INICIOPROC DOSPUNTOS expresion FINPROC PUNTOCOMA procedimiento
+        procedimiento : PROC ID PARENTESIS_IZQ parametro PARENTESIS_DER PARA DOSPUNTOS expresion FIN PUNTOCOMA procedimiento
                      | empty empty empty empty empty empty empty empty empty empty empty
     '''
     if p[11] != '$':
@@ -250,11 +252,11 @@ def p_parametro(p):
         p[0] = p[1]
 
 
-def p_llamarProc(p):
-    '''
-    llamarProc : LLAMAR ID PARENTESIS_IZQ parametro PARENTESIS_DER PUNTOCOMA
-    '''
-    p[0] = (p[1], p[2], p[4])
+#def p_llamarProc(p):
+ #   '''
+  #  llamarProc : LLAMAR ID PARENTESIS_IZQ parametro PARENTESIS_DER PUNTOCOMA
+   #'''
+    #p[0] = (p[1], p[2], p[4])
 
 
 def p_empty(p):
@@ -301,7 +303,7 @@ def test():
     # test = directorio + archivo
 
 
-    fp = codecs.open('C:/Users/Familia/Documents/Gabo/Lenguajes y Compi/Copia/Prueba/test2.txt', "r", "utf-8")
+    fp = codecs.open('C:/Users/Familia/Documents/Gabo/Lenguajes y Compi/Compi/Proyecto/Prueba.txt', "r", "utf-8")
     cadena = fp.read()
     fp.close()
 
