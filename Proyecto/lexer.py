@@ -1,68 +1,81 @@
 import ply.lex as lex
-from os import sys
 
-#Inicialización de tokens 
+tokens = [
+    'COMA', 'PUNTOCOMA', 'DOSPUNTOS', 'LLAVE_IZQ', 'LLAVE_DER', 'IGUAL', 'PARENTESIS_IZQ', 'PARENTESIS_DER',  # SIMBOLOS
 
-tokens = ['COMA', 'PUNTOCOMA','IGUAL', 'LPAREN', 'RPAREN', #Símbolos exclusivos
-          'ID', 'NUMERO',
-          'DIFERENTE', 'MAYOR', 'MENOR', 'MAYORIGUAL', 'MENORIGUAL', 'SUMA','RESTA', 'MULTI', 'DIV', 'ASSIGN'] #Operadores
+    'ID', 'NUMERO',  # IDENTIDFICADOR, NUMERO
 
-#Inicialización de palabras reservadas
-
+    'DIFERENTE', 'MAYOR', 'MENOR', 'MAYORIGUAL', 'MENORIGUAL', 'SUMA'  # CONDICONES
+]
+                
 reservadas = {
-    'Def':'DEF' , 'Put': 'PUT', 'Add':'ADD', 'ContinueUp':'CONTINUEUP', 'ContinueDown': 'CONTINUEDOWN',
-    'ContinuRight': 'CONTINUERIGHT', 'ContinueLeft':'CONTIUELEFT', 'Pos': 'POS',
-    'PosX': 'POSX', 'PosY':'POSY', 'UseColor':'USECOLOR', 'Down': 'DOWN', 'Begin':'BEGIN',
-    'Speed': 'SPEED', 'Run': 'RUN', 'Repeat': 'REPEAT', 'If':'IF', 'IfElse':'IFELSE',
-    'Until':'UNTIL', 'While':'WHILE', 'Equal':'EQUAL', 'And':'AND', 'Or': 'OR',
-    'Greater':'GREATER', 'Smaller':'SMALLER', 'Substr':'SUBSTR', 'Random':'RANDOM','Mult':'MULT',
-    'Fin': 'FIN', 'Para': 'PARA'
-}
+    'Def': 'DEF', 'DEFAULT': 'DEFAULT', 'Inicio': 'INICIO',
+    'EnCaso': 'ENCASO', 'Cuando': 'CUANDO', 'EnTons': 'ENTONS', 'SiNo': 'SINO',
+    'Fin-EnCaso': 'FINENCASO', 'Repita': 'REPITA', 'HastaEncontar': 'HASTAENCONTRAR', 'Desde': 'DESDE',
+    'Hasta': 'HASTA', 'Haga': 'HAGA', 'Fin-Desde': 'FINDESDE', 'Fin': 'FIN', 'fin': 'FINPROC', 'inicio': 'INICIOPROC',
+    'Inc': 'INC', 'Dec': 'DEC', 'Ini': 'INI', 'Mover': 'MOVER', 'Aleatorio': 'ALEATORIO', 'Proc': 'PROC',
+    'Llamar': 'LLAMAR'}
+                                                                                
+movimientos = {'AF': 'AF', 'F': 'F', 'DFA': 'DFA', 'IFA': 'IFA', 'DFB': 'DFB', 'IFB': 'IFB',
+               'A': 'A', 'DAA': 'DAA', 'IAA': 'IAA', 'DAB': 'DAB', 'IAB': 'IAB', 'AA': 'AA'}
 
-#Creación de lista de tokens y palabras reservadas
+reservadas.update(movimientos)
 
 tokens = list(reservadas.values()) + tokens
 
-#Asignación de simbolos a tokens
-
-t_ignore = ' \t'  #Espacio en blanco
+t_ignore = '  \t'
 
 t_COMA = r','
 t_PUNTOCOMA = r';'
+t_DOSPUNTOS = r':'
+t_LLAVE_IZQ = r'\{'
+t_LLAVE_DER = r'\}'
 t_IGUAL = r'='
-t_ASSIGN = r'=='
-t_LPAREN = r'\('
-t_RPAREN = r'\)'
-t_DIFERENTE = r'\!='
+t_PARENTESIS_IZQ = r'\('
+t_PARENTESIS_DER = r'\)'
+t_DIFERENTE = r'<>'
 t_MAYOR = r'>'
 t_MENOR = r'<'
 t_MAYORIGUAL = r'>='
 t_MENORIGUAL = r'<='
 t_SUMA = r'\+'
-t_RESTA = r'\-'
-t_MULTI = r'\*'
-t_DIV = r'\/'
 
-def t_Para(t):
-    r'Para'
-    t.value = "PARA"
+
+def t_InicioProc(t):
+    r'inicio'
+    t.value = "INICIOPROC"
     t.type = t.value
     return t
 
-def t_Fin(t):
+
+def t_FinProc(t):
     r'fin'
-    t.value = "FIN"
+    t.value = "FINPROC"
+    t.type = t.value
+    return t
+
+
+def t_FinDesde(t):
+    r'Fin-Desde'
+    t.value = "FINDESDE"
+    t.type = "FINDESDE"
+    return t
+
+
+def t_FinEnCaso(t):
+    r'Fin-EnCaso'
+    t.value = "FINENCASO"
     t.type = t.value
     return t
 
 
 def t_ID(t):
-
-    r'[a-zA-Z][a-zA-Z0-9_#@]*'
+    r'[a-zA-Z_][a-zA-Z0-9_#@]*'
     if t.value.upper() in reservadas.values():
         t.value = t.value.upper()
         t.type = t.value
     return t
+
 
 def t_newLine(t):
     r'\n+'
@@ -75,27 +88,35 @@ def t_NUMERO(t):
     return t
 
 
-    
 def t_error(t):
-    print("Caracter ilegal: Error de sintaxis in line"+ str(t.lexer.lineno)+"'%s'" % t.value[0])       
-    #t.lexer.skip(1)
-    sys.exit(0)
+    print("Caracter ilegal '%s'" % t.value[0])
+    t.lexer.skip(1)
 
-        
 
 def t_COMMENT(t):
-    r'\--.*'
+    r'\#.*'
     pass
+    # No return value. Token discarded
+
 
 def lexicalAnalizer(cadena):
     analizador = lex.lex()
     analizador.input(cadena)
-    prints=[]
-    while True:
-        tok = analizador.token()
-        if not tok: break
-        prints.append(tok)
-    return prints
+    # while True:
+    #     tok = analizador.token()
+    #     if not tok: break
+    #     print(tok)
+
+
+#def lexicalAnalizer(cadena):
+ #   analizador = lex.lex()
+  #  analizador.input(cadena)
+   # prints=[]
+    #while True:
+     #   tok = analizador.token()
+      #  if not tok: break
+       # prints.append(tok)
+    #return prints
 
 
 
