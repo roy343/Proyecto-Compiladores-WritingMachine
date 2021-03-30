@@ -25,28 +25,30 @@ class Gui:
 
         ################################################################################################################
 
-        self.MainWindow.title("DodeFast IDE")
+        self.MainWindow.title("TEC Writing Machine")
         self.MainWindow.geometry("1000x800")
-        self.OptionBar = Canvas(self.MainWindow, width=1003, height=25, bg="#BDBDBD").place(x=-3, y=-3)
+
+        self.MainWindow.configure(bg="#040625")
 
         # Buttons
-        Button(self.OptionBar, text="ABRIR", command=self.OpenButtonClick).place(x=5, y=1)
-        Button(self.OptionBar, text="GUARDAR", command=self.SaveButtonClick).place(x=70, y=1)
-        Button(self.OptionBar, text="COMPILAR", command=self.compileButtonClick).place(x=160, y=1)
-        Button(self.OptionBar, text="SALIR", command=lambda: self.MainWindow.destroy()).place(x=945, y=1)
+        Button(self.MainWindow, text="ABRIR", background = "white", foreground = "black" ,command=self.OpenButtonClick).place(x=5, y=1)
+        Button(self.MainWindow, text="GUARDAR", background = "white", foreground = "black" ,command=self.SaveButtonClick).place(x=47.5, y=1)
+        Button(self.MainWindow, text="COMPILAR", background = "yellow", foreground = "black" , command=self.compileButtonClick).place(x=550, y=1)
+        Button(self.MainWindow, text="CORRER", background = "yellow", foreground = "black" , command=self.compileButtonClick).place(x=620, y=1)
+        Button(self.MainWindow, text="SALIR", background = "red", foreground = "black" ,command=lambda: self.MainWindow.destroy()).place(x=945, y=1)
 
         # Inserta las dos areas de texto
 
-        self.CodeTextArea = Text(self.MainWindow, bg='#E0F8F1')
-        self.CodeTextArea.place(x=10, y=30, width=980, height=500)
+        self.CodeTextArea = Text(self.MainWindow, font = 14, bg='#040625', fg="white")
+        self.CodeTextArea.place(x=30, y=30, width=960, height=500)
 
-        self.OutputTextArea = Text(self.MainWindow, bg='#E0F8F1')
-        self.OutputTextArea.place(x=10, y=535, width=980, height=260)
+        self.OutputTextArea = Text(self.MainWindow, font = 14 ,bg='#040625', fg="white")
+        self.OutputTextArea.place(x=30, y=535, width=960, height=260)
 
         self.MainWindow.mainloop()
 
     def OpenButtonClick(self):
-        nombrearch = fd.askopenfilename(initialdir="/", title="Seleccione archivo",
+        nombrearch = fd.askopenfilename(initialdir=".", title="Seleccione archivo",
                                         filetypes=(("txt files", "*.txt"), ("todos los archivos", "*.*")))
         if nombrearch != '':
             archi1 = open(nombrearch, "r", encoding="utf-8")
@@ -66,16 +68,20 @@ class Gui:
 
     def compileButtonClick(self):
         cadena = self.CodeTextArea.get("1.0", END)
-        print(cadena)
-        lexicalAnalizer(cadena)
-        sintacticAnalizer(cadena)
+
+        if cadena == "":
+            print(cadena)
+            lexicalAnalizer(cadena)
+            sintacticAnalizer(cadena)
+        else:
+            mb.showwarning("Error","Debes escribir código!!")
 
     def setCodeTextArea(self, output):
         self.CodeTextArea.delete('1.0', END)
         self.CodeTextArea.insert(INSERT, output)
 
     def setOutputText(self, output):
-        self.OutputTextArea.insert(END, output)
+        self.OutputTextArea.insert(INSERT, cadena)
 
 
 IDE = Gui()

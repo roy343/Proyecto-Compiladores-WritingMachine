@@ -9,12 +9,15 @@ tokens = [
 ]
                 
 reservadas = {
-    'Def': 'DEF', 'DEFAULT': 'DEFAULT', 'Inicio': 'INICIO',
-    'EnCaso': 'ENCASO', 'Cuando': 'CUANDO', 'EnTons': 'ENTONS', 'SiNo': 'SINO',
-    'Fin-EnCaso': 'FINENCASO', 'Repita': 'REPITA', 'HastaEncontar': 'HASTAENCONTRAR', 'Desde': 'DESDE',
-    'Hasta': 'HASTA', 'Haga': 'HAGA', 'Fin-Desde': 'FINDESDE', 'Fin': 'FIN', 'fin': 'FINPROC', 'inicio': 'INICIOPROC',
-    'Inc': 'INC', 'Dec': 'DEC', 'Ini': 'INI', 'Mover': 'MOVER', 'Aleatorio': 'ALEATORIO', 'Proc': 'PROC',
-    'Llamar': 'LLAMAR'}
+    'Def': 'DEF', 'Start': 'START',
+    'DEFAULT': 'DEFAULT',
+    'If': 'IF', 'while': 'WHILE', 'then': 'THEN', 'IfElse': 'IFELSE',
+    'EndIf': 'ENDIF', 'Repeat': 'REPEAT', 'Until': 'UNTIL', #'Desde': 'DESDE',
+    #'Hasta': 'HASTA',
+    'Run': 'RUN', #'Fin-Desde': 'FINDESDE',
+    'End': 'END', 'Fin': 'FIN', 'Para': 'PARA',
+    'Inc': 'INC', 'Dec': 'DEC', 'Ini': 'INI', 'Mover': 'MOVER', 'Random': 'RANDOM',
+    'Proc': 'PROC' } #, 'Llamar': 'LLAMAR'}
                                                                                 
 movimientos = {'AF': 'AF', 'F': 'F', 'DFA': 'DFA', 'IFA': 'IFA', 'DFB': 'DFB', 'IFB': 'IFB',
                'A': 'A', 'DAA': 'DAA', 'IAA': 'IAA', 'DAB': 'DAB', 'IAB': 'IAB', 'AA': 'AA'}
@@ -33,7 +36,7 @@ t_LLAVE_DER = r'\}'
 t_IGUAL = r'='
 t_PARENTESIS_IZQ = r'\('
 t_PARENTESIS_DER = r'\)'
-t_DIFERENTE = r'<>'
+t_DIFERENTE = r'!>'
 t_MAYOR = r'>'
 t_MENOR = r'<'
 t_MAYORIGUAL = r'>='
@@ -41,30 +44,30 @@ t_MENORIGUAL = r'<='
 t_SUMA = r'\+'
 
 
-def t_InicioProc(t):
-    r'inicio'
-    t.value = "INICIOPROC"
+def t_PARA(t):
+    r'Para'
+    t.value = "PARA"
     t.type = t.value
     return t
 
 
-def t_FinProc(t):
-    r'fin'
-    t.value = "FINPROC"
+def t_FIN(t):
+    r'Fin'
+    t.value = "FIN"
     t.type = t.value
     return t
 
 
-def t_FinDesde(t):
-    r'Fin-Desde'
-    t.value = "FINDESDE"
-    t.type = "FINDESDE"
-    return t
+#def t_FinDesde(t):
+ #   r'Fin-Desde'
+  #  t.value = "FINDESDE"
+   # t.type = "FINDESDE"
+    #return t
 
 
-def t_FinEnCaso(t):
-    r'Fin-EnCaso'
-    t.value = "FINENCASO"
+def t_ENDIF(t):
+    r'EndIf'
+    t.value = "ENDIF"
     t.type = t.value
     return t
 
@@ -94,7 +97,7 @@ def t_error(t):
 
 
 def t_COMMENT(t):
-    r'\#.*'
+    r'\--.*'
     pass
     # No return value. Token discarded
 
