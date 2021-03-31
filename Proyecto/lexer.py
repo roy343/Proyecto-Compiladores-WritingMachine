@@ -9,18 +9,25 @@ tokens = [
 ]
                 
 reservadas = {
-    'Def': 'DEF', 'Start': 'START',
+    'Def': 'DEF', 'Put': 'PUT' ,'Start': 'START', 'Add': 'ADD'
     'DEFAULT': 'DEFAULT',
     'If': 'IF', 'while': 'WHILE', 'then': 'THEN', 'IfElse': 'IFELSE',
-    'EndIf': 'ENDIF', 'Repeat': 'REPEAT', 'Until': 'UNTIL', #'Desde': 'DESDE',
-    #'Hasta': 'HASTA',
-    'Run': 'RUN', #'Fin-Desde': 'FINDESDE',
+    'EndIf': 'ENDIF', 'Repeat': 'REPEAT', 'Until': 'UNTIL',
+    'And': 'AND','Or': 'OR','ContinueRight': 'CONTINUERIGHT',
+    'Run': 'RUN', 
     'End': 'END', 'Fin': 'FIN', 'Para': 'PARA',
     'Inc': 'INC', 'Dec': 'DEC', 'Ini': 'INI', 'Mover': 'MOVER', 'Random': 'RANDOM',
-    'Proc': 'PROC' } #, 'Llamar': 'LLAMAR'}
+    'Proc': 'PROC','PosX': 'POSX', 'PosY': 'POSY','Pos': 'POS','Speed': 'SPEED',
+    'Equal': 'EQUAL','Greater': 'GREATER', 'Smaller': 'SMALLER','Substr': 'SUBSTR',
+    'Mult': 'MULT','Power': 'POWER','Div': 'DIV','Sum': 'SUM'
+    }
                                                                                 
 movimientos = {'AF': 'AF', 'F': 'F', 'DFA': 'DFA', 'IFA': 'IFA', 'DFB': 'DFB', 'IFB': 'IFB',
-               'A': 'A', 'DAA': 'DAA', 'IAA': 'IAA', 'DAB': 'DAB', 'IAB': 'IAB', 'AA': 'AA'}
+               'A': 'A', 'DAA': 'DAA', 'IAA': 'IAA', 'DAB': 'DAB', 'IAB': 'IAB', 'AA': 'AA',
+               'ContinueUp': 'CONTINUEUP', 'ContinueDown': 'CONTINUEDOWN', 'ContinueLeft': 'CONTINUELEFT',
+               'ContinueRight': 'CONTINUERIGHT', 'UseColor': 'USECOLOR', 'Down': 'DOWN','Up': 'UP',
+               'Begin': 'BEGIN',
+                }
 
 reservadas.update(movimientos)
 
@@ -105,10 +112,15 @@ def t_COMMENT(t):
 def lexicalAnalizer(cadena):
     analizador = lex.lex()
     analizador.input(cadena)
-    # while True:
-    #     tok = analizador.token()
-    #     if not tok: break
-    #     print(tok)
+    prints = []
+    while True:
+            
+        tok = analizador.token()
+        if not tok: break
+        print(tok)
+        prints.append(tok)
+    return prints
+    
 
 
 #def lexicalAnalizer(cadena):
