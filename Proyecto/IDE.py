@@ -69,10 +69,14 @@ class Gui:
     def compileButtonClick(self):
         cadena = self.CodeTextArea.get("1.0", END)
 
-        if cadena == "":
-            print(cadena)
-            lexicalAnalizer(cadena)
+        if cadena != "":
+            lista = lexicalAnalizer(cadena)
+            #print(cadena)
             sintacticAnalizer(cadena)
+            for i in lista:
+                self.OutputTextArea.insert(INSERT,i)
+                self.OutputTextArea.insert(INSERT,'\n')
+                
         else:
             mb.showwarning("Error","Debes escribir código!!")
 
