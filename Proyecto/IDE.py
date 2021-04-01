@@ -28,7 +28,7 @@ class Gui:
         self.MainWindow.title("TEC Writing Machine")
         self.MainWindow.geometry("1000x800")
 
-        self.MainWindow.configure(bg="#040625")
+        self.MainWindow.configure(bg="#227474")
 
         # Buttons
         Button(self.MainWindow, text="ABRIR", background = "white", foreground = "black" ,command=self.OpenButtonClick).place(x=5, y=1)
@@ -39,10 +39,11 @@ class Gui:
 
         # Inserta las dos areas de texto
 
-        self.CodeTextArea = Text(self.MainWindow, font = 14, bg='#040625', fg="white")
+        self.CodeTextArea = Text(self.MainWindow, font = 14, bg='#227474', fg="white")
         self.CodeTextArea.place(x=30, y=30, width=960, height=500)
 
-        self.OutputTextArea = Text(self.MainWindow, font = 14 ,bg='#040625', fg="white")
+
+        self.OutputTextArea = Text(self.MainWindow, font = 14 ,bg='#227474', fg="white")
         self.OutputTextArea.place(x=30, y=535, width=960, height=260)
 
         self.MainWindow.mainloop()
@@ -57,7 +58,7 @@ class Gui:
             self.setCodeTextArea(contenido)
 
     def SaveButtonClick(self):
-        nombrearch = fd.asksaveasfilename(initialdir="/", title="Guardar como",
+        nombrearch = fd.asksaveasfilename(initialdir=".", title="Guardar como",
                                           filetypes=(("txt files", "*.txt"), ("todos los archivos", "*.*")))
         if nombrearch != '':
             archi1 = open(nombrearch, "w", encoding="utf-8")
