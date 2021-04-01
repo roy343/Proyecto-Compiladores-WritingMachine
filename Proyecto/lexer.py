@@ -5,11 +5,12 @@ tokens = [
 
     'ID', 'NUMERO',  # IDENTIDFICADOR, NUMERO
 
-    'DIFERENTE', 'MAYOR', 'MENOR', 'MAYORIGUAL', 'MENORIGUAL', 'SUMA'  # CONDICONES
+    'DIFERENTE','SIMILAR', 'MAYOR', 'MENOR', 'MAYORIGUAL', 'MENORIGUAL', # CONDICONES
+    'SUMA',  'RESTA', 'MULTIPLICA', 'DIVIDE', 'POTENCIA'    
 ]
                 
 reservadas = {
-    'Def': 'DEF', 'Put': 'PUT' ,'Start': 'START', 'Add': 'ADD'
+    'Def': 'DEF', 'Put': 'PUT' ,'Start': 'START', 'Add': 'ADD',
     'DEFAULT': 'DEFAULT',
     'If': 'IF', 'while': 'WHILE', 'then': 'THEN', 'IfElse': 'IFELSE',
     'EndIf': 'ENDIF', 'Repeat': 'REPEAT', 'Until': 'UNTIL',
@@ -48,7 +49,14 @@ t_MAYOR = r'>'
 t_MENOR = r'<'
 t_MAYORIGUAL = r'>='
 t_MENORIGUAL = r'<='
+t_EQUAL = r'=='
 t_SUMA = r'\+'
+t_RESTA = r'\-'
+t_MULTIPLICA = r'\*'
+t_DIVIDE = r'\/'
+
+
+
 
 
 def t_PARA(t):
@@ -65,11 +73,6 @@ def t_FIN(t):
     return t
 
 
-#def t_FinDesde(t):
- #   r'Fin-Desde'
-  #  t.value = "FINDESDE"
-   # t.type = "FINDESDE"
-    #return t
 
 
 def t_ENDIF(t):

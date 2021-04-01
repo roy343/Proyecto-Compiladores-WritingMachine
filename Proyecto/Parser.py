@@ -5,6 +5,7 @@ from pip._vendor.distlib.compat import raw_input
 from lexer import tokens
 from lexer import lexicalAnalizer
 from Semantic import runSemanticAnalizer
+import random
 
 from sys import stdin
 
@@ -20,13 +21,15 @@ def p_Code(p):
     code : START DOSPUNTOS cuerpo END PUNTOCOMA procedimiento
     '''
     p[0] = (p[3], p[6])
-    print(p[3])
+    #print(p[3])
+    
 
 
 def p_cuerpo(p):
     '''
     cuerpo : variable
-            | expresion
+           
+            
     '''
     p[0] = p[1]
 
@@ -35,13 +38,15 @@ def p_Variable(p):
     '''
     variable : variable1 cuerpo
             | variable2 cuerpo
+            | variable3 cuerpo
+            | variable4 cuerpo
+            | variable5 cuerpo
             | empty empty
     '''
     if (p[2] != '$'):
         p[0] = (p[1], p[2])
     else:
         p[0] = p[1]
-
 
 
 def p_Variable1(p):
@@ -49,184 +54,93 @@ def p_Variable1(p):
     variable1 : DEF ID PUNTOCOMA
     '''
     p[0] = (p[1], p[2])
+    print(p[1], p[2])
 
 
 def p_Variable2(p):
     '''
-    variable2 : DEF ID DEFAULT NUMERO PUNTOCOMA
+    variable2 : DEF ID IGUAL NUMERO PUNTOCOMA
+              
     '''
     p[0] = (p[1], p[2], p[3], p[4])
+    print(p[2], p[3], p[4])
+
+
+def p_Variable3(p):
+    '''
+    variable3 : PUT ID IGUAL NUMERO PUNTOCOMA
+              
+    '''
+    p[0] = (p[1], p[2], p[3], p[4])
+    print(p[2], p[3], p[4])
+
+def p_Variable4(p):
+    '''
+    variable4 : PUT ID IGUAL expresion_alge1 PUNTOCOMA
+              
+    '''
+    p[0] = (p[1], p[2], p[3], p[4])
+    print(p[2], p[3], p[4])
+
+def p_Variable5(p):
+    '''
+    variable5 : PUT ID IGUAL expresion_alge2 PUNTOCOMA
+              
+    '''
+    p[0] = (p[1], p[2], p[3], p[4])
+    print(p[2], p[3], p[4])    
+
 
 
 def p_expresion(p):
     '''
-    expresion : condicion1 expresion
-            | condicion2 expresion
-            | repita expresion
-            | hacer expresion
-            | funcion expresion
-
-            | empty empty
-    '''
-    if (p[2] != '$'):
-        p[0] = (p[1], p[2])
-    else:
-        p[0] = p[1]
-
-#| llamarProc expresion
-
-def p_condicion1(p):
-    '''
-    condicion1 : IF cond1Aux1 ENDIF PUNTOCOMA
-    '''
-    p[0] = (p[1], p[2], p[3])
-
-
-def p_cond1Aux1(p):
-    '''
-    cond1Aux1 : cond1Aux2 IFELSE LLAVE_IZQ expresion LLAVE_DER
-            | empty empty empty empty empty
-    '''
-    if (p[5] != '$'):
-        p[0] = (p[1], p[2], p[4])
-    else:
-        p[0] = p[1]
-
-
-def p_cond1Aux2(p):
-    '''
-    cond1Aux2 : WHILE ID condicion sentencia THEN LLAVE_IZQ expresion LLAVE_DER cond1Aux2
-            | empty empty empty empty empty empty empty empty empty
-    '''
-    if p[9] != '$':
-        p[0] = (p[1], p[2], p[3], p[4], p[5], p[7], p[9])
-    elif p[9] == '$' and p[1] != '$':
-        p[0] = (p[1], p[2], p[3], p[4], p[5], p[7])
-    elif p[1] == '$':
-        p[0] = p[1]
-
-
-def p_condicion2(p):
-    '''
-    condicion2 : IF ID cond2Aux1 ENDIF PUNTOCOMA
-    '''
-    p[0] = (p[1], p[2], p[3], p[4])
-
-
-def p_cond2Aux1(p):
-    '''
-    cond2Aux1 : cond2Aux2 IFELSE LLAVE_IZQ expresion LLAVE_DER
-                | empty empty empty empty empty
-    '''
-    if (p[5] != '$'):
-        p[0] = (p[1], p[2], p[4])
-    else:
-        p[0] = p[1]
-
-
-def p_cond2Aux2(p):
-    '''
-        cond2Aux2 : WHILE  condicion sentencia THEN LLAVE_IZQ expresion LLAVE_DER cond2Aux2
-                | empty empty empty empty empty empty empty empty
-        '''
-    if p[8] != '$':
-        p[0] = (p[1], p[2], p[3], p[4], p[6], p[8])
-    elif p[8] == '$' and p[1] != '$':
-        p[0] = (p[1], p[2], p[3], p[4], p[6])
-    elif p[1] == '$':
-        p[0] = p[1]
-
-
-def p_condicion(p):
-    '''
-    condicion : IGUAL
-              | MAYOR
-              | MENOR
-              | DIFERENTE
-              | MAYORIGUAL
-              | MENORIGUAL
+    expresion : NUMERO
+                        
     '''
 
-    p[0] = p[1]
-
-
-def p_sentencia(p):
+def expresion_alge(p):
     '''
-    sentencia : ID
-               | NUMERO
+    expresion_alge : expresion_alge1
+                   | expresion_alge2
     '''
-    p[0] = p[1]
-
-
-def p_repita(p):
-    '''
-     repita : REPEAT LLAVE_IZQ expresion LLAVE_DER PUNTOCOMA
-    '''
-    p[0] = (p[1], p[3])
-
-
-def p_hacer(p):
-    '''
-    hacer : RUN LLAVE_IZQ expresion LLAVE_DER  PUNTOCOMA
-    '''
-    p[0] = (p[1], p[3])
-
-#DESDE ID IGUAL sentencia HASTA sentencia
     
-def p_funcion(p):
-    '''
-    funcion : Random
-            | Mover
-            | funcionAlge
-    '''
-    p[0] = p[1]
 
+    
 
-def p_random(p):
+def p_expresion_alge1(p):
+
     '''
-    Random : RANDOM PARENTESIS_IZQ sentencia PARENTESIS_DER PUNTOCOMA
-    '''
-    p[0] = p[1]
-
-
-def p_mover(p):
-    '''
-    Mover : MOVER PARENTESIS_IZQ paramMover PARENTESIS_DER PUNTOCOMA
-    '''
-    p[0] = (p[1], p[3])
-
-
-def p_ParamMover(p):
-   '''
-   paramMover : AF
-                | F
-                | DFA
-                | IFA
-                | DFB
-                | IFB
-                | A
-                | DAA
-                | IAA
-                | DAB
-                | IAB
-                | AA
-    '''
-   p[0] = p[1]
-
-
-def p_funcion_Alge(p):
-    '''
-    funcionAlge : INC PARENTESIS_IZQ ID COMA sentencia PARENTESIS_DER PUNTOCOMA
-             | DEC PARENTESIS_IZQ ID COMA sentencia PARENTESIS_DER PUNTOCOMA
-             | INI PARENTESIS_IZQ ID COMA sentencia PARENTESIS_DER PUNTOCOMA
+    expresion_alge1 : NUMERO SUMA NUMERO 
+                   | NUMERO RESTA NUMERO 
+                   | NUMERO MULTIPLICA NUMERO 
+                   | NUMERO DIVIDE NUMERO 
+                   
     '''
 
-    p[0] = (p[1], p[3], p[4], p[5])
+    if p[2] == '+' : p[0] = p[1]+p[3]
+    elif p[2] == '-' : p[0] = p[1]-p[3]
+    elif p[2] == '*' : p[0] = p[1]*p[3]
+    elif p[2] == '/' : p[0] = p[1]/p[3]
 
+def p_expresion_alge2(p):
+
+    '''
+    expresion_alge2 : PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER SUMA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
+                   | PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER RESTA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
+                   | PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER MULTIPLICA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
+                   | PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER DIVIDE PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
+                   
+    '''
+
+    if p[4] == '+' : p[0] = p[2]+p[6]
+    elif p[4] == '-' : p[0] = p[2]-p[6]
+    elif p[4] == '*' : p[0] = p[2]*p[6]
+    elif p[4] == '/' : p[0] = p[2]/p[6]
+    
 
 def p_procedimiento(p):
     '''
-        procedimiento : PROC ID PARENTESIS_IZQ parametro PARENTESIS_DER PARA DOSPUNTOS expresion FIN PUNTOCOMA procedimiento
+        procedimiento : PROC ID PARENTESIS_IZQ parametro PARENTESIS_DER PARA  PUNTOCOMA procedimiento
                      | empty empty empty empty empty empty empty empty empty empty empty
     '''
     if p[11] != '$':
@@ -251,12 +165,6 @@ def p_parametro(p):
     else:
         p[0] = p[1]
 
-
-#def p_llamarProc(p):
- #   '''
-  #  llamarProc : LLAMAR ID PARENTESIS_IZQ parametro PARENTESIS_DER PUNTOCOMA
-   #'''
-    #p[0] = (p[1], p[2], p[4])
 
 
 def p_empty(p):
@@ -297,22 +205,22 @@ def buscarFichero(directorio):
     return files[int(numArchivo) - 1]
 
 
-def test():
+#def test():
     # directorio = os.path.dirname(os.getcwd()) + "/Tests/"
     # archivo = buscarFichero(directorio)
     # test = directorio + archivo
 
 
-    fp = codecs.open('C:/Users/Familia/Documents/Gabo/Lenguajes y Compi/Compi/Proyecto/Prueba.txt', "r", "utf-8")
-    cadena = fp.read()
-    fp.close()
+ #   fp = codecs.open('C:/Users/Familia/Documents/Gabo/Lenguajes y Compi/Compi/Proyecto/Prueba.txt', "r", "utf-8")
+  #  cadena = fp.read()
+   # fp.close()
 
-    lexicalAnalizer(cadena)
-    sintacticAnalizer(cadena)
+ #   lexicalAnalizer(cadena)
+  #  sintacticAnalizer(cadena)
 
 # documentar esta funcion si va a probar codigo en el GUI
 #\Users\Familia\Documents\Gabo\Lenguajes y Compi\Copia\Tests/test2
-test()
+#test()
 
     
 
