@@ -1,34 +1,41 @@
 Start:
 
-Def xcv;
-Def vf;
-Def bv;
-Def mnb;
+Def x = 12;
+Def y = 2;
+Def z = 10;
 
-If
-	while var = 1 then
-		{
+Put x = 3;
 
-		}
-	while var = 1 then 
-		{
+Put y = 1+3;
 
-		}
-	while var = 1 then
-		{
+Put z = (1+2) + (3+2);
 
-		}
+Begin;
 
-	IfElse
-	{
+Random(13);
 
-	}
-EndIf;
+ContinueUp 12;
 
+ContinueDown 3;
+
+ContinueLeft 1;
+
+ContinueRight 5;
+
+Up;
+
+Down;
+
+Pos (3,1);
+
+PosX 4;
+
+PosY 8;
+
+Speed 4;
 
 End;
 
-PROC  hola()
-PARA:
 
-FIN;
+
+

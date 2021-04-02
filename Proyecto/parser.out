@@ -7,11 +7,6 @@ Unused terminals:
     ADD
     AF
     AND
-    BEGIN
-    CONTINUEDOWN
-    CONTINUELEFT
-    CONTINUERIGHT
-    CONTINUEUP
     DAA
     DAB
     DEC
@@ -20,7 +15,6 @@ Unused terminals:
     DFB
     DIFERENTE
     DIV
-    DOWN
     ENDIF
     EQUAL
     F
@@ -43,22 +37,16 @@ Unused terminals:
     MOVER
     MULT
     OR
-    POS
-    POSX
-    POSY
     POTENCIA
     POWER
-    RANDOM
     REPEAT
     RUN
     SIMILAR
     SMALLER
-    SPEED
     SUBSTR
     SUM
     THEN
     UNTIL
-    UP
     USECOLOR
     WHILE
 
@@ -68,34 +56,61 @@ Rule 0     S' -> Start
 Rule 1     Start -> code
 Rule 2     code -> START DOSPUNTOS cuerpo END PUNTOCOMA procedimiento
 Rule 3     cuerpo -> variable
-Rule 4     variable -> variable1 cuerpo
-Rule 5     variable -> variable2 cuerpo
-Rule 6     variable -> variable3 cuerpo
-Rule 7     variable -> variable4 cuerpo
-Rule 8     variable -> variable5 cuerpo
-Rule 9     variable -> empty empty
-Rule 10    variable1 -> DEF ID PUNTOCOMA
-Rule 11    variable2 -> DEF ID IGUAL NUMERO PUNTOCOMA
-Rule 12    variable3 -> PUT ID IGUAL NUMERO PUNTOCOMA
-Rule 13    variable4 -> PUT ID IGUAL expresion_alge1 PUNTOCOMA
-Rule 14    variable5 -> PUT ID IGUAL expresion_alge2 PUNTOCOMA
-Rule 15    expresion -> NUMERO
-Rule 16    expresion_alge1 -> NUMERO SUMA NUMERO
-Rule 17    expresion_alge1 -> NUMERO RESTA NUMERO
-Rule 18    expresion_alge1 -> NUMERO MULTIPLICA NUMERO
-Rule 19    expresion_alge1 -> NUMERO DIVIDE NUMERO
-Rule 20    expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER SUMA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
-Rule 21    expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER RESTA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
-Rule 22    expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER MULTIPLICA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
-Rule 23    expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER DIVIDE PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
-Rule 24    procedimiento -> PROC ID PARENTESIS_IZQ parametro PARENTESIS_DER PARA PUNTOCOMA procedimiento
-Rule 25    procedimiento -> empty empty empty empty empty empty empty empty empty empty empty
-Rule 26    parametro -> ID COMA parametro
-Rule 27    parametro -> ID empty empty
-Rule 28    parametro -> NUMERO COMA parametro
-Rule 29    parametro -> NUMERO empty empty
-Rule 30    parametro -> empty empty empty
-Rule 31    empty -> <empty>
+Rule 4     cuerpo -> expresion
+Rule 5     variable -> variable1 cuerpo
+Rule 6     variable -> variable2 cuerpo
+Rule 7     variable -> variable3 cuerpo
+Rule 8     variable -> variable4 cuerpo
+Rule 9     variable -> variable5 cuerpo
+Rule 10    variable -> empty empty
+Rule 11    variable1 -> DEF ID PUNTOCOMA
+Rule 12    variable2 -> DEF ID IGUAL NUMERO PUNTOCOMA
+Rule 13    variable3 -> PUT ID IGUAL NUMERO PUNTOCOMA
+Rule 14    variable4 -> PUT ID IGUAL expresion_alge1 PUNTOCOMA
+Rule 15    variable5 -> PUT ID IGUAL expresion_alge2 PUNTOCOMA
+Rule 16    expresion -> NUMERO
+Rule 17    expresion -> funcion expresion
+Rule 18    expresion -> empty empty
+Rule 19    funcion -> Random
+Rule 20    funcion -> Begin
+Rule 21    funcion -> ContinueUp
+Rule 22    funcion -> ContinueDown
+Rule 23    funcion -> ContinueRight
+Rule 24    funcion -> ContinueLeft
+Rule 25    funcion -> Up
+Rule 26    funcion -> Down
+Rule 27    funcion -> Speed
+Rule 28    funcion -> Pos
+Rule 29    funcion -> PosX
+Rule 30    funcion -> PosY
+Rule 31    expresion_alge1 -> NUMERO SUMA NUMERO
+Rule 32    expresion_alge1 -> NUMERO RESTA NUMERO
+Rule 33    expresion_alge1 -> NUMERO MULTIPLICA NUMERO
+Rule 34    expresion_alge1 -> NUMERO DIVIDE NUMERO
+Rule 35    expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER SUMA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
+Rule 36    expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER RESTA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
+Rule 37    expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER MULTIPLICA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
+Rule 38    expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER DIVIDE PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
+Rule 39    procedimiento -> PROC ID PARENTESIS_IZQ parametro PARENTESIS_DER PARA PUNTOCOMA procedimiento
+Rule 40    procedimiento -> empty empty empty empty empty empty empty empty empty empty empty
+Rule 41    parametro -> ID COMA parametro
+Rule 42    parametro -> ID empty empty
+Rule 43    parametro -> NUMERO COMA parametro
+Rule 44    parametro -> NUMERO empty empty
+Rule 45    parametro -> empty empty empty
+Rule 46    Begin -> BEGIN PUNTOCOMA
+Rule 47    Random -> RANDOM PARENTESIS_IZQ NUMERO PARENTESIS_DER PUNTOCOMA
+Rule 48    ContinueUp -> CONTINUEUP NUMERO PUNTOCOMA
+Rule 49    ContinueDown -> CONTINUEDOWN NUMERO PUNTOCOMA
+Rule 50    ContinueRight -> CONTINUERIGHT NUMERO PUNTOCOMA
+Rule 51    ContinueLeft -> CONTINUELEFT NUMERO PUNTOCOMA
+Rule 52    Up -> UP PUNTOCOMA
+Rule 53    Down -> DOWN PUNTOCOMA
+Rule 54    Speed -> SPEED NUMERO PUNTOCOMA
+Rule 55    Pos -> POS PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER PUNTOCOMA
+Rule 56    PosX -> POSX NUMERO PUNTOCOMA
+Rule 57    PosY -> POSY NUMERO PUNTOCOMA
+Rule 58    empty -> <empty>
 
 Terminals, with rules where they appear
 
@@ -104,24 +119,24 @@ AA                   :
 ADD                  : 
 AF                   : 
 AND                  : 
-BEGIN                : 
-COMA                 : 26 28
-CONTINUEDOWN         : 
-CONTINUELEFT         : 
-CONTINUERIGHT        : 
-CONTINUEUP           : 
+BEGIN                : 46
+COMA                 : 41 43 55
+CONTINUEDOWN         : 49
+CONTINUELEFT         : 51
+CONTINUERIGHT        : 50
+CONTINUEUP           : 48
 DAA                  : 
 DAB                  : 
 DEC                  : 
-DEF                  : 10 11
+DEF                  : 11 12
 DEFAULT              : 
 DFA                  : 
 DFB                  : 
 DIFERENTE            : 
 DIV                  : 
-DIVIDE               : 19 23
+DIVIDE               : 34 38
 DOSPUNTOS            : 2
-DOWN                 : 
+DOWN                 : 53
 END                  : 2
 ENDIF                : 
 EQUAL                : 
@@ -130,12 +145,12 @@ FIN                  :
 GREATER              : 
 IAA                  : 
 IAB                  : 
-ID                   : 10 11 12 13 14 24 26 27
+ID                   : 11 12 13 14 15 39 41 42
 IF                   : 
 IFA                  : 
 IFB                  : 
 IFELSE               : 
-IGUAL                : 11 12 13 14
+IGUAL                : 12 13 14 15
 INC                  : 
 INI                  : 
 LLAVE_DER            : 
@@ -146,55 +161,68 @@ MENOR                :
 MENORIGUAL           : 
 MOVER                : 
 MULT                 : 
-MULTIPLICA           : 18 22
-NUMERO               : 11 12 15 16 16 17 17 18 18 19 19 28 29
+MULTIPLICA           : 33 37
+NUMERO               : 12 13 16 31 31 32 32 33 33 34 34 43 44 47 48 49 50 51 54 55 55 56 57
 OR                   : 
-PARA                 : 24
-PARENTESIS_DER       : 20 20 21 21 22 22 23 23 24
-PARENTESIS_IZQ       : 20 20 21 21 22 22 23 23 24
-POS                  : 
-POSX                 : 
-POSY                 : 
+PARA                 : 39
+PARENTESIS_DER       : 35 35 36 36 37 37 38 38 39 47 55
+PARENTESIS_IZQ       : 35 35 36 36 37 37 38 38 39 47 55
+POS                  : 55
+POSX                 : 56
+POSY                 : 57
 POTENCIA             : 
 POWER                : 
-PROC                 : 24
-PUNTOCOMA            : 2 10 11 12 13 14 24
-PUT                  : 12 13 14
-RANDOM               : 
+PROC                 : 39
+PUNTOCOMA            : 2 11 12 13 14 15 39 46 47 48 49 50 51 52 53 54 55 56 57
+PUT                  : 13 14 15
+RANDOM               : 47
 REPEAT               : 
-RESTA                : 17 21
+RESTA                : 32 36
 RUN                  : 
 SIMILAR              : 
 SMALLER              : 
-SPEED                : 
+SPEED                : 54
 START                : 2
 SUBSTR               : 
 SUM                  : 
-SUMA                 : 16 20
+SUMA                 : 31 35
 THEN                 : 
 UNTIL                : 
-UP                   : 
+UP                   : 52
 USECOLOR             : 
 WHILE                : 
 error                : 
 
 Nonterminals, with rules where they appear
 
+Begin                : 20
+ContinueDown         : 22
+ContinueLeft         : 24
+ContinueRight        : 23
+ContinueUp           : 21
+Down                 : 26
+Pos                  : 28
+PosX                 : 29
+PosY                 : 30
+Random               : 19
+Speed                : 27
 Start                : 0
+Up                   : 25
 code                 : 1
-cuerpo               : 2 4 5 6 7 8
-empty                : 9 9 25 25 25 25 25 25 25 25 25 25 25 27 27 29 29 30 30 30
-expresion            : 
-expresion_alge1      : 13 20 20 21 21 22 22 23 23
-expresion_alge2      : 14
-parametro            : 24 26 28
-procedimiento        : 2 24
+cuerpo               : 2 5 6 7 8 9
+empty                : 10 10 18 18 40 40 40 40 40 40 40 40 40 40 40 42 42 44 44 45 45 45
+expresion            : 4 17
+expresion_alge1      : 14 35 35 36 36 37 37 38 38
+expresion_alge2      : 15
+funcion              : 17
+parametro            : 39 41 43
+procedimiento        : 2 39
 variable             : 3
-variable1            : 4
-variable2            : 5
-variable3            : 6
-variable4            : 7
-variable5            : 8
+variable1            : 5
+variable2            : 6
+variable3            : 7
+variable4            : 8
+variable5            : 9
 
 Parsing method: LALR
 
@@ -233,37 +261,92 @@ state 4
 
     (2) code -> START DOSPUNTOS . cuerpo END PUNTOCOMA procedimiento
     (3) cuerpo -> . variable
-    (4) variable -> . variable1 cuerpo
-    (5) variable -> . variable2 cuerpo
-    (6) variable -> . variable3 cuerpo
-    (7) variable -> . variable4 cuerpo
-    (8) variable -> . variable5 cuerpo
-    (9) variable -> . empty empty
-    (10) variable1 -> . DEF ID PUNTOCOMA
-    (11) variable2 -> . DEF ID IGUAL NUMERO PUNTOCOMA
-    (12) variable3 -> . PUT ID IGUAL NUMERO PUNTOCOMA
-    (13) variable4 -> . PUT ID IGUAL expresion_alge1 PUNTOCOMA
-    (14) variable5 -> . PUT ID IGUAL expresion_alge2 PUNTOCOMA
-    (31) empty -> .
+    (4) cuerpo -> . expresion
+    (5) variable -> . variable1 cuerpo
+    (6) variable -> . variable2 cuerpo
+    (7) variable -> . variable3 cuerpo
+    (8) variable -> . variable4 cuerpo
+    (9) variable -> . variable5 cuerpo
+    (10) variable -> . empty empty
+    (16) expresion -> . NUMERO
+    (17) expresion -> . funcion expresion
+    (18) expresion -> . empty empty
+    (11) variable1 -> . DEF ID PUNTOCOMA
+    (12) variable2 -> . DEF ID IGUAL NUMERO PUNTOCOMA
+    (13) variable3 -> . PUT ID IGUAL NUMERO PUNTOCOMA
+    (14) variable4 -> . PUT ID IGUAL expresion_alge1 PUNTOCOMA
+    (15) variable5 -> . PUT ID IGUAL expresion_alge2 PUNTOCOMA
+    (58) empty -> .
+    (19) funcion -> . Random
+    (20) funcion -> . Begin
+    (21) funcion -> . ContinueUp
+    (22) funcion -> . ContinueDown
+    (23) funcion -> . ContinueRight
+    (24) funcion -> . ContinueLeft
+    (25) funcion -> . Up
+    (26) funcion -> . Down
+    (27) funcion -> . Speed
+    (28) funcion -> . Pos
+    (29) funcion -> . PosX
+    (30) funcion -> . PosY
+    (47) Random -> . RANDOM PARENTESIS_IZQ NUMERO PARENTESIS_DER PUNTOCOMA
+    (46) Begin -> . BEGIN PUNTOCOMA
+    (48) ContinueUp -> . CONTINUEUP NUMERO PUNTOCOMA
+    (49) ContinueDown -> . CONTINUEDOWN NUMERO PUNTOCOMA
+    (50) ContinueRight -> . CONTINUERIGHT NUMERO PUNTOCOMA
+    (51) ContinueLeft -> . CONTINUELEFT NUMERO PUNTOCOMA
+    (52) Up -> . UP PUNTOCOMA
+    (53) Down -> . DOWN PUNTOCOMA
+    (54) Speed -> . SPEED NUMERO PUNTOCOMA
+    (55) Pos -> . POS PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER PUNTOCOMA
+    (56) PosX -> . POSX NUMERO PUNTOCOMA
+    (57) PosY -> . POSY NUMERO PUNTOCOMA
 
-    DEF             shift and go to state 13
-    PUT             shift and go to state 14
-    END             reduce using rule 31 (empty -> .)
+    NUMERO          shift and go to state 14
+    DEF             shift and go to state 16
+    PUT             shift and go to state 17
+    END             reduce using rule 58 (empty -> .)
+    RANDOM          shift and go to state 30
+    BEGIN           shift and go to state 31
+    CONTINUEUP      shift and go to state 32
+    CONTINUEDOWN    shift and go to state 33
+    CONTINUERIGHT   shift and go to state 34
+    CONTINUELEFT    shift and go to state 35
+    UP              shift and go to state 36
+    DOWN            shift and go to state 37
+    SPEED           shift and go to state 38
+    POS             shift and go to state 39
+    POSX            shift and go to state 40
+    POSY            shift and go to state 41
 
     cuerpo                         shift and go to state 5
     variable                       shift and go to state 6
-    variable1                      shift and go to state 7
-    variable2                      shift and go to state 8
-    variable3                      shift and go to state 9
-    variable4                      shift and go to state 10
-    variable5                      shift and go to state 11
-    empty                          shift and go to state 12
+    expresion                      shift and go to state 7
+    variable1                      shift and go to state 8
+    variable2                      shift and go to state 9
+    variable3                      shift and go to state 10
+    variable4                      shift and go to state 11
+    variable5                      shift and go to state 12
+    empty                          shift and go to state 13
+    funcion                        shift and go to state 15
+    Random                         shift and go to state 18
+    Begin                          shift and go to state 19
+    ContinueUp                     shift and go to state 20
+    ContinueDown                   shift and go to state 21
+    ContinueRight                  shift and go to state 22
+    ContinueLeft                   shift and go to state 23
+    Up                             shift and go to state 24
+    Down                           shift and go to state 25
+    Speed                          shift and go to state 26
+    Pos                            shift and go to state 27
+    PosX                           shift and go to state 28
+    PosY                           shift and go to state 29
 
 state 5
 
     (2) code -> START DOSPUNTOS cuerpo . END PUNTOCOMA procedimiento
 
-    END             shift and go to state 15
+    END             shift and go to state 42
 
 
 state 6
@@ -275,910 +358,2029 @@ state 6
 
 state 7
 
-    (4) variable -> variable1 . cuerpo
-    (3) cuerpo -> . variable
-    (4) variable -> . variable1 cuerpo
-    (5) variable -> . variable2 cuerpo
-    (6) variable -> . variable3 cuerpo
-    (7) variable -> . variable4 cuerpo
-    (8) variable -> . variable5 cuerpo
-    (9) variable -> . empty empty
-    (10) variable1 -> . DEF ID PUNTOCOMA
-    (11) variable2 -> . DEF ID IGUAL NUMERO PUNTOCOMA
-    (12) variable3 -> . PUT ID IGUAL NUMERO PUNTOCOMA
-    (13) variable4 -> . PUT ID IGUAL expresion_alge1 PUNTOCOMA
-    (14) variable5 -> . PUT ID IGUAL expresion_alge2 PUNTOCOMA
-    (31) empty -> .
+    (4) cuerpo -> expresion .
 
-    DEF             shift and go to state 13
-    PUT             shift and go to state 14
-    END             reduce using rule 31 (empty -> .)
+    END             reduce using rule 4 (cuerpo -> expresion .)
 
-    variable1                      shift and go to state 7
-    cuerpo                         shift and go to state 16
-    variable                       shift and go to state 6
-    variable2                      shift and go to state 8
-    variable3                      shift and go to state 9
-    variable4                      shift and go to state 10
-    variable5                      shift and go to state 11
-    empty                          shift and go to state 12
 
 state 8
 
-    (5) variable -> variable2 . cuerpo
+    (5) variable -> variable1 . cuerpo
     (3) cuerpo -> . variable
-    (4) variable -> . variable1 cuerpo
-    (5) variable -> . variable2 cuerpo
-    (6) variable -> . variable3 cuerpo
-    (7) variable -> . variable4 cuerpo
-    (8) variable -> . variable5 cuerpo
-    (9) variable -> . empty empty
-    (10) variable1 -> . DEF ID PUNTOCOMA
-    (11) variable2 -> . DEF ID IGUAL NUMERO PUNTOCOMA
-    (12) variable3 -> . PUT ID IGUAL NUMERO PUNTOCOMA
-    (13) variable4 -> . PUT ID IGUAL expresion_alge1 PUNTOCOMA
-    (14) variable5 -> . PUT ID IGUAL expresion_alge2 PUNTOCOMA
-    (31) empty -> .
+    (4) cuerpo -> . expresion
+    (5) variable -> . variable1 cuerpo
+    (6) variable -> . variable2 cuerpo
+    (7) variable -> . variable3 cuerpo
+    (8) variable -> . variable4 cuerpo
+    (9) variable -> . variable5 cuerpo
+    (10) variable -> . empty empty
+    (16) expresion -> . NUMERO
+    (17) expresion -> . funcion expresion
+    (18) expresion -> . empty empty
+    (11) variable1 -> . DEF ID PUNTOCOMA
+    (12) variable2 -> . DEF ID IGUAL NUMERO PUNTOCOMA
+    (13) variable3 -> . PUT ID IGUAL NUMERO PUNTOCOMA
+    (14) variable4 -> . PUT ID IGUAL expresion_alge1 PUNTOCOMA
+    (15) variable5 -> . PUT ID IGUAL expresion_alge2 PUNTOCOMA
+    (58) empty -> .
+    (19) funcion -> . Random
+    (20) funcion -> . Begin
+    (21) funcion -> . ContinueUp
+    (22) funcion -> . ContinueDown
+    (23) funcion -> . ContinueRight
+    (24) funcion -> . ContinueLeft
+    (25) funcion -> . Up
+    (26) funcion -> . Down
+    (27) funcion -> . Speed
+    (28) funcion -> . Pos
+    (29) funcion -> . PosX
+    (30) funcion -> . PosY
+    (47) Random -> . RANDOM PARENTESIS_IZQ NUMERO PARENTESIS_DER PUNTOCOMA
+    (46) Begin -> . BEGIN PUNTOCOMA
+    (48) ContinueUp -> . CONTINUEUP NUMERO PUNTOCOMA
+    (49) ContinueDown -> . CONTINUEDOWN NUMERO PUNTOCOMA
+    (50) ContinueRight -> . CONTINUERIGHT NUMERO PUNTOCOMA
+    (51) ContinueLeft -> . CONTINUELEFT NUMERO PUNTOCOMA
+    (52) Up -> . UP PUNTOCOMA
+    (53) Down -> . DOWN PUNTOCOMA
+    (54) Speed -> . SPEED NUMERO PUNTOCOMA
+    (55) Pos -> . POS PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER PUNTOCOMA
+    (56) PosX -> . POSX NUMERO PUNTOCOMA
+    (57) PosY -> . POSY NUMERO PUNTOCOMA
 
-    DEF             shift and go to state 13
-    PUT             shift and go to state 14
-    END             reduce using rule 31 (empty -> .)
+    NUMERO          shift and go to state 14
+    DEF             shift and go to state 16
+    PUT             shift and go to state 17
+    END             reduce using rule 58 (empty -> .)
+    RANDOM          shift and go to state 30
+    BEGIN           shift and go to state 31
+    CONTINUEUP      shift and go to state 32
+    CONTINUEDOWN    shift and go to state 33
+    CONTINUERIGHT   shift and go to state 34
+    CONTINUELEFT    shift and go to state 35
+    UP              shift and go to state 36
+    DOWN            shift and go to state 37
+    SPEED           shift and go to state 38
+    POS             shift and go to state 39
+    POSX            shift and go to state 40
+    POSY            shift and go to state 41
 
-    variable2                      shift and go to state 8
-    cuerpo                         shift and go to state 17
+    variable1                      shift and go to state 8
+    cuerpo                         shift and go to state 43
     variable                       shift and go to state 6
-    variable1                      shift and go to state 7
-    variable3                      shift and go to state 9
-    variable4                      shift and go to state 10
-    variable5                      shift and go to state 11
-    empty                          shift and go to state 12
+    expresion                      shift and go to state 7
+    variable2                      shift and go to state 9
+    variable3                      shift and go to state 10
+    variable4                      shift and go to state 11
+    variable5                      shift and go to state 12
+    empty                          shift and go to state 13
+    funcion                        shift and go to state 15
+    Random                         shift and go to state 18
+    Begin                          shift and go to state 19
+    ContinueUp                     shift and go to state 20
+    ContinueDown                   shift and go to state 21
+    ContinueRight                  shift and go to state 22
+    ContinueLeft                   shift and go to state 23
+    Up                             shift and go to state 24
+    Down                           shift and go to state 25
+    Speed                          shift and go to state 26
+    Pos                            shift and go to state 27
+    PosX                           shift and go to state 28
+    PosY                           shift and go to state 29
 
 state 9
 
-    (6) variable -> variable3 . cuerpo
+    (6) variable -> variable2 . cuerpo
     (3) cuerpo -> . variable
-    (4) variable -> . variable1 cuerpo
-    (5) variable -> . variable2 cuerpo
-    (6) variable -> . variable3 cuerpo
-    (7) variable -> . variable4 cuerpo
-    (8) variable -> . variable5 cuerpo
-    (9) variable -> . empty empty
-    (10) variable1 -> . DEF ID PUNTOCOMA
-    (11) variable2 -> . DEF ID IGUAL NUMERO PUNTOCOMA
-    (12) variable3 -> . PUT ID IGUAL NUMERO PUNTOCOMA
-    (13) variable4 -> . PUT ID IGUAL expresion_alge1 PUNTOCOMA
-    (14) variable5 -> . PUT ID IGUAL expresion_alge2 PUNTOCOMA
-    (31) empty -> .
+    (4) cuerpo -> . expresion
+    (5) variable -> . variable1 cuerpo
+    (6) variable -> . variable2 cuerpo
+    (7) variable -> . variable3 cuerpo
+    (8) variable -> . variable4 cuerpo
+    (9) variable -> . variable5 cuerpo
+    (10) variable -> . empty empty
+    (16) expresion -> . NUMERO
+    (17) expresion -> . funcion expresion
+    (18) expresion -> . empty empty
+    (11) variable1 -> . DEF ID PUNTOCOMA
+    (12) variable2 -> . DEF ID IGUAL NUMERO PUNTOCOMA
+    (13) variable3 -> . PUT ID IGUAL NUMERO PUNTOCOMA
+    (14) variable4 -> . PUT ID IGUAL expresion_alge1 PUNTOCOMA
+    (15) variable5 -> . PUT ID IGUAL expresion_alge2 PUNTOCOMA
+    (58) empty -> .
+    (19) funcion -> . Random
+    (20) funcion -> . Begin
+    (21) funcion -> . ContinueUp
+    (22) funcion -> . ContinueDown
+    (23) funcion -> . ContinueRight
+    (24) funcion -> . ContinueLeft
+    (25) funcion -> . Up
+    (26) funcion -> . Down
+    (27) funcion -> . Speed
+    (28) funcion -> . Pos
+    (29) funcion -> . PosX
+    (30) funcion -> . PosY
+    (47) Random -> . RANDOM PARENTESIS_IZQ NUMERO PARENTESIS_DER PUNTOCOMA
+    (46) Begin -> . BEGIN PUNTOCOMA
+    (48) ContinueUp -> . CONTINUEUP NUMERO PUNTOCOMA
+    (49) ContinueDown -> . CONTINUEDOWN NUMERO PUNTOCOMA
+    (50) ContinueRight -> . CONTINUERIGHT NUMERO PUNTOCOMA
+    (51) ContinueLeft -> . CONTINUELEFT NUMERO PUNTOCOMA
+    (52) Up -> . UP PUNTOCOMA
+    (53) Down -> . DOWN PUNTOCOMA
+    (54) Speed -> . SPEED NUMERO PUNTOCOMA
+    (55) Pos -> . POS PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER PUNTOCOMA
+    (56) PosX -> . POSX NUMERO PUNTOCOMA
+    (57) PosY -> . POSY NUMERO PUNTOCOMA
 
-    DEF             shift and go to state 13
-    PUT             shift and go to state 14
-    END             reduce using rule 31 (empty -> .)
+    NUMERO          shift and go to state 14
+    DEF             shift and go to state 16
+    PUT             shift and go to state 17
+    END             reduce using rule 58 (empty -> .)
+    RANDOM          shift and go to state 30
+    BEGIN           shift and go to state 31
+    CONTINUEUP      shift and go to state 32
+    CONTINUEDOWN    shift and go to state 33
+    CONTINUERIGHT   shift and go to state 34
+    CONTINUELEFT    shift and go to state 35
+    UP              shift and go to state 36
+    DOWN            shift and go to state 37
+    SPEED           shift and go to state 38
+    POS             shift and go to state 39
+    POSX            shift and go to state 40
+    POSY            shift and go to state 41
 
-    variable3                      shift and go to state 9
-    cuerpo                         shift and go to state 18
+    variable2                      shift and go to state 9
+    cuerpo                         shift and go to state 44
     variable                       shift and go to state 6
-    variable1                      shift and go to state 7
-    variable2                      shift and go to state 8
-    variable4                      shift and go to state 10
-    variable5                      shift and go to state 11
-    empty                          shift and go to state 12
+    expresion                      shift and go to state 7
+    variable1                      shift and go to state 8
+    variable3                      shift and go to state 10
+    variable4                      shift and go to state 11
+    variable5                      shift and go to state 12
+    empty                          shift and go to state 13
+    funcion                        shift and go to state 15
+    Random                         shift and go to state 18
+    Begin                          shift and go to state 19
+    ContinueUp                     shift and go to state 20
+    ContinueDown                   shift and go to state 21
+    ContinueRight                  shift and go to state 22
+    ContinueLeft                   shift and go to state 23
+    Up                             shift and go to state 24
+    Down                           shift and go to state 25
+    Speed                          shift and go to state 26
+    Pos                            shift and go to state 27
+    PosX                           shift and go to state 28
+    PosY                           shift and go to state 29
 
 state 10
 
-    (7) variable -> variable4 . cuerpo
+    (7) variable -> variable3 . cuerpo
     (3) cuerpo -> . variable
-    (4) variable -> . variable1 cuerpo
-    (5) variable -> . variable2 cuerpo
-    (6) variable -> . variable3 cuerpo
-    (7) variable -> . variable4 cuerpo
-    (8) variable -> . variable5 cuerpo
-    (9) variable -> . empty empty
-    (10) variable1 -> . DEF ID PUNTOCOMA
-    (11) variable2 -> . DEF ID IGUAL NUMERO PUNTOCOMA
-    (12) variable3 -> . PUT ID IGUAL NUMERO PUNTOCOMA
-    (13) variable4 -> . PUT ID IGUAL expresion_alge1 PUNTOCOMA
-    (14) variable5 -> . PUT ID IGUAL expresion_alge2 PUNTOCOMA
-    (31) empty -> .
+    (4) cuerpo -> . expresion
+    (5) variable -> . variable1 cuerpo
+    (6) variable -> . variable2 cuerpo
+    (7) variable -> . variable3 cuerpo
+    (8) variable -> . variable4 cuerpo
+    (9) variable -> . variable5 cuerpo
+    (10) variable -> . empty empty
+    (16) expresion -> . NUMERO
+    (17) expresion -> . funcion expresion
+    (18) expresion -> . empty empty
+    (11) variable1 -> . DEF ID PUNTOCOMA
+    (12) variable2 -> . DEF ID IGUAL NUMERO PUNTOCOMA
+    (13) variable3 -> . PUT ID IGUAL NUMERO PUNTOCOMA
+    (14) variable4 -> . PUT ID IGUAL expresion_alge1 PUNTOCOMA
+    (15) variable5 -> . PUT ID IGUAL expresion_alge2 PUNTOCOMA
+    (58) empty -> .
+    (19) funcion -> . Random
+    (20) funcion -> . Begin
+    (21) funcion -> . ContinueUp
+    (22) funcion -> . ContinueDown
+    (23) funcion -> . ContinueRight
+    (24) funcion -> . ContinueLeft
+    (25) funcion -> . Up
+    (26) funcion -> . Down
+    (27) funcion -> . Speed
+    (28) funcion -> . Pos
+    (29) funcion -> . PosX
+    (30) funcion -> . PosY
+    (47) Random -> . RANDOM PARENTESIS_IZQ NUMERO PARENTESIS_DER PUNTOCOMA
+    (46) Begin -> . BEGIN PUNTOCOMA
+    (48) ContinueUp -> . CONTINUEUP NUMERO PUNTOCOMA
+    (49) ContinueDown -> . CONTINUEDOWN NUMERO PUNTOCOMA
+    (50) ContinueRight -> . CONTINUERIGHT NUMERO PUNTOCOMA
+    (51) ContinueLeft -> . CONTINUELEFT NUMERO PUNTOCOMA
+    (52) Up -> . UP PUNTOCOMA
+    (53) Down -> . DOWN PUNTOCOMA
+    (54) Speed -> . SPEED NUMERO PUNTOCOMA
+    (55) Pos -> . POS PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER PUNTOCOMA
+    (56) PosX -> . POSX NUMERO PUNTOCOMA
+    (57) PosY -> . POSY NUMERO PUNTOCOMA
 
-    DEF             shift and go to state 13
-    PUT             shift and go to state 14
-    END             reduce using rule 31 (empty -> .)
+    NUMERO          shift and go to state 14
+    DEF             shift and go to state 16
+    PUT             shift and go to state 17
+    END             reduce using rule 58 (empty -> .)
+    RANDOM          shift and go to state 30
+    BEGIN           shift and go to state 31
+    CONTINUEUP      shift and go to state 32
+    CONTINUEDOWN    shift and go to state 33
+    CONTINUERIGHT   shift and go to state 34
+    CONTINUELEFT    shift and go to state 35
+    UP              shift and go to state 36
+    DOWN            shift and go to state 37
+    SPEED           shift and go to state 38
+    POS             shift and go to state 39
+    POSX            shift and go to state 40
+    POSY            shift and go to state 41
 
-    variable4                      shift and go to state 10
-    cuerpo                         shift and go to state 19
+    variable3                      shift and go to state 10
+    cuerpo                         shift and go to state 45
     variable                       shift and go to state 6
-    variable1                      shift and go to state 7
-    variable2                      shift and go to state 8
-    variable3                      shift and go to state 9
-    variable5                      shift and go to state 11
-    empty                          shift and go to state 12
+    expresion                      shift and go to state 7
+    variable1                      shift and go to state 8
+    variable2                      shift and go to state 9
+    variable4                      shift and go to state 11
+    variable5                      shift and go to state 12
+    empty                          shift and go to state 13
+    funcion                        shift and go to state 15
+    Random                         shift and go to state 18
+    Begin                          shift and go to state 19
+    ContinueUp                     shift and go to state 20
+    ContinueDown                   shift and go to state 21
+    ContinueRight                  shift and go to state 22
+    ContinueLeft                   shift and go to state 23
+    Up                             shift and go to state 24
+    Down                           shift and go to state 25
+    Speed                          shift and go to state 26
+    Pos                            shift and go to state 27
+    PosX                           shift and go to state 28
+    PosY                           shift and go to state 29
 
 state 11
 
-    (8) variable -> variable5 . cuerpo
+    (8) variable -> variable4 . cuerpo
     (3) cuerpo -> . variable
-    (4) variable -> . variable1 cuerpo
-    (5) variable -> . variable2 cuerpo
-    (6) variable -> . variable3 cuerpo
-    (7) variable -> . variable4 cuerpo
-    (8) variable -> . variable5 cuerpo
-    (9) variable -> . empty empty
-    (10) variable1 -> . DEF ID PUNTOCOMA
-    (11) variable2 -> . DEF ID IGUAL NUMERO PUNTOCOMA
-    (12) variable3 -> . PUT ID IGUAL NUMERO PUNTOCOMA
-    (13) variable4 -> . PUT ID IGUAL expresion_alge1 PUNTOCOMA
-    (14) variable5 -> . PUT ID IGUAL expresion_alge2 PUNTOCOMA
-    (31) empty -> .
+    (4) cuerpo -> . expresion
+    (5) variable -> . variable1 cuerpo
+    (6) variable -> . variable2 cuerpo
+    (7) variable -> . variable3 cuerpo
+    (8) variable -> . variable4 cuerpo
+    (9) variable -> . variable5 cuerpo
+    (10) variable -> . empty empty
+    (16) expresion -> . NUMERO
+    (17) expresion -> . funcion expresion
+    (18) expresion -> . empty empty
+    (11) variable1 -> . DEF ID PUNTOCOMA
+    (12) variable2 -> . DEF ID IGUAL NUMERO PUNTOCOMA
+    (13) variable3 -> . PUT ID IGUAL NUMERO PUNTOCOMA
+    (14) variable4 -> . PUT ID IGUAL expresion_alge1 PUNTOCOMA
+    (15) variable5 -> . PUT ID IGUAL expresion_alge2 PUNTOCOMA
+    (58) empty -> .
+    (19) funcion -> . Random
+    (20) funcion -> . Begin
+    (21) funcion -> . ContinueUp
+    (22) funcion -> . ContinueDown
+    (23) funcion -> . ContinueRight
+    (24) funcion -> . ContinueLeft
+    (25) funcion -> . Up
+    (26) funcion -> . Down
+    (27) funcion -> . Speed
+    (28) funcion -> . Pos
+    (29) funcion -> . PosX
+    (30) funcion -> . PosY
+    (47) Random -> . RANDOM PARENTESIS_IZQ NUMERO PARENTESIS_DER PUNTOCOMA
+    (46) Begin -> . BEGIN PUNTOCOMA
+    (48) ContinueUp -> . CONTINUEUP NUMERO PUNTOCOMA
+    (49) ContinueDown -> . CONTINUEDOWN NUMERO PUNTOCOMA
+    (50) ContinueRight -> . CONTINUERIGHT NUMERO PUNTOCOMA
+    (51) ContinueLeft -> . CONTINUELEFT NUMERO PUNTOCOMA
+    (52) Up -> . UP PUNTOCOMA
+    (53) Down -> . DOWN PUNTOCOMA
+    (54) Speed -> . SPEED NUMERO PUNTOCOMA
+    (55) Pos -> . POS PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER PUNTOCOMA
+    (56) PosX -> . POSX NUMERO PUNTOCOMA
+    (57) PosY -> . POSY NUMERO PUNTOCOMA
 
-    DEF             shift and go to state 13
-    PUT             shift and go to state 14
-    END             reduce using rule 31 (empty -> .)
+    NUMERO          shift and go to state 14
+    DEF             shift and go to state 16
+    PUT             shift and go to state 17
+    END             reduce using rule 58 (empty -> .)
+    RANDOM          shift and go to state 30
+    BEGIN           shift and go to state 31
+    CONTINUEUP      shift and go to state 32
+    CONTINUEDOWN    shift and go to state 33
+    CONTINUERIGHT   shift and go to state 34
+    CONTINUELEFT    shift and go to state 35
+    UP              shift and go to state 36
+    DOWN            shift and go to state 37
+    SPEED           shift and go to state 38
+    POS             shift and go to state 39
+    POSX            shift and go to state 40
+    POSY            shift and go to state 41
 
-    variable5                      shift and go to state 11
-    cuerpo                         shift and go to state 20
+    variable4                      shift and go to state 11
+    cuerpo                         shift and go to state 46
     variable                       shift and go to state 6
-    variable1                      shift and go to state 7
-    variable2                      shift and go to state 8
-    variable3                      shift and go to state 9
-    variable4                      shift and go to state 10
-    empty                          shift and go to state 12
+    expresion                      shift and go to state 7
+    variable1                      shift and go to state 8
+    variable2                      shift and go to state 9
+    variable3                      shift and go to state 10
+    variable5                      shift and go to state 12
+    empty                          shift and go to state 13
+    funcion                        shift and go to state 15
+    Random                         shift and go to state 18
+    Begin                          shift and go to state 19
+    ContinueUp                     shift and go to state 20
+    ContinueDown                   shift and go to state 21
+    ContinueRight                  shift and go to state 22
+    ContinueLeft                   shift and go to state 23
+    Up                             shift and go to state 24
+    Down                           shift and go to state 25
+    Speed                          shift and go to state 26
+    Pos                            shift and go to state 27
+    PosX                           shift and go to state 28
+    PosY                           shift and go to state 29
 
 state 12
 
-    (9) variable -> empty . empty
-    (31) empty -> .
+    (9) variable -> variable5 . cuerpo
+    (3) cuerpo -> . variable
+    (4) cuerpo -> . expresion
+    (5) variable -> . variable1 cuerpo
+    (6) variable -> . variable2 cuerpo
+    (7) variable -> . variable3 cuerpo
+    (8) variable -> . variable4 cuerpo
+    (9) variable -> . variable5 cuerpo
+    (10) variable -> . empty empty
+    (16) expresion -> . NUMERO
+    (17) expresion -> . funcion expresion
+    (18) expresion -> . empty empty
+    (11) variable1 -> . DEF ID PUNTOCOMA
+    (12) variable2 -> . DEF ID IGUAL NUMERO PUNTOCOMA
+    (13) variable3 -> . PUT ID IGUAL NUMERO PUNTOCOMA
+    (14) variable4 -> . PUT ID IGUAL expresion_alge1 PUNTOCOMA
+    (15) variable5 -> . PUT ID IGUAL expresion_alge2 PUNTOCOMA
+    (58) empty -> .
+    (19) funcion -> . Random
+    (20) funcion -> . Begin
+    (21) funcion -> . ContinueUp
+    (22) funcion -> . ContinueDown
+    (23) funcion -> . ContinueRight
+    (24) funcion -> . ContinueLeft
+    (25) funcion -> . Up
+    (26) funcion -> . Down
+    (27) funcion -> . Speed
+    (28) funcion -> . Pos
+    (29) funcion -> . PosX
+    (30) funcion -> . PosY
+    (47) Random -> . RANDOM PARENTESIS_IZQ NUMERO PARENTESIS_DER PUNTOCOMA
+    (46) Begin -> . BEGIN PUNTOCOMA
+    (48) ContinueUp -> . CONTINUEUP NUMERO PUNTOCOMA
+    (49) ContinueDown -> . CONTINUEDOWN NUMERO PUNTOCOMA
+    (50) ContinueRight -> . CONTINUERIGHT NUMERO PUNTOCOMA
+    (51) ContinueLeft -> . CONTINUELEFT NUMERO PUNTOCOMA
+    (52) Up -> . UP PUNTOCOMA
+    (53) Down -> . DOWN PUNTOCOMA
+    (54) Speed -> . SPEED NUMERO PUNTOCOMA
+    (55) Pos -> . POS PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER PUNTOCOMA
+    (56) PosX -> . POSX NUMERO PUNTOCOMA
+    (57) PosY -> . POSY NUMERO PUNTOCOMA
 
-    END             reduce using rule 31 (empty -> .)
+    NUMERO          shift and go to state 14
+    DEF             shift and go to state 16
+    PUT             shift and go to state 17
+    END             reduce using rule 58 (empty -> .)
+    RANDOM          shift and go to state 30
+    BEGIN           shift and go to state 31
+    CONTINUEUP      shift and go to state 32
+    CONTINUEDOWN    shift and go to state 33
+    CONTINUERIGHT   shift and go to state 34
+    CONTINUELEFT    shift and go to state 35
+    UP              shift and go to state 36
+    DOWN            shift and go to state 37
+    SPEED           shift and go to state 38
+    POS             shift and go to state 39
+    POSX            shift and go to state 40
+    POSY            shift and go to state 41
 
-    empty                          shift and go to state 21
+    variable5                      shift and go to state 12
+    cuerpo                         shift and go to state 47
+    variable                       shift and go to state 6
+    expresion                      shift and go to state 7
+    variable1                      shift and go to state 8
+    variable2                      shift and go to state 9
+    variable3                      shift and go to state 10
+    variable4                      shift and go to state 11
+    empty                          shift and go to state 13
+    funcion                        shift and go to state 15
+    Random                         shift and go to state 18
+    Begin                          shift and go to state 19
+    ContinueUp                     shift and go to state 20
+    ContinueDown                   shift and go to state 21
+    ContinueRight                  shift and go to state 22
+    ContinueLeft                   shift and go to state 23
+    Up                             shift and go to state 24
+    Down                           shift and go to state 25
+    Speed                          shift and go to state 26
+    Pos                            shift and go to state 27
+    PosX                           shift and go to state 28
+    PosY                           shift and go to state 29
 
 state 13
 
-    (10) variable1 -> DEF . ID PUNTOCOMA
-    (11) variable2 -> DEF . ID IGUAL NUMERO PUNTOCOMA
+    (10) variable -> empty . empty
+    (18) expresion -> empty . empty
+    (58) empty -> .
 
-    ID              shift and go to state 22
+    END             reduce using rule 58 (empty -> .)
 
+    empty                          shift and go to state 48
 
 state 14
 
-    (12) variable3 -> PUT . ID IGUAL NUMERO PUNTOCOMA
-    (13) variable4 -> PUT . ID IGUAL expresion_alge1 PUNTOCOMA
-    (14) variable5 -> PUT . ID IGUAL expresion_alge2 PUNTOCOMA
+    (16) expresion -> NUMERO .
 
-    ID              shift and go to state 23
+    END             reduce using rule 16 (expresion -> NUMERO .)
 
 
 state 15
 
-    (2) code -> START DOSPUNTOS cuerpo END . PUNTOCOMA procedimiento
+    (17) expresion -> funcion . expresion
+    (16) expresion -> . NUMERO
+    (17) expresion -> . funcion expresion
+    (18) expresion -> . empty empty
+    (19) funcion -> . Random
+    (20) funcion -> . Begin
+    (21) funcion -> . ContinueUp
+    (22) funcion -> . ContinueDown
+    (23) funcion -> . ContinueRight
+    (24) funcion -> . ContinueLeft
+    (25) funcion -> . Up
+    (26) funcion -> . Down
+    (27) funcion -> . Speed
+    (28) funcion -> . Pos
+    (29) funcion -> . PosX
+    (30) funcion -> . PosY
+    (58) empty -> .
+    (47) Random -> . RANDOM PARENTESIS_IZQ NUMERO PARENTESIS_DER PUNTOCOMA
+    (46) Begin -> . BEGIN PUNTOCOMA
+    (48) ContinueUp -> . CONTINUEUP NUMERO PUNTOCOMA
+    (49) ContinueDown -> . CONTINUEDOWN NUMERO PUNTOCOMA
+    (50) ContinueRight -> . CONTINUERIGHT NUMERO PUNTOCOMA
+    (51) ContinueLeft -> . CONTINUELEFT NUMERO PUNTOCOMA
+    (52) Up -> . UP PUNTOCOMA
+    (53) Down -> . DOWN PUNTOCOMA
+    (54) Speed -> . SPEED NUMERO PUNTOCOMA
+    (55) Pos -> . POS PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER PUNTOCOMA
+    (56) PosX -> . POSX NUMERO PUNTOCOMA
+    (57) PosY -> . POSY NUMERO PUNTOCOMA
 
-    PUNTOCOMA       shift and go to state 24
+    NUMERO          shift and go to state 14
+    END             reduce using rule 58 (empty -> .)
+    RANDOM          shift and go to state 30
+    BEGIN           shift and go to state 31
+    CONTINUEUP      shift and go to state 32
+    CONTINUEDOWN    shift and go to state 33
+    CONTINUERIGHT   shift and go to state 34
+    CONTINUELEFT    shift and go to state 35
+    UP              shift and go to state 36
+    DOWN            shift and go to state 37
+    SPEED           shift and go to state 38
+    POS             shift and go to state 39
+    POSX            shift and go to state 40
+    POSY            shift and go to state 41
 
+    funcion                        shift and go to state 15
+    expresion                      shift and go to state 49
+    empty                          shift and go to state 50
+    Random                         shift and go to state 18
+    Begin                          shift and go to state 19
+    ContinueUp                     shift and go to state 20
+    ContinueDown                   shift and go to state 21
+    ContinueRight                  shift and go to state 22
+    ContinueLeft                   shift and go to state 23
+    Up                             shift and go to state 24
+    Down                           shift and go to state 25
+    Speed                          shift and go to state 26
+    Pos                            shift and go to state 27
+    PosX                           shift and go to state 28
+    PosY                           shift and go to state 29
 
 state 16
 
-    (4) variable -> variable1 cuerpo .
+    (11) variable1 -> DEF . ID PUNTOCOMA
+    (12) variable2 -> DEF . ID IGUAL NUMERO PUNTOCOMA
 
-    END             reduce using rule 4 (variable -> variable1 cuerpo .)
+    ID              shift and go to state 51
 
 
 state 17
 
-    (5) variable -> variable2 cuerpo .
+    (13) variable3 -> PUT . ID IGUAL NUMERO PUNTOCOMA
+    (14) variable4 -> PUT . ID IGUAL expresion_alge1 PUNTOCOMA
+    (15) variable5 -> PUT . ID IGUAL expresion_alge2 PUNTOCOMA
 
-    END             reduce using rule 5 (variable -> variable2 cuerpo .)
+    ID              shift and go to state 52
 
 
 state 18
 
-    (6) variable -> variable3 cuerpo .
+    (19) funcion -> Random .
 
-    END             reduce using rule 6 (variable -> variable3 cuerpo .)
+    NUMERO          reduce using rule 19 (funcion -> Random .)
+    RANDOM          reduce using rule 19 (funcion -> Random .)
+    BEGIN           reduce using rule 19 (funcion -> Random .)
+    CONTINUEUP      reduce using rule 19 (funcion -> Random .)
+    CONTINUEDOWN    reduce using rule 19 (funcion -> Random .)
+    CONTINUERIGHT   reduce using rule 19 (funcion -> Random .)
+    CONTINUELEFT    reduce using rule 19 (funcion -> Random .)
+    UP              reduce using rule 19 (funcion -> Random .)
+    DOWN            reduce using rule 19 (funcion -> Random .)
+    SPEED           reduce using rule 19 (funcion -> Random .)
+    POS             reduce using rule 19 (funcion -> Random .)
+    POSX            reduce using rule 19 (funcion -> Random .)
+    POSY            reduce using rule 19 (funcion -> Random .)
+    END             reduce using rule 19 (funcion -> Random .)
 
 
 state 19
 
-    (7) variable -> variable4 cuerpo .
+    (20) funcion -> Begin .
 
-    END             reduce using rule 7 (variable -> variable4 cuerpo .)
+    NUMERO          reduce using rule 20 (funcion -> Begin .)
+    RANDOM          reduce using rule 20 (funcion -> Begin .)
+    BEGIN           reduce using rule 20 (funcion -> Begin .)
+    CONTINUEUP      reduce using rule 20 (funcion -> Begin .)
+    CONTINUEDOWN    reduce using rule 20 (funcion -> Begin .)
+    CONTINUERIGHT   reduce using rule 20 (funcion -> Begin .)
+    CONTINUELEFT    reduce using rule 20 (funcion -> Begin .)
+    UP              reduce using rule 20 (funcion -> Begin .)
+    DOWN            reduce using rule 20 (funcion -> Begin .)
+    SPEED           reduce using rule 20 (funcion -> Begin .)
+    POS             reduce using rule 20 (funcion -> Begin .)
+    POSX            reduce using rule 20 (funcion -> Begin .)
+    POSY            reduce using rule 20 (funcion -> Begin .)
+    END             reduce using rule 20 (funcion -> Begin .)
 
 
 state 20
 
-    (8) variable -> variable5 cuerpo .
+    (21) funcion -> ContinueUp .
 
-    END             reduce using rule 8 (variable -> variable5 cuerpo .)
+    NUMERO          reduce using rule 21 (funcion -> ContinueUp .)
+    RANDOM          reduce using rule 21 (funcion -> ContinueUp .)
+    BEGIN           reduce using rule 21 (funcion -> ContinueUp .)
+    CONTINUEUP      reduce using rule 21 (funcion -> ContinueUp .)
+    CONTINUEDOWN    reduce using rule 21 (funcion -> ContinueUp .)
+    CONTINUERIGHT   reduce using rule 21 (funcion -> ContinueUp .)
+    CONTINUELEFT    reduce using rule 21 (funcion -> ContinueUp .)
+    UP              reduce using rule 21 (funcion -> ContinueUp .)
+    DOWN            reduce using rule 21 (funcion -> ContinueUp .)
+    SPEED           reduce using rule 21 (funcion -> ContinueUp .)
+    POS             reduce using rule 21 (funcion -> ContinueUp .)
+    POSX            reduce using rule 21 (funcion -> ContinueUp .)
+    POSY            reduce using rule 21 (funcion -> ContinueUp .)
+    END             reduce using rule 21 (funcion -> ContinueUp .)
 
 
 state 21
 
-    (9) variable -> empty empty .
+    (22) funcion -> ContinueDown .
 
-    END             reduce using rule 9 (variable -> empty empty .)
+    NUMERO          reduce using rule 22 (funcion -> ContinueDown .)
+    RANDOM          reduce using rule 22 (funcion -> ContinueDown .)
+    BEGIN           reduce using rule 22 (funcion -> ContinueDown .)
+    CONTINUEUP      reduce using rule 22 (funcion -> ContinueDown .)
+    CONTINUEDOWN    reduce using rule 22 (funcion -> ContinueDown .)
+    CONTINUERIGHT   reduce using rule 22 (funcion -> ContinueDown .)
+    CONTINUELEFT    reduce using rule 22 (funcion -> ContinueDown .)
+    UP              reduce using rule 22 (funcion -> ContinueDown .)
+    DOWN            reduce using rule 22 (funcion -> ContinueDown .)
+    SPEED           reduce using rule 22 (funcion -> ContinueDown .)
+    POS             reduce using rule 22 (funcion -> ContinueDown .)
+    POSX            reduce using rule 22 (funcion -> ContinueDown .)
+    POSY            reduce using rule 22 (funcion -> ContinueDown .)
+    END             reduce using rule 22 (funcion -> ContinueDown .)
 
 
 state 22
 
-    (10) variable1 -> DEF ID . PUNTOCOMA
-    (11) variable2 -> DEF ID . IGUAL NUMERO PUNTOCOMA
+    (23) funcion -> ContinueRight .
 
-    PUNTOCOMA       shift and go to state 25
-    IGUAL           shift and go to state 26
+    NUMERO          reduce using rule 23 (funcion -> ContinueRight .)
+    RANDOM          reduce using rule 23 (funcion -> ContinueRight .)
+    BEGIN           reduce using rule 23 (funcion -> ContinueRight .)
+    CONTINUEUP      reduce using rule 23 (funcion -> ContinueRight .)
+    CONTINUEDOWN    reduce using rule 23 (funcion -> ContinueRight .)
+    CONTINUERIGHT   reduce using rule 23 (funcion -> ContinueRight .)
+    CONTINUELEFT    reduce using rule 23 (funcion -> ContinueRight .)
+    UP              reduce using rule 23 (funcion -> ContinueRight .)
+    DOWN            reduce using rule 23 (funcion -> ContinueRight .)
+    SPEED           reduce using rule 23 (funcion -> ContinueRight .)
+    POS             reduce using rule 23 (funcion -> ContinueRight .)
+    POSX            reduce using rule 23 (funcion -> ContinueRight .)
+    POSY            reduce using rule 23 (funcion -> ContinueRight .)
+    END             reduce using rule 23 (funcion -> ContinueRight .)
 
 
 state 23
 
-    (12) variable3 -> PUT ID . IGUAL NUMERO PUNTOCOMA
-    (13) variable4 -> PUT ID . IGUAL expresion_alge1 PUNTOCOMA
-    (14) variable5 -> PUT ID . IGUAL expresion_alge2 PUNTOCOMA
+    (24) funcion -> ContinueLeft .
 
-    IGUAL           shift and go to state 27
+    NUMERO          reduce using rule 24 (funcion -> ContinueLeft .)
+    RANDOM          reduce using rule 24 (funcion -> ContinueLeft .)
+    BEGIN           reduce using rule 24 (funcion -> ContinueLeft .)
+    CONTINUEUP      reduce using rule 24 (funcion -> ContinueLeft .)
+    CONTINUEDOWN    reduce using rule 24 (funcion -> ContinueLeft .)
+    CONTINUERIGHT   reduce using rule 24 (funcion -> ContinueLeft .)
+    CONTINUELEFT    reduce using rule 24 (funcion -> ContinueLeft .)
+    UP              reduce using rule 24 (funcion -> ContinueLeft .)
+    DOWN            reduce using rule 24 (funcion -> ContinueLeft .)
+    SPEED           reduce using rule 24 (funcion -> ContinueLeft .)
+    POS             reduce using rule 24 (funcion -> ContinueLeft .)
+    POSX            reduce using rule 24 (funcion -> ContinueLeft .)
+    POSY            reduce using rule 24 (funcion -> ContinueLeft .)
+    END             reduce using rule 24 (funcion -> ContinueLeft .)
 
 
 state 24
 
-    (2) code -> START DOSPUNTOS cuerpo END PUNTOCOMA . procedimiento
-    (24) procedimiento -> . PROC ID PARENTESIS_IZQ parametro PARENTESIS_DER PARA PUNTOCOMA procedimiento
-    (25) procedimiento -> . empty empty empty empty empty empty empty empty empty empty empty
-    (31) empty -> .
+    (25) funcion -> Up .
 
-    PROC            shift and go to state 29
-    $end            reduce using rule 31 (empty -> .)
+    NUMERO          reduce using rule 25 (funcion -> Up .)
+    RANDOM          reduce using rule 25 (funcion -> Up .)
+    BEGIN           reduce using rule 25 (funcion -> Up .)
+    CONTINUEUP      reduce using rule 25 (funcion -> Up .)
+    CONTINUEDOWN    reduce using rule 25 (funcion -> Up .)
+    CONTINUERIGHT   reduce using rule 25 (funcion -> Up .)
+    CONTINUELEFT    reduce using rule 25 (funcion -> Up .)
+    UP              reduce using rule 25 (funcion -> Up .)
+    DOWN            reduce using rule 25 (funcion -> Up .)
+    SPEED           reduce using rule 25 (funcion -> Up .)
+    POS             reduce using rule 25 (funcion -> Up .)
+    POSX            reduce using rule 25 (funcion -> Up .)
+    POSY            reduce using rule 25 (funcion -> Up .)
+    END             reduce using rule 25 (funcion -> Up .)
 
-    procedimiento                  shift and go to state 28
-    empty                          shift and go to state 30
 
 state 25
 
-    (10) variable1 -> DEF ID PUNTOCOMA .
+    (26) funcion -> Down .
 
-    DEF             reduce using rule 10 (variable1 -> DEF ID PUNTOCOMA .)
-    PUT             reduce using rule 10 (variable1 -> DEF ID PUNTOCOMA .)
-    END             reduce using rule 10 (variable1 -> DEF ID PUNTOCOMA .)
+    NUMERO          reduce using rule 26 (funcion -> Down .)
+    RANDOM          reduce using rule 26 (funcion -> Down .)
+    BEGIN           reduce using rule 26 (funcion -> Down .)
+    CONTINUEUP      reduce using rule 26 (funcion -> Down .)
+    CONTINUEDOWN    reduce using rule 26 (funcion -> Down .)
+    CONTINUERIGHT   reduce using rule 26 (funcion -> Down .)
+    CONTINUELEFT    reduce using rule 26 (funcion -> Down .)
+    UP              reduce using rule 26 (funcion -> Down .)
+    DOWN            reduce using rule 26 (funcion -> Down .)
+    SPEED           reduce using rule 26 (funcion -> Down .)
+    POS             reduce using rule 26 (funcion -> Down .)
+    POSX            reduce using rule 26 (funcion -> Down .)
+    POSY            reduce using rule 26 (funcion -> Down .)
+    END             reduce using rule 26 (funcion -> Down .)
 
 
 state 26
 
-    (11) variable2 -> DEF ID IGUAL . NUMERO PUNTOCOMA
+    (27) funcion -> Speed .
 
-    NUMERO          shift and go to state 31
+    NUMERO          reduce using rule 27 (funcion -> Speed .)
+    RANDOM          reduce using rule 27 (funcion -> Speed .)
+    BEGIN           reduce using rule 27 (funcion -> Speed .)
+    CONTINUEUP      reduce using rule 27 (funcion -> Speed .)
+    CONTINUEDOWN    reduce using rule 27 (funcion -> Speed .)
+    CONTINUERIGHT   reduce using rule 27 (funcion -> Speed .)
+    CONTINUELEFT    reduce using rule 27 (funcion -> Speed .)
+    UP              reduce using rule 27 (funcion -> Speed .)
+    DOWN            reduce using rule 27 (funcion -> Speed .)
+    SPEED           reduce using rule 27 (funcion -> Speed .)
+    POS             reduce using rule 27 (funcion -> Speed .)
+    POSX            reduce using rule 27 (funcion -> Speed .)
+    POSY            reduce using rule 27 (funcion -> Speed .)
+    END             reduce using rule 27 (funcion -> Speed .)
 
 
 state 27
 
-    (12) variable3 -> PUT ID IGUAL . NUMERO PUNTOCOMA
-    (13) variable4 -> PUT ID IGUAL . expresion_alge1 PUNTOCOMA
-    (14) variable5 -> PUT ID IGUAL . expresion_alge2 PUNTOCOMA
-    (16) expresion_alge1 -> . NUMERO SUMA NUMERO
-    (17) expresion_alge1 -> . NUMERO RESTA NUMERO
-    (18) expresion_alge1 -> . NUMERO MULTIPLICA NUMERO
-    (19) expresion_alge1 -> . NUMERO DIVIDE NUMERO
-    (20) expresion_alge2 -> . PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER SUMA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
-    (21) expresion_alge2 -> . PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER RESTA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
-    (22) expresion_alge2 -> . PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER MULTIPLICA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
-    (23) expresion_alge2 -> . PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER DIVIDE PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
+    (28) funcion -> Pos .
 
-    NUMERO          shift and go to state 32
-    PARENTESIS_IZQ  shift and go to state 35
+    NUMERO          reduce using rule 28 (funcion -> Pos .)
+    RANDOM          reduce using rule 28 (funcion -> Pos .)
+    BEGIN           reduce using rule 28 (funcion -> Pos .)
+    CONTINUEUP      reduce using rule 28 (funcion -> Pos .)
+    CONTINUEDOWN    reduce using rule 28 (funcion -> Pos .)
+    CONTINUERIGHT   reduce using rule 28 (funcion -> Pos .)
+    CONTINUELEFT    reduce using rule 28 (funcion -> Pos .)
+    UP              reduce using rule 28 (funcion -> Pos .)
+    DOWN            reduce using rule 28 (funcion -> Pos .)
+    SPEED           reduce using rule 28 (funcion -> Pos .)
+    POS             reduce using rule 28 (funcion -> Pos .)
+    POSX            reduce using rule 28 (funcion -> Pos .)
+    POSY            reduce using rule 28 (funcion -> Pos .)
+    END             reduce using rule 28 (funcion -> Pos .)
 
-    expresion_alge1                shift and go to state 33
-    expresion_alge2                shift and go to state 34
 
 state 28
+
+    (29) funcion -> PosX .
+
+    NUMERO          reduce using rule 29 (funcion -> PosX .)
+    RANDOM          reduce using rule 29 (funcion -> PosX .)
+    BEGIN           reduce using rule 29 (funcion -> PosX .)
+    CONTINUEUP      reduce using rule 29 (funcion -> PosX .)
+    CONTINUEDOWN    reduce using rule 29 (funcion -> PosX .)
+    CONTINUERIGHT   reduce using rule 29 (funcion -> PosX .)
+    CONTINUELEFT    reduce using rule 29 (funcion -> PosX .)
+    UP              reduce using rule 29 (funcion -> PosX .)
+    DOWN            reduce using rule 29 (funcion -> PosX .)
+    SPEED           reduce using rule 29 (funcion -> PosX .)
+    POS             reduce using rule 29 (funcion -> PosX .)
+    POSX            reduce using rule 29 (funcion -> PosX .)
+    POSY            reduce using rule 29 (funcion -> PosX .)
+    END             reduce using rule 29 (funcion -> PosX .)
+
+
+state 29
+
+    (30) funcion -> PosY .
+
+    NUMERO          reduce using rule 30 (funcion -> PosY .)
+    RANDOM          reduce using rule 30 (funcion -> PosY .)
+    BEGIN           reduce using rule 30 (funcion -> PosY .)
+    CONTINUEUP      reduce using rule 30 (funcion -> PosY .)
+    CONTINUEDOWN    reduce using rule 30 (funcion -> PosY .)
+    CONTINUERIGHT   reduce using rule 30 (funcion -> PosY .)
+    CONTINUELEFT    reduce using rule 30 (funcion -> PosY .)
+    UP              reduce using rule 30 (funcion -> PosY .)
+    DOWN            reduce using rule 30 (funcion -> PosY .)
+    SPEED           reduce using rule 30 (funcion -> PosY .)
+    POS             reduce using rule 30 (funcion -> PosY .)
+    POSX            reduce using rule 30 (funcion -> PosY .)
+    POSY            reduce using rule 30 (funcion -> PosY .)
+    END             reduce using rule 30 (funcion -> PosY .)
+
+
+state 30
+
+    (47) Random -> RANDOM . PARENTESIS_IZQ NUMERO PARENTESIS_DER PUNTOCOMA
+
+    PARENTESIS_IZQ  shift and go to state 53
+
+
+state 31
+
+    (46) Begin -> BEGIN . PUNTOCOMA
+
+    PUNTOCOMA       shift and go to state 54
+
+
+state 32
+
+    (48) ContinueUp -> CONTINUEUP . NUMERO PUNTOCOMA
+
+    NUMERO          shift and go to state 55
+
+
+state 33
+
+    (49) ContinueDown -> CONTINUEDOWN . NUMERO PUNTOCOMA
+
+    NUMERO          shift and go to state 56
+
+
+state 34
+
+    (50) ContinueRight -> CONTINUERIGHT . NUMERO PUNTOCOMA
+
+    NUMERO          shift and go to state 57
+
+
+state 35
+
+    (51) ContinueLeft -> CONTINUELEFT . NUMERO PUNTOCOMA
+
+    NUMERO          shift and go to state 58
+
+
+state 36
+
+    (52) Up -> UP . PUNTOCOMA
+
+    PUNTOCOMA       shift and go to state 59
+
+
+state 37
+
+    (53) Down -> DOWN . PUNTOCOMA
+
+    PUNTOCOMA       shift and go to state 60
+
+
+state 38
+
+    (54) Speed -> SPEED . NUMERO PUNTOCOMA
+
+    NUMERO          shift and go to state 61
+
+
+state 39
+
+    (55) Pos -> POS . PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER PUNTOCOMA
+
+    PARENTESIS_IZQ  shift and go to state 62
+
+
+state 40
+
+    (56) PosX -> POSX . NUMERO PUNTOCOMA
+
+    NUMERO          shift and go to state 63
+
+
+state 41
+
+    (57) PosY -> POSY . NUMERO PUNTOCOMA
+
+    NUMERO          shift and go to state 64
+
+
+state 42
+
+    (2) code -> START DOSPUNTOS cuerpo END . PUNTOCOMA procedimiento
+
+    PUNTOCOMA       shift and go to state 65
+
+
+state 43
+
+    (5) variable -> variable1 cuerpo .
+
+    END             reduce using rule 5 (variable -> variable1 cuerpo .)
+
+
+state 44
+
+    (6) variable -> variable2 cuerpo .
+
+    END             reduce using rule 6 (variable -> variable2 cuerpo .)
+
+
+state 45
+
+    (7) variable -> variable3 cuerpo .
+
+    END             reduce using rule 7 (variable -> variable3 cuerpo .)
+
+
+state 46
+
+    (8) variable -> variable4 cuerpo .
+
+    END             reduce using rule 8 (variable -> variable4 cuerpo .)
+
+
+state 47
+
+    (9) variable -> variable5 cuerpo .
+
+    END             reduce using rule 9 (variable -> variable5 cuerpo .)
+
+
+state 48
+
+    (10) variable -> empty empty .
+    (18) expresion -> empty empty .
+
+  ! reduce/reduce conflict for END resolved using rule 10 (variable -> empty empty .)
+    END             reduce using rule 10 (variable -> empty empty .)
+
+  ! END             [ reduce using rule 18 (expresion -> empty empty .) ]
+
+
+state 49
+
+    (17) expresion -> funcion expresion .
+
+    END             reduce using rule 17 (expresion -> funcion expresion .)
+
+
+state 50
+
+    (18) expresion -> empty . empty
+    (58) empty -> .
+
+    END             reduce using rule 58 (empty -> .)
+
+    empty                          shift and go to state 66
+
+state 51
+
+    (11) variable1 -> DEF ID . PUNTOCOMA
+    (12) variable2 -> DEF ID . IGUAL NUMERO PUNTOCOMA
+
+    PUNTOCOMA       shift and go to state 67
+    IGUAL           shift and go to state 68
+
+
+state 52
+
+    (13) variable3 -> PUT ID . IGUAL NUMERO PUNTOCOMA
+    (14) variable4 -> PUT ID . IGUAL expresion_alge1 PUNTOCOMA
+    (15) variable5 -> PUT ID . IGUAL expresion_alge2 PUNTOCOMA
+
+    IGUAL           shift and go to state 69
+
+
+state 53
+
+    (47) Random -> RANDOM PARENTESIS_IZQ . NUMERO PARENTESIS_DER PUNTOCOMA
+
+    NUMERO          shift and go to state 70
+
+
+state 54
+
+    (46) Begin -> BEGIN PUNTOCOMA .
+
+    NUMERO          reduce using rule 46 (Begin -> BEGIN PUNTOCOMA .)
+    RANDOM          reduce using rule 46 (Begin -> BEGIN PUNTOCOMA .)
+    BEGIN           reduce using rule 46 (Begin -> BEGIN PUNTOCOMA .)
+    CONTINUEUP      reduce using rule 46 (Begin -> BEGIN PUNTOCOMA .)
+    CONTINUEDOWN    reduce using rule 46 (Begin -> BEGIN PUNTOCOMA .)
+    CONTINUERIGHT   reduce using rule 46 (Begin -> BEGIN PUNTOCOMA .)
+    CONTINUELEFT    reduce using rule 46 (Begin -> BEGIN PUNTOCOMA .)
+    UP              reduce using rule 46 (Begin -> BEGIN PUNTOCOMA .)
+    DOWN            reduce using rule 46 (Begin -> BEGIN PUNTOCOMA .)
+    SPEED           reduce using rule 46 (Begin -> BEGIN PUNTOCOMA .)
+    POS             reduce using rule 46 (Begin -> BEGIN PUNTOCOMA .)
+    POSX            reduce using rule 46 (Begin -> BEGIN PUNTOCOMA .)
+    POSY            reduce using rule 46 (Begin -> BEGIN PUNTOCOMA .)
+    END             reduce using rule 46 (Begin -> BEGIN PUNTOCOMA .)
+
+
+state 55
+
+    (48) ContinueUp -> CONTINUEUP NUMERO . PUNTOCOMA
+
+    PUNTOCOMA       shift and go to state 71
+
+
+state 56
+
+    (49) ContinueDown -> CONTINUEDOWN NUMERO . PUNTOCOMA
+
+    PUNTOCOMA       shift and go to state 72
+
+
+state 57
+
+    (50) ContinueRight -> CONTINUERIGHT NUMERO . PUNTOCOMA
+
+    PUNTOCOMA       shift and go to state 73
+
+
+state 58
+
+    (51) ContinueLeft -> CONTINUELEFT NUMERO . PUNTOCOMA
+
+    PUNTOCOMA       shift and go to state 74
+
+
+state 59
+
+    (52) Up -> UP PUNTOCOMA .
+
+    NUMERO          reduce using rule 52 (Up -> UP PUNTOCOMA .)
+    RANDOM          reduce using rule 52 (Up -> UP PUNTOCOMA .)
+    BEGIN           reduce using rule 52 (Up -> UP PUNTOCOMA .)
+    CONTINUEUP      reduce using rule 52 (Up -> UP PUNTOCOMA .)
+    CONTINUEDOWN    reduce using rule 52 (Up -> UP PUNTOCOMA .)
+    CONTINUERIGHT   reduce using rule 52 (Up -> UP PUNTOCOMA .)
+    CONTINUELEFT    reduce using rule 52 (Up -> UP PUNTOCOMA .)
+    UP              reduce using rule 52 (Up -> UP PUNTOCOMA .)
+    DOWN            reduce using rule 52 (Up -> UP PUNTOCOMA .)
+    SPEED           reduce using rule 52 (Up -> UP PUNTOCOMA .)
+    POS             reduce using rule 52 (Up -> UP PUNTOCOMA .)
+    POSX            reduce using rule 52 (Up -> UP PUNTOCOMA .)
+    POSY            reduce using rule 52 (Up -> UP PUNTOCOMA .)
+    END             reduce using rule 52 (Up -> UP PUNTOCOMA .)
+
+
+state 60
+
+    (53) Down -> DOWN PUNTOCOMA .
+
+    NUMERO          reduce using rule 53 (Down -> DOWN PUNTOCOMA .)
+    RANDOM          reduce using rule 53 (Down -> DOWN PUNTOCOMA .)
+    BEGIN           reduce using rule 53 (Down -> DOWN PUNTOCOMA .)
+    CONTINUEUP      reduce using rule 53 (Down -> DOWN PUNTOCOMA .)
+    CONTINUEDOWN    reduce using rule 53 (Down -> DOWN PUNTOCOMA .)
+    CONTINUERIGHT   reduce using rule 53 (Down -> DOWN PUNTOCOMA .)
+    CONTINUELEFT    reduce using rule 53 (Down -> DOWN PUNTOCOMA .)
+    UP              reduce using rule 53 (Down -> DOWN PUNTOCOMA .)
+    DOWN            reduce using rule 53 (Down -> DOWN PUNTOCOMA .)
+    SPEED           reduce using rule 53 (Down -> DOWN PUNTOCOMA .)
+    POS             reduce using rule 53 (Down -> DOWN PUNTOCOMA .)
+    POSX            reduce using rule 53 (Down -> DOWN PUNTOCOMA .)
+    POSY            reduce using rule 53 (Down -> DOWN PUNTOCOMA .)
+    END             reduce using rule 53 (Down -> DOWN PUNTOCOMA .)
+
+
+state 61
+
+    (54) Speed -> SPEED NUMERO . PUNTOCOMA
+
+    PUNTOCOMA       shift and go to state 75
+
+
+state 62
+
+    (55) Pos -> POS PARENTESIS_IZQ . NUMERO COMA NUMERO PARENTESIS_DER PUNTOCOMA
+
+    NUMERO          shift and go to state 76
+
+
+state 63
+
+    (56) PosX -> POSX NUMERO . PUNTOCOMA
+
+    PUNTOCOMA       shift and go to state 77
+
+
+state 64
+
+    (57) PosY -> POSY NUMERO . PUNTOCOMA
+
+    PUNTOCOMA       shift and go to state 78
+
+
+state 65
+
+    (2) code -> START DOSPUNTOS cuerpo END PUNTOCOMA . procedimiento
+    (39) procedimiento -> . PROC ID PARENTESIS_IZQ parametro PARENTESIS_DER PARA PUNTOCOMA procedimiento
+    (40) procedimiento -> . empty empty empty empty empty empty empty empty empty empty empty
+    (58) empty -> .
+
+    PROC            shift and go to state 80
+    $end            reduce using rule 58 (empty -> .)
+
+    procedimiento                  shift and go to state 79
+    empty                          shift and go to state 81
+
+state 66
+
+    (18) expresion -> empty empty .
+
+    END             reduce using rule 18 (expresion -> empty empty .)
+
+
+state 67
+
+    (11) variable1 -> DEF ID PUNTOCOMA .
+
+    NUMERO          reduce using rule 11 (variable1 -> DEF ID PUNTOCOMA .)
+    DEF             reduce using rule 11 (variable1 -> DEF ID PUNTOCOMA .)
+    PUT             reduce using rule 11 (variable1 -> DEF ID PUNTOCOMA .)
+    RANDOM          reduce using rule 11 (variable1 -> DEF ID PUNTOCOMA .)
+    BEGIN           reduce using rule 11 (variable1 -> DEF ID PUNTOCOMA .)
+    CONTINUEUP      reduce using rule 11 (variable1 -> DEF ID PUNTOCOMA .)
+    CONTINUEDOWN    reduce using rule 11 (variable1 -> DEF ID PUNTOCOMA .)
+    CONTINUERIGHT   reduce using rule 11 (variable1 -> DEF ID PUNTOCOMA .)
+    CONTINUELEFT    reduce using rule 11 (variable1 -> DEF ID PUNTOCOMA .)
+    UP              reduce using rule 11 (variable1 -> DEF ID PUNTOCOMA .)
+    DOWN            reduce using rule 11 (variable1 -> DEF ID PUNTOCOMA .)
+    SPEED           reduce using rule 11 (variable1 -> DEF ID PUNTOCOMA .)
+    POS             reduce using rule 11 (variable1 -> DEF ID PUNTOCOMA .)
+    POSX            reduce using rule 11 (variable1 -> DEF ID PUNTOCOMA .)
+    POSY            reduce using rule 11 (variable1 -> DEF ID PUNTOCOMA .)
+    END             reduce using rule 11 (variable1 -> DEF ID PUNTOCOMA .)
+
+
+state 68
+
+    (12) variable2 -> DEF ID IGUAL . NUMERO PUNTOCOMA
+
+    NUMERO          shift and go to state 82
+
+
+state 69
+
+    (13) variable3 -> PUT ID IGUAL . NUMERO PUNTOCOMA
+    (14) variable4 -> PUT ID IGUAL . expresion_alge1 PUNTOCOMA
+    (15) variable5 -> PUT ID IGUAL . expresion_alge2 PUNTOCOMA
+    (31) expresion_alge1 -> . NUMERO SUMA NUMERO
+    (32) expresion_alge1 -> . NUMERO RESTA NUMERO
+    (33) expresion_alge1 -> . NUMERO MULTIPLICA NUMERO
+    (34) expresion_alge1 -> . NUMERO DIVIDE NUMERO
+    (35) expresion_alge2 -> . PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER SUMA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
+    (36) expresion_alge2 -> . PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER RESTA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
+    (37) expresion_alge2 -> . PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER MULTIPLICA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
+    (38) expresion_alge2 -> . PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER DIVIDE PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
+
+    NUMERO          shift and go to state 83
+    PARENTESIS_IZQ  shift and go to state 86
+
+    expresion_alge1                shift and go to state 84
+    expresion_alge2                shift and go to state 85
+
+state 70
+
+    (47) Random -> RANDOM PARENTESIS_IZQ NUMERO . PARENTESIS_DER PUNTOCOMA
+
+    PARENTESIS_DER  shift and go to state 87
+
+
+state 71
+
+    (48) ContinueUp -> CONTINUEUP NUMERO PUNTOCOMA .
+
+    NUMERO          reduce using rule 48 (ContinueUp -> CONTINUEUP NUMERO PUNTOCOMA .)
+    RANDOM          reduce using rule 48 (ContinueUp -> CONTINUEUP NUMERO PUNTOCOMA .)
+    BEGIN           reduce using rule 48 (ContinueUp -> CONTINUEUP NUMERO PUNTOCOMA .)
+    CONTINUEUP      reduce using rule 48 (ContinueUp -> CONTINUEUP NUMERO PUNTOCOMA .)
+    CONTINUEDOWN    reduce using rule 48 (ContinueUp -> CONTINUEUP NUMERO PUNTOCOMA .)
+    CONTINUERIGHT   reduce using rule 48 (ContinueUp -> CONTINUEUP NUMERO PUNTOCOMA .)
+    CONTINUELEFT    reduce using rule 48 (ContinueUp -> CONTINUEUP NUMERO PUNTOCOMA .)
+    UP              reduce using rule 48 (ContinueUp -> CONTINUEUP NUMERO PUNTOCOMA .)
+    DOWN            reduce using rule 48 (ContinueUp -> CONTINUEUP NUMERO PUNTOCOMA .)
+    SPEED           reduce using rule 48 (ContinueUp -> CONTINUEUP NUMERO PUNTOCOMA .)
+    POS             reduce using rule 48 (ContinueUp -> CONTINUEUP NUMERO PUNTOCOMA .)
+    POSX            reduce using rule 48 (ContinueUp -> CONTINUEUP NUMERO PUNTOCOMA .)
+    POSY            reduce using rule 48 (ContinueUp -> CONTINUEUP NUMERO PUNTOCOMA .)
+    END             reduce using rule 48 (ContinueUp -> CONTINUEUP NUMERO PUNTOCOMA .)
+
+
+state 72
+
+    (49) ContinueDown -> CONTINUEDOWN NUMERO PUNTOCOMA .
+
+    NUMERO          reduce using rule 49 (ContinueDown -> CONTINUEDOWN NUMERO PUNTOCOMA .)
+    RANDOM          reduce using rule 49 (ContinueDown -> CONTINUEDOWN NUMERO PUNTOCOMA .)
+    BEGIN           reduce using rule 49 (ContinueDown -> CONTINUEDOWN NUMERO PUNTOCOMA .)
+    CONTINUEUP      reduce using rule 49 (ContinueDown -> CONTINUEDOWN NUMERO PUNTOCOMA .)
+    CONTINUEDOWN    reduce using rule 49 (ContinueDown -> CONTINUEDOWN NUMERO PUNTOCOMA .)
+    CONTINUERIGHT   reduce using rule 49 (ContinueDown -> CONTINUEDOWN NUMERO PUNTOCOMA .)
+    CONTINUELEFT    reduce using rule 49 (ContinueDown -> CONTINUEDOWN NUMERO PUNTOCOMA .)
+    UP              reduce using rule 49 (ContinueDown -> CONTINUEDOWN NUMERO PUNTOCOMA .)
+    DOWN            reduce using rule 49 (ContinueDown -> CONTINUEDOWN NUMERO PUNTOCOMA .)
+    SPEED           reduce using rule 49 (ContinueDown -> CONTINUEDOWN NUMERO PUNTOCOMA .)
+    POS             reduce using rule 49 (ContinueDown -> CONTINUEDOWN NUMERO PUNTOCOMA .)
+    POSX            reduce using rule 49 (ContinueDown -> CONTINUEDOWN NUMERO PUNTOCOMA .)
+    POSY            reduce using rule 49 (ContinueDown -> CONTINUEDOWN NUMERO PUNTOCOMA .)
+    END             reduce using rule 49 (ContinueDown -> CONTINUEDOWN NUMERO PUNTOCOMA .)
+
+
+state 73
+
+    (50) ContinueRight -> CONTINUERIGHT NUMERO PUNTOCOMA .
+
+    NUMERO          reduce using rule 50 (ContinueRight -> CONTINUERIGHT NUMERO PUNTOCOMA .)
+    RANDOM          reduce using rule 50 (ContinueRight -> CONTINUERIGHT NUMERO PUNTOCOMA .)
+    BEGIN           reduce using rule 50 (ContinueRight -> CONTINUERIGHT NUMERO PUNTOCOMA .)
+    CONTINUEUP      reduce using rule 50 (ContinueRight -> CONTINUERIGHT NUMERO PUNTOCOMA .)
+    CONTINUEDOWN    reduce using rule 50 (ContinueRight -> CONTINUERIGHT NUMERO PUNTOCOMA .)
+    CONTINUERIGHT   reduce using rule 50 (ContinueRight -> CONTINUERIGHT NUMERO PUNTOCOMA .)
+    CONTINUELEFT    reduce using rule 50 (ContinueRight -> CONTINUERIGHT NUMERO PUNTOCOMA .)
+    UP              reduce using rule 50 (ContinueRight -> CONTINUERIGHT NUMERO PUNTOCOMA .)
+    DOWN            reduce using rule 50 (ContinueRight -> CONTINUERIGHT NUMERO PUNTOCOMA .)
+    SPEED           reduce using rule 50 (ContinueRight -> CONTINUERIGHT NUMERO PUNTOCOMA .)
+    POS             reduce using rule 50 (ContinueRight -> CONTINUERIGHT NUMERO PUNTOCOMA .)
+    POSX            reduce using rule 50 (ContinueRight -> CONTINUERIGHT NUMERO PUNTOCOMA .)
+    POSY            reduce using rule 50 (ContinueRight -> CONTINUERIGHT NUMERO PUNTOCOMA .)
+    END             reduce using rule 50 (ContinueRight -> CONTINUERIGHT NUMERO PUNTOCOMA .)
+
+
+state 74
+
+    (51) ContinueLeft -> CONTINUELEFT NUMERO PUNTOCOMA .
+
+    NUMERO          reduce using rule 51 (ContinueLeft -> CONTINUELEFT NUMERO PUNTOCOMA .)
+    RANDOM          reduce using rule 51 (ContinueLeft -> CONTINUELEFT NUMERO PUNTOCOMA .)
+    BEGIN           reduce using rule 51 (ContinueLeft -> CONTINUELEFT NUMERO PUNTOCOMA .)
+    CONTINUEUP      reduce using rule 51 (ContinueLeft -> CONTINUELEFT NUMERO PUNTOCOMA .)
+    CONTINUEDOWN    reduce using rule 51 (ContinueLeft -> CONTINUELEFT NUMERO PUNTOCOMA .)
+    CONTINUERIGHT   reduce using rule 51 (ContinueLeft -> CONTINUELEFT NUMERO PUNTOCOMA .)
+    CONTINUELEFT    reduce using rule 51 (ContinueLeft -> CONTINUELEFT NUMERO PUNTOCOMA .)
+    UP              reduce using rule 51 (ContinueLeft -> CONTINUELEFT NUMERO PUNTOCOMA .)
+    DOWN            reduce using rule 51 (ContinueLeft -> CONTINUELEFT NUMERO PUNTOCOMA .)
+    SPEED           reduce using rule 51 (ContinueLeft -> CONTINUELEFT NUMERO PUNTOCOMA .)
+    POS             reduce using rule 51 (ContinueLeft -> CONTINUELEFT NUMERO PUNTOCOMA .)
+    POSX            reduce using rule 51 (ContinueLeft -> CONTINUELEFT NUMERO PUNTOCOMA .)
+    POSY            reduce using rule 51 (ContinueLeft -> CONTINUELEFT NUMERO PUNTOCOMA .)
+    END             reduce using rule 51 (ContinueLeft -> CONTINUELEFT NUMERO PUNTOCOMA .)
+
+
+state 75
+
+    (54) Speed -> SPEED NUMERO PUNTOCOMA .
+
+    NUMERO          reduce using rule 54 (Speed -> SPEED NUMERO PUNTOCOMA .)
+    RANDOM          reduce using rule 54 (Speed -> SPEED NUMERO PUNTOCOMA .)
+    BEGIN           reduce using rule 54 (Speed -> SPEED NUMERO PUNTOCOMA .)
+    CONTINUEUP      reduce using rule 54 (Speed -> SPEED NUMERO PUNTOCOMA .)
+    CONTINUEDOWN    reduce using rule 54 (Speed -> SPEED NUMERO PUNTOCOMA .)
+    CONTINUERIGHT   reduce using rule 54 (Speed -> SPEED NUMERO PUNTOCOMA .)
+    CONTINUELEFT    reduce using rule 54 (Speed -> SPEED NUMERO PUNTOCOMA .)
+    UP              reduce using rule 54 (Speed -> SPEED NUMERO PUNTOCOMA .)
+    DOWN            reduce using rule 54 (Speed -> SPEED NUMERO PUNTOCOMA .)
+    SPEED           reduce using rule 54 (Speed -> SPEED NUMERO PUNTOCOMA .)
+    POS             reduce using rule 54 (Speed -> SPEED NUMERO PUNTOCOMA .)
+    POSX            reduce using rule 54 (Speed -> SPEED NUMERO PUNTOCOMA .)
+    POSY            reduce using rule 54 (Speed -> SPEED NUMERO PUNTOCOMA .)
+    END             reduce using rule 54 (Speed -> SPEED NUMERO PUNTOCOMA .)
+
+
+state 76
+
+    (55) Pos -> POS PARENTESIS_IZQ NUMERO . COMA NUMERO PARENTESIS_DER PUNTOCOMA
+
+    COMA            shift and go to state 88
+
+
+state 77
+
+    (56) PosX -> POSX NUMERO PUNTOCOMA .
+
+    NUMERO          reduce using rule 56 (PosX -> POSX NUMERO PUNTOCOMA .)
+    RANDOM          reduce using rule 56 (PosX -> POSX NUMERO PUNTOCOMA .)
+    BEGIN           reduce using rule 56 (PosX -> POSX NUMERO PUNTOCOMA .)
+    CONTINUEUP      reduce using rule 56 (PosX -> POSX NUMERO PUNTOCOMA .)
+    CONTINUEDOWN    reduce using rule 56 (PosX -> POSX NUMERO PUNTOCOMA .)
+    CONTINUERIGHT   reduce using rule 56 (PosX -> POSX NUMERO PUNTOCOMA .)
+    CONTINUELEFT    reduce using rule 56 (PosX -> POSX NUMERO PUNTOCOMA .)
+    UP              reduce using rule 56 (PosX -> POSX NUMERO PUNTOCOMA .)
+    DOWN            reduce using rule 56 (PosX -> POSX NUMERO PUNTOCOMA .)
+    SPEED           reduce using rule 56 (PosX -> POSX NUMERO PUNTOCOMA .)
+    POS             reduce using rule 56 (PosX -> POSX NUMERO PUNTOCOMA .)
+    POSX            reduce using rule 56 (PosX -> POSX NUMERO PUNTOCOMA .)
+    POSY            reduce using rule 56 (PosX -> POSX NUMERO PUNTOCOMA .)
+    END             reduce using rule 56 (PosX -> POSX NUMERO PUNTOCOMA .)
+
+
+state 78
+
+    (57) PosY -> POSY NUMERO PUNTOCOMA .
+
+    NUMERO          reduce using rule 57 (PosY -> POSY NUMERO PUNTOCOMA .)
+    RANDOM          reduce using rule 57 (PosY -> POSY NUMERO PUNTOCOMA .)
+    BEGIN           reduce using rule 57 (PosY -> POSY NUMERO PUNTOCOMA .)
+    CONTINUEUP      reduce using rule 57 (PosY -> POSY NUMERO PUNTOCOMA .)
+    CONTINUEDOWN    reduce using rule 57 (PosY -> POSY NUMERO PUNTOCOMA .)
+    CONTINUERIGHT   reduce using rule 57 (PosY -> POSY NUMERO PUNTOCOMA .)
+    CONTINUELEFT    reduce using rule 57 (PosY -> POSY NUMERO PUNTOCOMA .)
+    UP              reduce using rule 57 (PosY -> POSY NUMERO PUNTOCOMA .)
+    DOWN            reduce using rule 57 (PosY -> POSY NUMERO PUNTOCOMA .)
+    SPEED           reduce using rule 57 (PosY -> POSY NUMERO PUNTOCOMA .)
+    POS             reduce using rule 57 (PosY -> POSY NUMERO PUNTOCOMA .)
+    POSX            reduce using rule 57 (PosY -> POSY NUMERO PUNTOCOMA .)
+    POSY            reduce using rule 57 (PosY -> POSY NUMERO PUNTOCOMA .)
+    END             reduce using rule 57 (PosY -> POSY NUMERO PUNTOCOMA .)
+
+
+state 79
 
     (2) code -> START DOSPUNTOS cuerpo END PUNTOCOMA procedimiento .
 
     $end            reduce using rule 2 (code -> START DOSPUNTOS cuerpo END PUNTOCOMA procedimiento .)
 
 
-state 29
-
-    (24) procedimiento -> PROC . ID PARENTESIS_IZQ parametro PARENTESIS_DER PARA PUNTOCOMA procedimiento
-
-    ID              shift and go to state 36
-
-
-state 30
-
-    (25) procedimiento -> empty . empty empty empty empty empty empty empty empty empty empty
-    (31) empty -> .
-
-    $end            reduce using rule 31 (empty -> .)
-
-    empty                          shift and go to state 37
-
-state 31
-
-    (11) variable2 -> DEF ID IGUAL NUMERO . PUNTOCOMA
-
-    PUNTOCOMA       shift and go to state 38
-
-
-state 32
-
-    (12) variable3 -> PUT ID IGUAL NUMERO . PUNTOCOMA
-    (16) expresion_alge1 -> NUMERO . SUMA NUMERO
-    (17) expresion_alge1 -> NUMERO . RESTA NUMERO
-    (18) expresion_alge1 -> NUMERO . MULTIPLICA NUMERO
-    (19) expresion_alge1 -> NUMERO . DIVIDE NUMERO
-
-    PUNTOCOMA       shift and go to state 39
-    SUMA            shift and go to state 40
-    RESTA           shift and go to state 41
-    MULTIPLICA      shift and go to state 42
-    DIVIDE          shift and go to state 43
-
-
-state 33
-
-    (13) variable4 -> PUT ID IGUAL expresion_alge1 . PUNTOCOMA
-
-    PUNTOCOMA       shift and go to state 44
-
-
-state 34
-
-    (14) variable5 -> PUT ID IGUAL expresion_alge2 . PUNTOCOMA
-
-    PUNTOCOMA       shift and go to state 45
-
-
-state 35
-
-    (20) expresion_alge2 -> PARENTESIS_IZQ . expresion_alge1 PARENTESIS_DER SUMA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
-    (21) expresion_alge2 -> PARENTESIS_IZQ . expresion_alge1 PARENTESIS_DER RESTA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
-    (22) expresion_alge2 -> PARENTESIS_IZQ . expresion_alge1 PARENTESIS_DER MULTIPLICA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
-    (23) expresion_alge2 -> PARENTESIS_IZQ . expresion_alge1 PARENTESIS_DER DIVIDE PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
-    (16) expresion_alge1 -> . NUMERO SUMA NUMERO
-    (17) expresion_alge1 -> . NUMERO RESTA NUMERO
-    (18) expresion_alge1 -> . NUMERO MULTIPLICA NUMERO
-    (19) expresion_alge1 -> . NUMERO DIVIDE NUMERO
-
-    NUMERO          shift and go to state 47
-
-    expresion_alge1                shift and go to state 46
-
-state 36
-
-    (24) procedimiento -> PROC ID . PARENTESIS_IZQ parametro PARENTESIS_DER PARA PUNTOCOMA procedimiento
-
-    PARENTESIS_IZQ  shift and go to state 48
-
-
-state 37
-
-    (25) procedimiento -> empty empty . empty empty empty empty empty empty empty empty empty
-    (31) empty -> .
-
-    $end            reduce using rule 31 (empty -> .)
-
-    empty                          shift and go to state 49
-
-state 38
-
-    (11) variable2 -> DEF ID IGUAL NUMERO PUNTOCOMA .
-
-    DEF             reduce using rule 11 (variable2 -> DEF ID IGUAL NUMERO PUNTOCOMA .)
-    PUT             reduce using rule 11 (variable2 -> DEF ID IGUAL NUMERO PUNTOCOMA .)
-    END             reduce using rule 11 (variable2 -> DEF ID IGUAL NUMERO PUNTOCOMA .)
-
-
-state 39
-
-    (12) variable3 -> PUT ID IGUAL NUMERO PUNTOCOMA .
-
-    DEF             reduce using rule 12 (variable3 -> PUT ID IGUAL NUMERO PUNTOCOMA .)
-    PUT             reduce using rule 12 (variable3 -> PUT ID IGUAL NUMERO PUNTOCOMA .)
-    END             reduce using rule 12 (variable3 -> PUT ID IGUAL NUMERO PUNTOCOMA .)
-
-
-state 40
-
-    (16) expresion_alge1 -> NUMERO SUMA . NUMERO
-
-    NUMERO          shift and go to state 50
-
-
-state 41
-
-    (17) expresion_alge1 -> NUMERO RESTA . NUMERO
-
-    NUMERO          shift and go to state 51
-
-
-state 42
-
-    (18) expresion_alge1 -> NUMERO MULTIPLICA . NUMERO
-
-    NUMERO          shift and go to state 52
-
-
-state 43
-
-    (19) expresion_alge1 -> NUMERO DIVIDE . NUMERO
-
-    NUMERO          shift and go to state 53
-
-
-state 44
-
-    (13) variable4 -> PUT ID IGUAL expresion_alge1 PUNTOCOMA .
-
-    DEF             reduce using rule 13 (variable4 -> PUT ID IGUAL expresion_alge1 PUNTOCOMA .)
-    PUT             reduce using rule 13 (variable4 -> PUT ID IGUAL expresion_alge1 PUNTOCOMA .)
-    END             reduce using rule 13 (variable4 -> PUT ID IGUAL expresion_alge1 PUNTOCOMA .)
-
-
-state 45
-
-    (14) variable5 -> PUT ID IGUAL expresion_alge2 PUNTOCOMA .
-
-    DEF             reduce using rule 14 (variable5 -> PUT ID IGUAL expresion_alge2 PUNTOCOMA .)
-    PUT             reduce using rule 14 (variable5 -> PUT ID IGUAL expresion_alge2 PUNTOCOMA .)
-    END             reduce using rule 14 (variable5 -> PUT ID IGUAL expresion_alge2 PUNTOCOMA .)
-
-
-state 46
-
-    (20) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 . PARENTESIS_DER SUMA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
-    (21) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 . PARENTESIS_DER RESTA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
-    (22) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 . PARENTESIS_DER MULTIPLICA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
-    (23) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 . PARENTESIS_DER DIVIDE PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
-
-    PARENTESIS_DER  shift and go to state 54
-
-
-state 47
-
-    (16) expresion_alge1 -> NUMERO . SUMA NUMERO
-    (17) expresion_alge1 -> NUMERO . RESTA NUMERO
-    (18) expresion_alge1 -> NUMERO . MULTIPLICA NUMERO
-    (19) expresion_alge1 -> NUMERO . DIVIDE NUMERO
-
-    SUMA            shift and go to state 40
-    RESTA           shift and go to state 41
-    MULTIPLICA      shift and go to state 42
-    DIVIDE          shift and go to state 43
-
-
-state 48
-
-    (24) procedimiento -> PROC ID PARENTESIS_IZQ . parametro PARENTESIS_DER PARA PUNTOCOMA procedimiento
-    (26) parametro -> . ID COMA parametro
-    (27) parametro -> . ID empty empty
-    (28) parametro -> . NUMERO COMA parametro
-    (29) parametro -> . NUMERO empty empty
-    (30) parametro -> . empty empty empty
-    (31) empty -> .
-
-    ID              shift and go to state 55
-    NUMERO          shift and go to state 58
-    PARENTESIS_DER  reduce using rule 31 (empty -> .)
-
-    parametro                      shift and go to state 56
-    empty                          shift and go to state 57
-
-state 49
-
-    (25) procedimiento -> empty empty empty . empty empty empty empty empty empty empty empty
-    (31) empty -> .
-
-    $end            reduce using rule 31 (empty -> .)
-
-    empty                          shift and go to state 59
-
-state 50
-
-    (16) expresion_alge1 -> NUMERO SUMA NUMERO .
-
-    PUNTOCOMA       reduce using rule 16 (expresion_alge1 -> NUMERO SUMA NUMERO .)
-    PARENTESIS_DER  reduce using rule 16 (expresion_alge1 -> NUMERO SUMA NUMERO .)
-
-
-state 51
-
-    (17) expresion_alge1 -> NUMERO RESTA NUMERO .
-
-    PUNTOCOMA       reduce using rule 17 (expresion_alge1 -> NUMERO RESTA NUMERO .)
-    PARENTESIS_DER  reduce using rule 17 (expresion_alge1 -> NUMERO RESTA NUMERO .)
-
-
-state 52
-
-    (18) expresion_alge1 -> NUMERO MULTIPLICA NUMERO .
-
-    PUNTOCOMA       reduce using rule 18 (expresion_alge1 -> NUMERO MULTIPLICA NUMERO .)
-    PARENTESIS_DER  reduce using rule 18 (expresion_alge1 -> NUMERO MULTIPLICA NUMERO .)
-
-
-state 53
-
-    (19) expresion_alge1 -> NUMERO DIVIDE NUMERO .
-
-    PUNTOCOMA       reduce using rule 19 (expresion_alge1 -> NUMERO DIVIDE NUMERO .)
-    PARENTESIS_DER  reduce using rule 19 (expresion_alge1 -> NUMERO DIVIDE NUMERO .)
-
-
-state 54
-
-    (20) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER . SUMA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
-    (21) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER . RESTA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
-    (22) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER . MULTIPLICA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
-    (23) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER . DIVIDE PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
-
-    SUMA            shift and go to state 60
-    RESTA           shift and go to state 61
-    MULTIPLICA      shift and go to state 62
-    DIVIDE          shift and go to state 63
-
-
-state 55
-
-    (26) parametro -> ID . COMA parametro
-    (27) parametro -> ID . empty empty
-    (31) empty -> .
-
-    COMA            shift and go to state 64
-    PARENTESIS_DER  reduce using rule 31 (empty -> .)
-
-    empty                          shift and go to state 65
-
-state 56
-
-    (24) procedimiento -> PROC ID PARENTESIS_IZQ parametro . PARENTESIS_DER PARA PUNTOCOMA procedimiento
-
-    PARENTESIS_DER  shift and go to state 66
-
-
-state 57
-
-    (30) parametro -> empty . empty empty
-    (31) empty -> .
-
-    PARENTESIS_DER  reduce using rule 31 (empty -> .)
-
-    empty                          shift and go to state 67
-
-state 58
-
-    (28) parametro -> NUMERO . COMA parametro
-    (29) parametro -> NUMERO . empty empty
-    (31) empty -> .
-
-    COMA            shift and go to state 68
-    PARENTESIS_DER  reduce using rule 31 (empty -> .)
-
-    empty                          shift and go to state 69
-
-state 59
-
-    (25) procedimiento -> empty empty empty empty . empty empty empty empty empty empty empty
-    (31) empty -> .
-
-    $end            reduce using rule 31 (empty -> .)
-
-    empty                          shift and go to state 70
-
-state 60
-
-    (20) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER SUMA . PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
-
-    PARENTESIS_IZQ  shift and go to state 71
-
-
-state 61
-
-    (21) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER RESTA . PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
-
-    PARENTESIS_IZQ  shift and go to state 72
-
-
-state 62
-
-    (22) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER MULTIPLICA . PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
-
-    PARENTESIS_IZQ  shift and go to state 73
-
-
-state 63
-
-    (23) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER DIVIDE . PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
-
-    PARENTESIS_IZQ  shift and go to state 74
-
-
-state 64
-
-    (26) parametro -> ID COMA . parametro
-    (26) parametro -> . ID COMA parametro
-    (27) parametro -> . ID empty empty
-    (28) parametro -> . NUMERO COMA parametro
-    (29) parametro -> . NUMERO empty empty
-    (30) parametro -> . empty empty empty
-    (31) empty -> .
-
-    ID              shift and go to state 55
-    NUMERO          shift and go to state 58
-    PARENTESIS_DER  reduce using rule 31 (empty -> .)
-
-    parametro                      shift and go to state 75
-    empty                          shift and go to state 57
-
-state 65
-
-    (27) parametro -> ID empty . empty
-    (31) empty -> .
-
-    PARENTESIS_DER  reduce using rule 31 (empty -> .)
-
-    empty                          shift and go to state 76
-
-state 66
-
-    (24) procedimiento -> PROC ID PARENTESIS_IZQ parametro PARENTESIS_DER . PARA PUNTOCOMA procedimiento
-
-    PARA            shift and go to state 77
-
-
-state 67
-
-    (30) parametro -> empty empty . empty
-    (31) empty -> .
-
-    PARENTESIS_DER  reduce using rule 31 (empty -> .)
-
-    empty                          shift and go to state 78
-
-state 68
-
-    (28) parametro -> NUMERO COMA . parametro
-    (26) parametro -> . ID COMA parametro
-    (27) parametro -> . ID empty empty
-    (28) parametro -> . NUMERO COMA parametro
-    (29) parametro -> . NUMERO empty empty
-    (30) parametro -> . empty empty empty
-    (31) empty -> .
-
-    ID              shift and go to state 55
-    NUMERO          shift and go to state 58
-    PARENTESIS_DER  reduce using rule 31 (empty -> .)
-
-    parametro                      shift and go to state 79
-    empty                          shift and go to state 57
-
-state 69
-
-    (29) parametro -> NUMERO empty . empty
-    (31) empty -> .
-
-    PARENTESIS_DER  reduce using rule 31 (empty -> .)
-
-    empty                          shift and go to state 80
-
-state 70
-
-    (25) procedimiento -> empty empty empty empty empty . empty empty empty empty empty empty
-    (31) empty -> .
-
-    $end            reduce using rule 31 (empty -> .)
-
-    empty                          shift and go to state 81
-
-state 71
-
-    (20) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER SUMA PARENTESIS_IZQ . expresion_alge1 PARENTESIS_DER
-    (16) expresion_alge1 -> . NUMERO SUMA NUMERO
-    (17) expresion_alge1 -> . NUMERO RESTA NUMERO
-    (18) expresion_alge1 -> . NUMERO MULTIPLICA NUMERO
-    (19) expresion_alge1 -> . NUMERO DIVIDE NUMERO
-
-    NUMERO          shift and go to state 47
-
-    expresion_alge1                shift and go to state 82
-
-state 72
-
-    (21) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER RESTA PARENTESIS_IZQ . expresion_alge1 PARENTESIS_DER
-    (16) expresion_alge1 -> . NUMERO SUMA NUMERO
-    (17) expresion_alge1 -> . NUMERO RESTA NUMERO
-    (18) expresion_alge1 -> . NUMERO MULTIPLICA NUMERO
-    (19) expresion_alge1 -> . NUMERO DIVIDE NUMERO
-
-    NUMERO          shift and go to state 47
-
-    expresion_alge1                shift and go to state 83
-
-state 73
-
-    (22) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER MULTIPLICA PARENTESIS_IZQ . expresion_alge1 PARENTESIS_DER
-    (16) expresion_alge1 -> . NUMERO SUMA NUMERO
-    (17) expresion_alge1 -> . NUMERO RESTA NUMERO
-    (18) expresion_alge1 -> . NUMERO MULTIPLICA NUMERO
-    (19) expresion_alge1 -> . NUMERO DIVIDE NUMERO
-
-    NUMERO          shift and go to state 47
-
-    expresion_alge1                shift and go to state 84
-
-state 74
-
-    (23) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER DIVIDE PARENTESIS_IZQ . expresion_alge1 PARENTESIS_DER
-    (16) expresion_alge1 -> . NUMERO SUMA NUMERO
-    (17) expresion_alge1 -> . NUMERO RESTA NUMERO
-    (18) expresion_alge1 -> . NUMERO MULTIPLICA NUMERO
-    (19) expresion_alge1 -> . NUMERO DIVIDE NUMERO
-
-    NUMERO          shift and go to state 47
-
-    expresion_alge1                shift and go to state 85
-
-state 75
-
-    (26) parametro -> ID COMA parametro .
-
-    PARENTESIS_DER  reduce using rule 26 (parametro -> ID COMA parametro .)
-
-
-state 76
-
-    (27) parametro -> ID empty empty .
-
-    PARENTESIS_DER  reduce using rule 27 (parametro -> ID empty empty .)
-
-
-state 77
-
-    (24) procedimiento -> PROC ID PARENTESIS_IZQ parametro PARENTESIS_DER PARA . PUNTOCOMA procedimiento
-
-    PUNTOCOMA       shift and go to state 86
-
-
-state 78
-
-    (30) parametro -> empty empty empty .
-
-    PARENTESIS_DER  reduce using rule 30 (parametro -> empty empty empty .)
-
-
-state 79
-
-    (28) parametro -> NUMERO COMA parametro .
-
-    PARENTESIS_DER  reduce using rule 28 (parametro -> NUMERO COMA parametro .)
-
-
 state 80
 
-    (29) parametro -> NUMERO empty empty .
+    (39) procedimiento -> PROC . ID PARENTESIS_IZQ parametro PARENTESIS_DER PARA PUNTOCOMA procedimiento
 
-    PARENTESIS_DER  reduce using rule 29 (parametro -> NUMERO empty empty .)
+    ID              shift and go to state 89
 
 
 state 81
 
-    (25) procedimiento -> empty empty empty empty empty empty . empty empty empty empty empty
-    (31) empty -> .
+    (40) procedimiento -> empty . empty empty empty empty empty empty empty empty empty empty
+    (58) empty -> .
 
-    $end            reduce using rule 31 (empty -> .)
+    $end            reduce using rule 58 (empty -> .)
 
-    empty                          shift and go to state 87
+    empty                          shift and go to state 90
 
 state 82
 
-    (20) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER SUMA PARENTESIS_IZQ expresion_alge1 . PARENTESIS_DER
+    (12) variable2 -> DEF ID IGUAL NUMERO . PUNTOCOMA
 
-    PARENTESIS_DER  shift and go to state 88
+    PUNTOCOMA       shift and go to state 91
 
 
 state 83
 
-    (21) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER RESTA PARENTESIS_IZQ expresion_alge1 . PARENTESIS_DER
+    (13) variable3 -> PUT ID IGUAL NUMERO . PUNTOCOMA
+    (31) expresion_alge1 -> NUMERO . SUMA NUMERO
+    (32) expresion_alge1 -> NUMERO . RESTA NUMERO
+    (33) expresion_alge1 -> NUMERO . MULTIPLICA NUMERO
+    (34) expresion_alge1 -> NUMERO . DIVIDE NUMERO
 
-    PARENTESIS_DER  shift and go to state 89
+    PUNTOCOMA       shift and go to state 92
+    SUMA            shift and go to state 93
+    RESTA           shift and go to state 94
+    MULTIPLICA      shift and go to state 95
+    DIVIDE          shift and go to state 96
 
 
 state 84
 
-    (22) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER MULTIPLICA PARENTESIS_IZQ expresion_alge1 . PARENTESIS_DER
+    (14) variable4 -> PUT ID IGUAL expresion_alge1 . PUNTOCOMA
 
-    PARENTESIS_DER  shift and go to state 90
+    PUNTOCOMA       shift and go to state 97
 
 
 state 85
 
-    (23) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER DIVIDE PARENTESIS_IZQ expresion_alge1 . PARENTESIS_DER
+    (15) variable5 -> PUT ID IGUAL expresion_alge2 . PUNTOCOMA
 
-    PARENTESIS_DER  shift and go to state 91
+    PUNTOCOMA       shift and go to state 98
 
 
 state 86
 
-    (24) procedimiento -> PROC ID PARENTESIS_IZQ parametro PARENTESIS_DER PARA PUNTOCOMA . procedimiento
-    (24) procedimiento -> . PROC ID PARENTESIS_IZQ parametro PARENTESIS_DER PARA PUNTOCOMA procedimiento
-    (25) procedimiento -> . empty empty empty empty empty empty empty empty empty empty empty
-    (31) empty -> .
+    (35) expresion_alge2 -> PARENTESIS_IZQ . expresion_alge1 PARENTESIS_DER SUMA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
+    (36) expresion_alge2 -> PARENTESIS_IZQ . expresion_alge1 PARENTESIS_DER RESTA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
+    (37) expresion_alge2 -> PARENTESIS_IZQ . expresion_alge1 PARENTESIS_DER MULTIPLICA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
+    (38) expresion_alge2 -> PARENTESIS_IZQ . expresion_alge1 PARENTESIS_DER DIVIDE PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
+    (31) expresion_alge1 -> . NUMERO SUMA NUMERO
+    (32) expresion_alge1 -> . NUMERO RESTA NUMERO
+    (33) expresion_alge1 -> . NUMERO MULTIPLICA NUMERO
+    (34) expresion_alge1 -> . NUMERO DIVIDE NUMERO
 
-    PROC            shift and go to state 29
-    $end            reduce using rule 31 (empty -> .)
+    NUMERO          shift and go to state 100
 
-    procedimiento                  shift and go to state 92
-    empty                          shift and go to state 30
+    expresion_alge1                shift and go to state 99
 
 state 87
 
-    (25) procedimiento -> empty empty empty empty empty empty empty . empty empty empty empty
-    (31) empty -> .
+    (47) Random -> RANDOM PARENTESIS_IZQ NUMERO PARENTESIS_DER . PUNTOCOMA
 
-    $end            reduce using rule 31 (empty -> .)
+    PUNTOCOMA       shift and go to state 101
 
-    empty                          shift and go to state 93
 
 state 88
 
-    (20) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER SUMA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER .
+    (55) Pos -> POS PARENTESIS_IZQ NUMERO COMA . NUMERO PARENTESIS_DER PUNTOCOMA
 
-    PUNTOCOMA       reduce using rule 20 (expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER SUMA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER .)
+    NUMERO          shift and go to state 102
 
 
 state 89
 
-    (21) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER RESTA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER .
+    (39) procedimiento -> PROC ID . PARENTESIS_IZQ parametro PARENTESIS_DER PARA PUNTOCOMA procedimiento
 
-    PUNTOCOMA       reduce using rule 21 (expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER RESTA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER .)
+    PARENTESIS_IZQ  shift and go to state 103
 
 
 state 90
 
-    (22) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER MULTIPLICA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER .
+    (40) procedimiento -> empty empty . empty empty empty empty empty empty empty empty empty
+    (58) empty -> .
 
-    PUNTOCOMA       reduce using rule 22 (expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER MULTIPLICA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER .)
+    $end            reduce using rule 58 (empty -> .)
 
+    empty                          shift and go to state 104
 
 state 91
 
-    (23) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER DIVIDE PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER .
+    (12) variable2 -> DEF ID IGUAL NUMERO PUNTOCOMA .
 
-    PUNTOCOMA       reduce using rule 23 (expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER DIVIDE PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER .)
+    NUMERO          reduce using rule 12 (variable2 -> DEF ID IGUAL NUMERO PUNTOCOMA .)
+    DEF             reduce using rule 12 (variable2 -> DEF ID IGUAL NUMERO PUNTOCOMA .)
+    PUT             reduce using rule 12 (variable2 -> DEF ID IGUAL NUMERO PUNTOCOMA .)
+    RANDOM          reduce using rule 12 (variable2 -> DEF ID IGUAL NUMERO PUNTOCOMA .)
+    BEGIN           reduce using rule 12 (variable2 -> DEF ID IGUAL NUMERO PUNTOCOMA .)
+    CONTINUEUP      reduce using rule 12 (variable2 -> DEF ID IGUAL NUMERO PUNTOCOMA .)
+    CONTINUEDOWN    reduce using rule 12 (variable2 -> DEF ID IGUAL NUMERO PUNTOCOMA .)
+    CONTINUERIGHT   reduce using rule 12 (variable2 -> DEF ID IGUAL NUMERO PUNTOCOMA .)
+    CONTINUELEFT    reduce using rule 12 (variable2 -> DEF ID IGUAL NUMERO PUNTOCOMA .)
+    UP              reduce using rule 12 (variable2 -> DEF ID IGUAL NUMERO PUNTOCOMA .)
+    DOWN            reduce using rule 12 (variable2 -> DEF ID IGUAL NUMERO PUNTOCOMA .)
+    SPEED           reduce using rule 12 (variable2 -> DEF ID IGUAL NUMERO PUNTOCOMA .)
+    POS             reduce using rule 12 (variable2 -> DEF ID IGUAL NUMERO PUNTOCOMA .)
+    POSX            reduce using rule 12 (variable2 -> DEF ID IGUAL NUMERO PUNTOCOMA .)
+    POSY            reduce using rule 12 (variable2 -> DEF ID IGUAL NUMERO PUNTOCOMA .)
+    END             reduce using rule 12 (variable2 -> DEF ID IGUAL NUMERO PUNTOCOMA .)
 
 
 state 92
 
-    (24) procedimiento -> PROC ID PARENTESIS_IZQ parametro PARENTESIS_DER PARA PUNTOCOMA procedimiento .
+    (13) variable3 -> PUT ID IGUAL NUMERO PUNTOCOMA .
 
-    $end            reduce using rule 24 (procedimiento -> PROC ID PARENTESIS_IZQ parametro PARENTESIS_DER PARA PUNTOCOMA procedimiento .)
+    NUMERO          reduce using rule 13 (variable3 -> PUT ID IGUAL NUMERO PUNTOCOMA .)
+    DEF             reduce using rule 13 (variable3 -> PUT ID IGUAL NUMERO PUNTOCOMA .)
+    PUT             reduce using rule 13 (variable3 -> PUT ID IGUAL NUMERO PUNTOCOMA .)
+    RANDOM          reduce using rule 13 (variable3 -> PUT ID IGUAL NUMERO PUNTOCOMA .)
+    BEGIN           reduce using rule 13 (variable3 -> PUT ID IGUAL NUMERO PUNTOCOMA .)
+    CONTINUEUP      reduce using rule 13 (variable3 -> PUT ID IGUAL NUMERO PUNTOCOMA .)
+    CONTINUEDOWN    reduce using rule 13 (variable3 -> PUT ID IGUAL NUMERO PUNTOCOMA .)
+    CONTINUERIGHT   reduce using rule 13 (variable3 -> PUT ID IGUAL NUMERO PUNTOCOMA .)
+    CONTINUELEFT    reduce using rule 13 (variable3 -> PUT ID IGUAL NUMERO PUNTOCOMA .)
+    UP              reduce using rule 13 (variable3 -> PUT ID IGUAL NUMERO PUNTOCOMA .)
+    DOWN            reduce using rule 13 (variable3 -> PUT ID IGUAL NUMERO PUNTOCOMA .)
+    SPEED           reduce using rule 13 (variable3 -> PUT ID IGUAL NUMERO PUNTOCOMA .)
+    POS             reduce using rule 13 (variable3 -> PUT ID IGUAL NUMERO PUNTOCOMA .)
+    POSX            reduce using rule 13 (variable3 -> PUT ID IGUAL NUMERO PUNTOCOMA .)
+    POSY            reduce using rule 13 (variable3 -> PUT ID IGUAL NUMERO PUNTOCOMA .)
+    END             reduce using rule 13 (variable3 -> PUT ID IGUAL NUMERO PUNTOCOMA .)
 
 
 state 93
 
-    (25) procedimiento -> empty empty empty empty empty empty empty empty . empty empty empty
-    (31) empty -> .
+    (31) expresion_alge1 -> NUMERO SUMA . NUMERO
 
-    $end            reduce using rule 31 (empty -> .)
+    NUMERO          shift and go to state 105
 
-    empty                          shift and go to state 94
 
 state 94
 
-    (25) procedimiento -> empty empty empty empty empty empty empty empty empty . empty empty
-    (31) empty -> .
+    (32) expresion_alge1 -> NUMERO RESTA . NUMERO
 
-    $end            reduce using rule 31 (empty -> .)
+    NUMERO          shift and go to state 106
 
-    empty                          shift and go to state 95
 
 state 95
 
-    (25) procedimiento -> empty empty empty empty empty empty empty empty empty empty . empty
-    (31) empty -> .
+    (33) expresion_alge1 -> NUMERO MULTIPLICA . NUMERO
 
-    $end            reduce using rule 31 (empty -> .)
+    NUMERO          shift and go to state 107
 
-    empty                          shift and go to state 96
 
 state 96
 
-    (25) procedimiento -> empty empty empty empty empty empty empty empty empty empty empty .
+    (34) expresion_alge1 -> NUMERO DIVIDE . NUMERO
 
-    $end            reduce using rule 25 (procedimiento -> empty empty empty empty empty empty empty empty empty empty empty .)
+    NUMERO          shift and go to state 108
 
+
+state 97
+
+    (14) variable4 -> PUT ID IGUAL expresion_alge1 PUNTOCOMA .
+
+    NUMERO          reduce using rule 14 (variable4 -> PUT ID IGUAL expresion_alge1 PUNTOCOMA .)
+    DEF             reduce using rule 14 (variable4 -> PUT ID IGUAL expresion_alge1 PUNTOCOMA .)
+    PUT             reduce using rule 14 (variable4 -> PUT ID IGUAL expresion_alge1 PUNTOCOMA .)
+    RANDOM          reduce using rule 14 (variable4 -> PUT ID IGUAL expresion_alge1 PUNTOCOMA .)
+    BEGIN           reduce using rule 14 (variable4 -> PUT ID IGUAL expresion_alge1 PUNTOCOMA .)
+    CONTINUEUP      reduce using rule 14 (variable4 -> PUT ID IGUAL expresion_alge1 PUNTOCOMA .)
+    CONTINUEDOWN    reduce using rule 14 (variable4 -> PUT ID IGUAL expresion_alge1 PUNTOCOMA .)
+    CONTINUERIGHT   reduce using rule 14 (variable4 -> PUT ID IGUAL expresion_alge1 PUNTOCOMA .)
+    CONTINUELEFT    reduce using rule 14 (variable4 -> PUT ID IGUAL expresion_alge1 PUNTOCOMA .)
+    UP              reduce using rule 14 (variable4 -> PUT ID IGUAL expresion_alge1 PUNTOCOMA .)
+    DOWN            reduce using rule 14 (variable4 -> PUT ID IGUAL expresion_alge1 PUNTOCOMA .)
+    SPEED           reduce using rule 14 (variable4 -> PUT ID IGUAL expresion_alge1 PUNTOCOMA .)
+    POS             reduce using rule 14 (variable4 -> PUT ID IGUAL expresion_alge1 PUNTOCOMA .)
+    POSX            reduce using rule 14 (variable4 -> PUT ID IGUAL expresion_alge1 PUNTOCOMA .)
+    POSY            reduce using rule 14 (variable4 -> PUT ID IGUAL expresion_alge1 PUNTOCOMA .)
+    END             reduce using rule 14 (variable4 -> PUT ID IGUAL expresion_alge1 PUNTOCOMA .)
+
+
+state 98
+
+    (15) variable5 -> PUT ID IGUAL expresion_alge2 PUNTOCOMA .
+
+    NUMERO          reduce using rule 15 (variable5 -> PUT ID IGUAL expresion_alge2 PUNTOCOMA .)
+    DEF             reduce using rule 15 (variable5 -> PUT ID IGUAL expresion_alge2 PUNTOCOMA .)
+    PUT             reduce using rule 15 (variable5 -> PUT ID IGUAL expresion_alge2 PUNTOCOMA .)
+    RANDOM          reduce using rule 15 (variable5 -> PUT ID IGUAL expresion_alge2 PUNTOCOMA .)
+    BEGIN           reduce using rule 15 (variable5 -> PUT ID IGUAL expresion_alge2 PUNTOCOMA .)
+    CONTINUEUP      reduce using rule 15 (variable5 -> PUT ID IGUAL expresion_alge2 PUNTOCOMA .)
+    CONTINUEDOWN    reduce using rule 15 (variable5 -> PUT ID IGUAL expresion_alge2 PUNTOCOMA .)
+    CONTINUERIGHT   reduce using rule 15 (variable5 -> PUT ID IGUAL expresion_alge2 PUNTOCOMA .)
+    CONTINUELEFT    reduce using rule 15 (variable5 -> PUT ID IGUAL expresion_alge2 PUNTOCOMA .)
+    UP              reduce using rule 15 (variable5 -> PUT ID IGUAL expresion_alge2 PUNTOCOMA .)
+    DOWN            reduce using rule 15 (variable5 -> PUT ID IGUAL expresion_alge2 PUNTOCOMA .)
+    SPEED           reduce using rule 15 (variable5 -> PUT ID IGUAL expresion_alge2 PUNTOCOMA .)
+    POS             reduce using rule 15 (variable5 -> PUT ID IGUAL expresion_alge2 PUNTOCOMA .)
+    POSX            reduce using rule 15 (variable5 -> PUT ID IGUAL expresion_alge2 PUNTOCOMA .)
+    POSY            reduce using rule 15 (variable5 -> PUT ID IGUAL expresion_alge2 PUNTOCOMA .)
+    END             reduce using rule 15 (variable5 -> PUT ID IGUAL expresion_alge2 PUNTOCOMA .)
+
+
+state 99
+
+    (35) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 . PARENTESIS_DER SUMA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
+    (36) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 . PARENTESIS_DER RESTA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
+    (37) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 . PARENTESIS_DER MULTIPLICA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
+    (38) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 . PARENTESIS_DER DIVIDE PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
+
+    PARENTESIS_DER  shift and go to state 109
+
+
+state 100
+
+    (31) expresion_alge1 -> NUMERO . SUMA NUMERO
+    (32) expresion_alge1 -> NUMERO . RESTA NUMERO
+    (33) expresion_alge1 -> NUMERO . MULTIPLICA NUMERO
+    (34) expresion_alge1 -> NUMERO . DIVIDE NUMERO
+
+    SUMA            shift and go to state 93
+    RESTA           shift and go to state 94
+    MULTIPLICA      shift and go to state 95
+    DIVIDE          shift and go to state 96
+
+
+state 101
+
+    (47) Random -> RANDOM PARENTESIS_IZQ NUMERO PARENTESIS_DER PUNTOCOMA .
+
+    NUMERO          reduce using rule 47 (Random -> RANDOM PARENTESIS_IZQ NUMERO PARENTESIS_DER PUNTOCOMA .)
+    RANDOM          reduce using rule 47 (Random -> RANDOM PARENTESIS_IZQ NUMERO PARENTESIS_DER PUNTOCOMA .)
+    BEGIN           reduce using rule 47 (Random -> RANDOM PARENTESIS_IZQ NUMERO PARENTESIS_DER PUNTOCOMA .)
+    CONTINUEUP      reduce using rule 47 (Random -> RANDOM PARENTESIS_IZQ NUMERO PARENTESIS_DER PUNTOCOMA .)
+    CONTINUEDOWN    reduce using rule 47 (Random -> RANDOM PARENTESIS_IZQ NUMERO PARENTESIS_DER PUNTOCOMA .)
+    CONTINUERIGHT   reduce using rule 47 (Random -> RANDOM PARENTESIS_IZQ NUMERO PARENTESIS_DER PUNTOCOMA .)
+    CONTINUELEFT    reduce using rule 47 (Random -> RANDOM PARENTESIS_IZQ NUMERO PARENTESIS_DER PUNTOCOMA .)
+    UP              reduce using rule 47 (Random -> RANDOM PARENTESIS_IZQ NUMERO PARENTESIS_DER PUNTOCOMA .)
+    DOWN            reduce using rule 47 (Random -> RANDOM PARENTESIS_IZQ NUMERO PARENTESIS_DER PUNTOCOMA .)
+    SPEED           reduce using rule 47 (Random -> RANDOM PARENTESIS_IZQ NUMERO PARENTESIS_DER PUNTOCOMA .)
+    POS             reduce using rule 47 (Random -> RANDOM PARENTESIS_IZQ NUMERO PARENTESIS_DER PUNTOCOMA .)
+    POSX            reduce using rule 47 (Random -> RANDOM PARENTESIS_IZQ NUMERO PARENTESIS_DER PUNTOCOMA .)
+    POSY            reduce using rule 47 (Random -> RANDOM PARENTESIS_IZQ NUMERO PARENTESIS_DER PUNTOCOMA .)
+    END             reduce using rule 47 (Random -> RANDOM PARENTESIS_IZQ NUMERO PARENTESIS_DER PUNTOCOMA .)
+
+
+state 102
+
+    (55) Pos -> POS PARENTESIS_IZQ NUMERO COMA NUMERO . PARENTESIS_DER PUNTOCOMA
+
+    PARENTESIS_DER  shift and go to state 110
+
+
+state 103
+
+    (39) procedimiento -> PROC ID PARENTESIS_IZQ . parametro PARENTESIS_DER PARA PUNTOCOMA procedimiento
+    (41) parametro -> . ID COMA parametro
+    (42) parametro -> . ID empty empty
+    (43) parametro -> . NUMERO COMA parametro
+    (44) parametro -> . NUMERO empty empty
+    (45) parametro -> . empty empty empty
+    (58) empty -> .
+
+    ID              shift and go to state 111
+    NUMERO          shift and go to state 114
+    PARENTESIS_DER  reduce using rule 58 (empty -> .)
+
+    parametro                      shift and go to state 112
+    empty                          shift and go to state 113
+
+state 104
+
+    (40) procedimiento -> empty empty empty . empty empty empty empty empty empty empty empty
+    (58) empty -> .
+
+    $end            reduce using rule 58 (empty -> .)
+
+    empty                          shift and go to state 115
+
+state 105
+
+    (31) expresion_alge1 -> NUMERO SUMA NUMERO .
+
+    PUNTOCOMA       reduce using rule 31 (expresion_alge1 -> NUMERO SUMA NUMERO .)
+    PARENTESIS_DER  reduce using rule 31 (expresion_alge1 -> NUMERO SUMA NUMERO .)
+
+
+state 106
+
+    (32) expresion_alge1 -> NUMERO RESTA NUMERO .
+
+    PUNTOCOMA       reduce using rule 32 (expresion_alge1 -> NUMERO RESTA NUMERO .)
+    PARENTESIS_DER  reduce using rule 32 (expresion_alge1 -> NUMERO RESTA NUMERO .)
+
+
+state 107
+
+    (33) expresion_alge1 -> NUMERO MULTIPLICA NUMERO .
+
+    PUNTOCOMA       reduce using rule 33 (expresion_alge1 -> NUMERO MULTIPLICA NUMERO .)
+    PARENTESIS_DER  reduce using rule 33 (expresion_alge1 -> NUMERO MULTIPLICA NUMERO .)
+
+
+state 108
+
+    (34) expresion_alge1 -> NUMERO DIVIDE NUMERO .
+
+    PUNTOCOMA       reduce using rule 34 (expresion_alge1 -> NUMERO DIVIDE NUMERO .)
+    PARENTESIS_DER  reduce using rule 34 (expresion_alge1 -> NUMERO DIVIDE NUMERO .)
+
+
+state 109
+
+    (35) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER . SUMA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
+    (36) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER . RESTA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
+    (37) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER . MULTIPLICA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
+    (38) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER . DIVIDE PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
+
+    SUMA            shift and go to state 116
+    RESTA           shift and go to state 117
+    MULTIPLICA      shift and go to state 118
+    DIVIDE          shift and go to state 119
+
+
+state 110
+
+    (55) Pos -> POS PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER . PUNTOCOMA
+
+    PUNTOCOMA       shift and go to state 120
+
+
+state 111
+
+    (41) parametro -> ID . COMA parametro
+    (42) parametro -> ID . empty empty
+    (58) empty -> .
+
+    COMA            shift and go to state 121
+    PARENTESIS_DER  reduce using rule 58 (empty -> .)
+
+    empty                          shift and go to state 122
+
+state 112
+
+    (39) procedimiento -> PROC ID PARENTESIS_IZQ parametro . PARENTESIS_DER PARA PUNTOCOMA procedimiento
+
+    PARENTESIS_DER  shift and go to state 123
+
+
+state 113
+
+    (45) parametro -> empty . empty empty
+    (58) empty -> .
+
+    PARENTESIS_DER  reduce using rule 58 (empty -> .)
+
+    empty                          shift and go to state 124
+
+state 114
+
+    (43) parametro -> NUMERO . COMA parametro
+    (44) parametro -> NUMERO . empty empty
+    (58) empty -> .
+
+    COMA            shift and go to state 125
+    PARENTESIS_DER  reduce using rule 58 (empty -> .)
+
+    empty                          shift and go to state 126
+
+state 115
+
+    (40) procedimiento -> empty empty empty empty . empty empty empty empty empty empty empty
+    (58) empty -> .
+
+    $end            reduce using rule 58 (empty -> .)
+
+    empty                          shift and go to state 127
+
+state 116
+
+    (35) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER SUMA . PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
+
+    PARENTESIS_IZQ  shift and go to state 128
+
+
+state 117
+
+    (36) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER RESTA . PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
+
+    PARENTESIS_IZQ  shift and go to state 129
+
+
+state 118
+
+    (37) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER MULTIPLICA . PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
+
+    PARENTESIS_IZQ  shift and go to state 130
+
+
+state 119
+
+    (38) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER DIVIDE . PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER
+
+    PARENTESIS_IZQ  shift and go to state 131
+
+
+state 120
+
+    (55) Pos -> POS PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER PUNTOCOMA .
+
+    NUMERO          reduce using rule 55 (Pos -> POS PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER PUNTOCOMA .)
+    RANDOM          reduce using rule 55 (Pos -> POS PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER PUNTOCOMA .)
+    BEGIN           reduce using rule 55 (Pos -> POS PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER PUNTOCOMA .)
+    CONTINUEUP      reduce using rule 55 (Pos -> POS PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER PUNTOCOMA .)
+    CONTINUEDOWN    reduce using rule 55 (Pos -> POS PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER PUNTOCOMA .)
+    CONTINUERIGHT   reduce using rule 55 (Pos -> POS PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER PUNTOCOMA .)
+    CONTINUELEFT    reduce using rule 55 (Pos -> POS PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER PUNTOCOMA .)
+    UP              reduce using rule 55 (Pos -> POS PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER PUNTOCOMA .)
+    DOWN            reduce using rule 55 (Pos -> POS PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER PUNTOCOMA .)
+    SPEED           reduce using rule 55 (Pos -> POS PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER PUNTOCOMA .)
+    POS             reduce using rule 55 (Pos -> POS PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER PUNTOCOMA .)
+    POSX            reduce using rule 55 (Pos -> POS PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER PUNTOCOMA .)
+    POSY            reduce using rule 55 (Pos -> POS PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER PUNTOCOMA .)
+    END             reduce using rule 55 (Pos -> POS PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER PUNTOCOMA .)
+
+
+state 121
+
+    (41) parametro -> ID COMA . parametro
+    (41) parametro -> . ID COMA parametro
+    (42) parametro -> . ID empty empty
+    (43) parametro -> . NUMERO COMA parametro
+    (44) parametro -> . NUMERO empty empty
+    (45) parametro -> . empty empty empty
+    (58) empty -> .
+
+    ID              shift and go to state 111
+    NUMERO          shift and go to state 114
+    PARENTESIS_DER  reduce using rule 58 (empty -> .)
+
+    parametro                      shift and go to state 132
+    empty                          shift and go to state 113
+
+state 122
+
+    (42) parametro -> ID empty . empty
+    (58) empty -> .
+
+    PARENTESIS_DER  reduce using rule 58 (empty -> .)
+
+    empty                          shift and go to state 133
+
+state 123
+
+    (39) procedimiento -> PROC ID PARENTESIS_IZQ parametro PARENTESIS_DER . PARA PUNTOCOMA procedimiento
+
+    PARA            shift and go to state 134
+
+
+state 124
+
+    (45) parametro -> empty empty . empty
+    (58) empty -> .
+
+    PARENTESIS_DER  reduce using rule 58 (empty -> .)
+
+    empty                          shift and go to state 135
+
+state 125
+
+    (43) parametro -> NUMERO COMA . parametro
+    (41) parametro -> . ID COMA parametro
+    (42) parametro -> . ID empty empty
+    (43) parametro -> . NUMERO COMA parametro
+    (44) parametro -> . NUMERO empty empty
+    (45) parametro -> . empty empty empty
+    (58) empty -> .
+
+    ID              shift and go to state 111
+    NUMERO          shift and go to state 114
+    PARENTESIS_DER  reduce using rule 58 (empty -> .)
+
+    parametro                      shift and go to state 136
+    empty                          shift and go to state 113
+
+state 126
+
+    (44) parametro -> NUMERO empty . empty
+    (58) empty -> .
+
+    PARENTESIS_DER  reduce using rule 58 (empty -> .)
+
+    empty                          shift and go to state 137
+
+state 127
+
+    (40) procedimiento -> empty empty empty empty empty . empty empty empty empty empty empty
+    (58) empty -> .
+
+    $end            reduce using rule 58 (empty -> .)
+
+    empty                          shift and go to state 138
+
+state 128
+
+    (35) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER SUMA PARENTESIS_IZQ . expresion_alge1 PARENTESIS_DER
+    (31) expresion_alge1 -> . NUMERO SUMA NUMERO
+    (32) expresion_alge1 -> . NUMERO RESTA NUMERO
+    (33) expresion_alge1 -> . NUMERO MULTIPLICA NUMERO
+    (34) expresion_alge1 -> . NUMERO DIVIDE NUMERO
+
+    NUMERO          shift and go to state 100
+
+    expresion_alge1                shift and go to state 139
+
+state 129
+
+    (36) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER RESTA PARENTESIS_IZQ . expresion_alge1 PARENTESIS_DER
+    (31) expresion_alge1 -> . NUMERO SUMA NUMERO
+    (32) expresion_alge1 -> . NUMERO RESTA NUMERO
+    (33) expresion_alge1 -> . NUMERO MULTIPLICA NUMERO
+    (34) expresion_alge1 -> . NUMERO DIVIDE NUMERO
+
+    NUMERO          shift and go to state 100
+
+    expresion_alge1                shift and go to state 140
+
+state 130
+
+    (37) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER MULTIPLICA PARENTESIS_IZQ . expresion_alge1 PARENTESIS_DER
+    (31) expresion_alge1 -> . NUMERO SUMA NUMERO
+    (32) expresion_alge1 -> . NUMERO RESTA NUMERO
+    (33) expresion_alge1 -> . NUMERO MULTIPLICA NUMERO
+    (34) expresion_alge1 -> . NUMERO DIVIDE NUMERO
+
+    NUMERO          shift and go to state 100
+
+    expresion_alge1                shift and go to state 141
+
+state 131
+
+    (38) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER DIVIDE PARENTESIS_IZQ . expresion_alge1 PARENTESIS_DER
+    (31) expresion_alge1 -> . NUMERO SUMA NUMERO
+    (32) expresion_alge1 -> . NUMERO RESTA NUMERO
+    (33) expresion_alge1 -> . NUMERO MULTIPLICA NUMERO
+    (34) expresion_alge1 -> . NUMERO DIVIDE NUMERO
+
+    NUMERO          shift and go to state 100
+
+    expresion_alge1                shift and go to state 142
+
+state 132
+
+    (41) parametro -> ID COMA parametro .
+
+    PARENTESIS_DER  reduce using rule 41 (parametro -> ID COMA parametro .)
+
+
+state 133
+
+    (42) parametro -> ID empty empty .
+
+    PARENTESIS_DER  reduce using rule 42 (parametro -> ID empty empty .)
+
+
+state 134
+
+    (39) procedimiento -> PROC ID PARENTESIS_IZQ parametro PARENTESIS_DER PARA . PUNTOCOMA procedimiento
+
+    PUNTOCOMA       shift and go to state 143
+
+
+state 135
+
+    (45) parametro -> empty empty empty .
+
+    PARENTESIS_DER  reduce using rule 45 (parametro -> empty empty empty .)
+
+
+state 136
+
+    (43) parametro -> NUMERO COMA parametro .
+
+    PARENTESIS_DER  reduce using rule 43 (parametro -> NUMERO COMA parametro .)
+
+
+state 137
+
+    (44) parametro -> NUMERO empty empty .
+
+    PARENTESIS_DER  reduce using rule 44 (parametro -> NUMERO empty empty .)
+
+
+state 138
+
+    (40) procedimiento -> empty empty empty empty empty empty . empty empty empty empty empty
+    (58) empty -> .
+
+    $end            reduce using rule 58 (empty -> .)
+
+    empty                          shift and go to state 144
+
+state 139
+
+    (35) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER SUMA PARENTESIS_IZQ expresion_alge1 . PARENTESIS_DER
+
+    PARENTESIS_DER  shift and go to state 145
+
+
+state 140
+
+    (36) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER RESTA PARENTESIS_IZQ expresion_alge1 . PARENTESIS_DER
+
+    PARENTESIS_DER  shift and go to state 146
+
+
+state 141
+
+    (37) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER MULTIPLICA PARENTESIS_IZQ expresion_alge1 . PARENTESIS_DER
+
+    PARENTESIS_DER  shift and go to state 147
+
+
+state 142
+
+    (38) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER DIVIDE PARENTESIS_IZQ expresion_alge1 . PARENTESIS_DER
+
+    PARENTESIS_DER  shift and go to state 148
+
+
+state 143
+
+    (39) procedimiento -> PROC ID PARENTESIS_IZQ parametro PARENTESIS_DER PARA PUNTOCOMA . procedimiento
+    (39) procedimiento -> . PROC ID PARENTESIS_IZQ parametro PARENTESIS_DER PARA PUNTOCOMA procedimiento
+    (40) procedimiento -> . empty empty empty empty empty empty empty empty empty empty empty
+    (58) empty -> .
+
+    PROC            shift and go to state 80
+    $end            reduce using rule 58 (empty -> .)
+
+    procedimiento                  shift and go to state 149
+    empty                          shift and go to state 81
+
+state 144
+
+    (40) procedimiento -> empty empty empty empty empty empty empty . empty empty empty empty
+    (58) empty -> .
+
+    $end            reduce using rule 58 (empty -> .)
+
+    empty                          shift and go to state 150
+
+state 145
+
+    (35) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER SUMA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER .
+
+    PUNTOCOMA       reduce using rule 35 (expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER SUMA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER .)
+
+
+state 146
+
+    (36) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER RESTA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER .
+
+    PUNTOCOMA       reduce using rule 36 (expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER RESTA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER .)
+
+
+state 147
+
+    (37) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER MULTIPLICA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER .
+
+    PUNTOCOMA       reduce using rule 37 (expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER MULTIPLICA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER .)
+
+
+state 148
+
+    (38) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER DIVIDE PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER .
+
+    PUNTOCOMA       reduce using rule 38 (expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER DIVIDE PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER .)
+
+
+state 149
+
+    (39) procedimiento -> PROC ID PARENTESIS_IZQ parametro PARENTESIS_DER PARA PUNTOCOMA procedimiento .
+
+    $end            reduce using rule 39 (procedimiento -> PROC ID PARENTESIS_IZQ parametro PARENTESIS_DER PARA PUNTOCOMA procedimiento .)
+
+
+state 150
+
+    (40) procedimiento -> empty empty empty empty empty empty empty empty . empty empty empty
+    (58) empty -> .
+
+    $end            reduce using rule 58 (empty -> .)
+
+    empty                          shift and go to state 151
+
+state 151
+
+    (40) procedimiento -> empty empty empty empty empty empty empty empty empty . empty empty
+    (58) empty -> .
+
+    $end            reduce using rule 58 (empty -> .)
+
+    empty                          shift and go to state 152
+
+state 152
+
+    (40) procedimiento -> empty empty empty empty empty empty empty empty empty empty . empty
+    (58) empty -> .
+
+    $end            reduce using rule 58 (empty -> .)
+
+    empty                          shift and go to state 153
+
+state 153
+
+    (40) procedimiento -> empty empty empty empty empty empty empty empty empty empty empty .
+
+    $end            reduce using rule 40 (procedimiento -> empty empty empty empty empty empty empty empty empty empty empty .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: reduce/reduce conflict in state 48 resolved using rule (variable -> empty empty)
+WARNING: rejected rule (expresion -> empty empty) in state 48

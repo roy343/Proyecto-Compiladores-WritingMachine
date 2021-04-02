@@ -28,6 +28,8 @@ def p_Code(p):
 def p_cuerpo(p):
     '''
     cuerpo : variable
+           | expresion
+           
            
             
     '''
@@ -95,13 +97,43 @@ def p_Variable5(p):
 def p_expresion(p):
     '''
     expresion : NUMERO
+              | funcion expresion
+              | empty empty
                         
     '''
+
+    if (p[2] != '$'):
+        p[0] = (p[1], p[2])
+    else:
+        p[0] = p[1]
+        
+
+def p_funcion(p):
+    '''
+    funcion : Random
+            | Begin
+            | ContinueUp
+            | ContinueDown
+            | ContinueRight
+            | ContinueLeft
+            | Up
+            | Down
+            | Speed
+            | Pos
+            | PosX
+            | PosY
+            
+            
+            
+    '''
+    p[0] = p[1]
+
 
 def expresion_alge(p):
     '''
     expresion_alge : expresion_alge1
                    | expresion_alge2
+                   | expresion_alge3
     '''
     
 
@@ -136,9 +168,10 @@ def p_expresion_alge2(p):
     elif p[4] == '-' : p[0] = p[2]-p[6]
     elif p[4] == '*' : p[0] = p[2]*p[6]
     elif p[4] == '/' : p[0] = p[2]/p[6]
-    
+
 
 def p_procedimiento(p):
+    
     '''
         procedimiento : PROC ID PARENTESIS_IZQ parametro PARENTESIS_DER PARA  PUNTOCOMA procedimiento
                      | empty empty empty empty empty empty empty empty empty empty empty
@@ -165,7 +198,106 @@ def p_parametro(p):
     else:
         p[0] = p[1]
 
+def p_begin(p):
+    '''
+    Begin : BEGIN PUNTOCOMA
+    '''
+    p[0] = p[1]
+    print("Begin")
 
+def p_random(p):
+    '''
+    Random : RANDOM PARENTESIS_IZQ NUMERO PARENTESIS_DER PUNTOCOMA'''
+    
+    p[0] = random.randrange(p[3])
+    print(p[0])
+
+
+def p_ContinueUp(p):
+    '''
+    ContinueUp : CONTINUEUP NUMERO PUNTOCOMA
+    '''
+
+    p[0] = p[2]
+    print("ContinueUp " + str(p[2]))
+
+def p_ContinueDown(p):
+    '''
+    ContinueDown : CONTINUEDOWN NUMERO PUNTOCOMA
+    '''
+
+    p[0] = p[2]
+    print("ContinueDown " + str(p[2]))
+
+def p_ContinueRight(p):
+    '''
+    ContinueRight : CONTINUERIGHT NUMERO PUNTOCOMA
+    '''
+
+    p[0] = p[2]
+    print("ContinueRight " + str(p[2]))
+
+def p_ContinueLeft(p):
+    '''
+    ContinueLeft : CONTINUELEFT NUMERO PUNTOCOMA
+    '''
+
+    p[0] = p[2]
+    print("ContinueLeft " + str(p[2]))
+
+
+def p_Up(p):
+    '''
+    Up : UP PUNTOCOMA
+    '''
+
+    p[0] = p[1]
+    print(p[0])
+
+def p_Down(p):
+    '''
+    Down : DOWN PUNTOCOMA
+    '''
+
+    p[0] = p[1]
+    print(p[0])
+
+def p_Speed(p):
+    '''
+    Speed : SPEED NUMERO PUNTOCOMA
+    '''
+
+    p[0] = p[2]
+    print("Velocidad = " + str(p[2]))
+
+def p_Pos(p):
+    '''
+    Pos : POS PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER PUNTOCOMA
+    '''
+
+    p[0] = (p[3],p[5])
+    print ("Coordenada X = "+ str(p[3]))
+    print("Coordenada Y = "+ str(p[5]))
+
+def p_PosX(p):
+    
+    '''
+    PosX : POSX  NUMERO  PUNTOCOMA
+    '''
+
+    p[0] = p[2]
+    print ("Coordenada X = "+ str(p[2]))
+ 
+
+def p_PosY(p):
+    
+    '''
+    PosY : POSY  NUMERO  PUNTOCOMA
+    '''
+
+    p[0] = p[2]
+    print ("Coordenada Y = "+ str(p[2]))
+ 
 
 def p_empty(p):
     '''
