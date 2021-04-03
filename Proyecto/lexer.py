@@ -6,6 +6,7 @@ tokens = [
     'ID', 'NUMERO',  # IDENTIDFICADOR, NUMERO
 
     'DIFERENTE','SIMILAR', 'MAYOR', 'MENOR', 'MAYORIGUAL', 'MENORIGUAL', # CONDICONES
+    
     'SUMA',  'RESTA', 'MULTIPLICA', 'DIVIDE', 'POTENCIA'    
 ]
                 
@@ -44,16 +45,17 @@ t_LLAVE_DER = r'\}'
 t_IGUAL = r'='
 t_PARENTESIS_IZQ = r'\('
 t_PARENTESIS_DER = r'\)'
-t_DIFERENTE = r'!>'
+t_DIFERENTE = r'!='
 t_MAYOR = r'>'
 t_MENOR = r'<'
 t_MAYORIGUAL = r'>='
 t_MENORIGUAL = r'<='
-t_EQUAL = r'=='
+t_SIMILAR = r'=='
 t_SUMA = r'\+'
 t_RESTA = r'\-'
 t_MULTIPLICA = r'\*'
 t_DIVIDE = r'\/'
+t_POTENCIA = r'\^'
 
 
 
