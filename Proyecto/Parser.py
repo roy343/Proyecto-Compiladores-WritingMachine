@@ -124,6 +124,11 @@ def p_funcion(p):
             | Pos
             | PosX
             | PosY
+            | UseColor
+            | Run
+            | If
+         
+            
             
             
             
@@ -205,9 +210,14 @@ def p_Sum(p):
     p[0] = p[3] + p[5]
     print(p[0])
 
+
 def p_Substr(p):
     '''
     Substr : SUBSTR PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER
+           | SUBSTR PARENTESIS_IZQ expresion_alge1 COMA expresion_alge1 PARENTESIS_DER
+           | SUBSTR PARENTESIS_IZQ NUMERO COMA ID PARENTESIS_DER
+           | SUBSTR PARENTESIS_IZQ ID COMA NUMERO PARENTESIS_DER
+           | SUBSTR PARENTESIS_IZQ ID COMA ID PARENTESIS_DER
     '''
 
     p[0] = p[3] - p[5]
@@ -216,6 +226,10 @@ def p_Substr(p):
 def p_Mult(p):
     '''
     Mult : MULT PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER
+         | MULT PARENTESIS_IZQ expresion_alge1 COMA expresion_alge1 PARENTESIS_DER
+         | MULT PARENTESIS_IZQ NUMERO COMA ID PARENTESIS_DER
+         | MULT PARENTESIS_IZQ ID COMA NUMERO PARENTESIS_DER
+         | MULT PARENTESIS_IZQ ID COMA ID PARENTESIS_DER
     '''
 
     p[0] = p[3] * p[5]
@@ -224,6 +238,10 @@ def p_Mult(p):
 def p_Div(p):
     '''
     Div : DIV PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER
+        | DIV PARENTESIS_IZQ expresion_alge1 COMA expresion_alge1 PARENTESIS_DER
+        | DIV PARENTESIS_IZQ NUMERO COMA ID PARENTESIS_DER
+        | DIV PARENTESIS_IZQ ID COMA NUMERO PARENTESIS_DER
+        | DIV PARENTESIS_IZQ ID COMA ID PARENTESIS_DER
     '''
 
     p[0] = p[3] / p[5]
@@ -232,6 +250,10 @@ def p_Div(p):
 def p_Power(p):
     '''
     Power  : POWER PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER
+           | POWER PARENTESIS_IZQ expresion_alge1 COMA expresion_alge1 PARENTESIS_DER
+           | POWER PARENTESIS_IZQ NUMERO COMA ID PARENTESIS_DER
+           | POWER PARENTESIS_IZQ ID COMA NUMERO PARENTESIS_DER
+           | POWER PARENTESIS_IZQ ID COMA ID PARENTESIS_DER
     '''
 
     p[0] = p[3] ** p[5]
@@ -375,6 +397,24 @@ def p_Menorigual (p):
         p[0] = False
 
     print(p[0])
+
+
+def p_If(p):
+
+    '''
+    If : IF PARENTESIS_IZQ condicion PARENTESIS_DER LLAVE_IZQ funcion LLAVE_DER ENDIF
+    '''
+
+    if (p[3]):
+        p[0] = p[6]
+        print(p[0])
+    else:
+        print("No se cumple")
+    
+
+
+
+    
     
 
 def p_procedimiento(p):
@@ -504,6 +544,30 @@ def p_PosY(p):
 
     p[0] = p[2]
     print ("Coordenada Y = "+ str(p[2]))
+
+def p_UseColor(p):
+    
+    '''
+    UseColor : USECOLOR  NUMERO  PUNTOCOMA
+    '''
+
+    if p[2] in range(1,4):
+        print("UseColor funciona")
+    else:
+        print("Error")
+
+
+def p_Run(p):
+
+    '''
+    Run : RUN PARENTESISC_IZQ funcion PARENTESISC_DER
+
+    '''
+
+    p[0] = p[3]
+    print ("Running " + str(p[3]))
+
+
  
 
 def p_empty(p):
