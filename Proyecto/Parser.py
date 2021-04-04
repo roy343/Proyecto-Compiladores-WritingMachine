@@ -10,6 +10,9 @@ import random
 from sys import stdin
 
 
+nombres = {}
+
+
 def p_Start(p):
     '''
     Start : code
@@ -63,8 +66,10 @@ def p_Variable2(p):
     variable2 : DEF ID IGUAL NUMERO PUNTOCOMA
               
     '''
+    nombres[p[2]] = p[4]
     p[0] = (p[1], p[2], p[3], p[4])
     print(p[2], p[3], p[4])
+    print(nombres)
 
 
 def p_Variable3(p):
@@ -72,8 +77,10 @@ def p_Variable3(p):
     variable3 : PUT ID IGUAL NUMERO PUNTOCOMA
               
     '''
+    nombres[p[2]] = p[4]
     p[0] = (p[1], p[2], p[3], p[4])
     print(p[2], p[3], p[4])
+    print(nombres)
 
 def p_Variable4(p):
     '''
@@ -81,9 +88,10 @@ def p_Variable4(p):
               | PUT ID IGUAL expresion_alge2 PUNTOCOMA
               
     '''
+    nombres[p[2]] = p[4]
     p[0] = (p[1], p[2], p[3], p[4])
     print(p[2], p[3], p[4])
-
+    print(nombres)
     
 
 
