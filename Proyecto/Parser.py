@@ -98,8 +98,9 @@ def p_Variable4(p):
 
 def p_expresion(p):
     '''
-    expresion : NUMERO
+    expresion : NUMERO expresion
               | funcion expresion
+              | ID expresion
               | condicion expresion
               | expresion_alge1 expresion
               | expresion_alge2 expresion
@@ -135,6 +136,10 @@ def p_funcion(p):
             | UseColor
             | Run
             | If
+            | While
+            | Print
+            | And
+            | Or
          
             
             
@@ -215,7 +220,7 @@ def p_Sum(p):
         | SUM PARENTESIS_IZQ NUMERO COMA ID PARENTESIS_DER
     '''
 
-    p[0] = p[3] + p[5]
+    p[0] = p[3] + int(p[5])
     print(p[0])
 
 
@@ -308,10 +313,21 @@ def p_Smaller(p):
 
 
 
-#def p_And(p):
+def p_And(p):
+    ''' And : AND PARENTESIS_IZQ expresion COMA expresion PARENTESIS_DER PUNTOCOMA '''
+    
+    if p[3] == True and p[5] == True:
+        print("And correcto")
+    else:
+        print("And malo")
 
 
-#def p_Or(p):
+
+def p_Or(p):
+    ''' Or : OR PARENTESIS_IZQ expresion COMA expresion PARENTESIS_DER PUNTOCOMA '''
+
+    p[0] = p[2] or p[5]
+    print("Or correcto")
 
 
 def p_Igual(p):
@@ -321,13 +337,10 @@ def p_Igual(p):
           | NUMERO SIMILAR ID
           | ID SIMILAR NUMERO
     '''
-
     if p[1] == p[3]:
         p[0] = True
-    else:
-        p[0] = False
 
-    print(p[0])
+        print(p[0])
 
 
 def p_Diferente(p):
@@ -413,16 +426,20 @@ def p_If(p):
     If : IF PARENTESIS_IZQ condicion PARENTESIS_DER LLAVE_IZQ funcion LLAVE_DER ENDIF
     '''
 
-    if (p[3]):
+    print(p[3])
+
+    if(p[3]):
         p[0] = p[6]
-        print(p[0])
-    else:
-        print("No se cumple")
-    
+
+def p_While(p):
+
+    ''' While : WHILE PARENTESIS_IZQ condicion PARENTESIS_DER LLAVE_IZQ funcion LLAVE_DER'''
 
 
+    print(p[3])
 
-    
+    while(p[3]):
+        p[0] = p[6]
     
 
 def p_procedimiento(p):
@@ -575,7 +592,11 @@ def p_Run(p):
     p[0] = p[3]
     print ("Running " + str(p[3]))
 
+def p_Print(p):
 
+    ''' Print : PRINT PARENTESIS_IZQ expresion PARENTESIS_DER PUNTOCOMA'''
+    p[0] = p[3]
+    print(nombres[1].value)
  
 
 def p_empty(p):

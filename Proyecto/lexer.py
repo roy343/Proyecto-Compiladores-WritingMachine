@@ -16,7 +16,7 @@ reservadas = {
     'If': 'IF', 'while': 'WHILE', 'then': 'THEN', 'IfElse': 'IFELSE',
     'EndIf': 'ENDIF', 'Repeat': 'REPEAT', 'Until': 'UNTIL',
     'And': 'AND','Or': 'OR','ContinueRight': 'CONTINUERIGHT',
-    'Run': 'RUN', 
+    'Run': 'RUN', 'Print':'PRINT',
     'End': 'END', 'Fin': 'FIN', 'Para': 'PARA',
     'Inc': 'INC', 'Dec': 'DEC', 'Ini': 'INI', 'Mover': 'MOVER', 'Random': 'RANDOM',
     'Proc': 'PROC','PosX': 'POSX', 'PosY': 'POSY','Pos': 'POS','Speed': 'SPEED',
@@ -24,9 +24,7 @@ reservadas = {
     'Mult': 'MULT','Power': 'POWER','Div': 'DIV','Sum': 'SUM'
     }
                                                                                 
-movimientos = {'AF': 'AF', 'F': 'F', 'DFA': 'DFA', 'IFA': 'IFA', 'DFB': 'DFB', 'IFB': 'IFB',
-               'A': 'A', 'DAA': 'DAA', 'IAA': 'IAA', 'DAB': 'DAB', 'IAB': 'IAB', 'AA': 'AA',
-               'ContinueUp': 'CONTINUEUP', 'ContinueDown': 'CONTINUEDOWN', 'ContinueLeft': 'CONTINUELEFT',
+movimientos = {'ContinueUp': 'CONTINUEUP', 'ContinueDown': 'CONTINUEDOWN', 'ContinueLeft': 'CONTINUELEFT',
                'ContinueRight': 'CONTINUERIGHT', 'UseColor': 'USECOLOR', 'Down': 'DOWN','Up': 'UP',
                'Begin': 'BEGIN',
                 }
