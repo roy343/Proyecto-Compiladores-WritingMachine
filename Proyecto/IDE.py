@@ -40,12 +40,30 @@ class Gui:
         # Inserta las dos areas de texto
 
         self.CodeTextArea = Text(self.MainWindow, font = 14, bg='#227474', fg="white")
-        self.CodeTextArea.place(x=30, y=30, width=960, height=500)
+        self.CodeTextArea.place(x=37, y=30, width=960, height=500)
 
 
         self.OutputTextArea = Text(self.MainWindow, font = 14 ,bg='#227474', fg="white")
-        self.OutputTextArea.place(x=30, y=535, width=960, height=260)
+        self.OutputTextArea.place(x=37, y=535, width=960, height=260)
 
+        # Crea el area de numeracion de linea del codigo
+
+        self.linenumbers = TextLineNumbers(self.MainWindow, width=30, bg='#227474')
+        self.linenumbers.place(x=5, y=30, height=500)
+        self.linenumbers.attach(self.CodeTextArea)
+
+        self.uniscrollbar= Scrollbar(self.MainWindow, orient=VERTICAL, command=self.CodeTextArea.yview)
+        self.uniscrollbar.place(x=980, y=30, height=500)
+
+        self.CodeTextArea.config(yscrollcommand=self.uniscrollbar.set)
+
+        self.CodeTextArea.bind("<Key>", self.onPressDelay)
+        self.CodeTextArea.bind("<Button-1>", self.linenumbers.redraw)
+        self.uniscrollbar.bind("<Button-1>", self.onScrollPress)
+        self.CodeTextArea.bind("<MouseWheel>", self.onPressDelay)
+
+        self.MainWindow.after(200,self.redraw) 
+        
         self.MainWindow.mainloop()
 
     def OpenButtonClick(self):
@@ -87,6 +105,52 @@ class Gui:
 
     def setOutputText(self, output):
         self.OutputTextArea.insert(INSERT, cadena)
+
+    #################### Funciones numero de linea del codigo ####################################
+
+    def onScrollPress(self, *args):
+        self.uniscrollbar.bind("<B1-Motion>", self.linenumbers.redraw)
+
+    def onScrollRelease(self, *args):
+        self.uniscrollbar.unbind("<B1-Motion>", self.linenumbers.redraw)
+
+    def onPressDelay(self, *args):
+        self.MainWindow.after(2, self.linenumbers.redraw)
+
+    def get(self, *args, **kwargs):
+        return self.CodeTextArea.get(*args, **kwargs)
+
+    def insert(self, *args, **kwargs):
+        return self.CodeTextArea.insert(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        return self.CodeTextArea.delete(*args, **kwargs)
+
+    def index(self, *args, **kwargs):
+        return self.CodeTextArea.index(*args, **kwargs)
+
+    def redraw(self):
+        self.linenumbers.redraw()
+                
+class TextLineNumbers(Canvas):
+    def __init__(self, *args, **kwargs):
+        Canvas.__init__(self, *args, **kwargs, highlightthickness=0)
+        self.textwidget = None
+
+    def attach(self, text_widget):
+        self.textwidget = text_widget
+
+    def redraw(self, *args):
+        self.delete("all")
+
+        i = self.textwidget.index("@0,0")
+        while True :
+            dline= self.textwidget.dlineinfo(i)
+            if dline is None: break
+            y = dline[1]
+            linenum = str(i).split(".")[0]
+            self.create_text(2, y, anchor="nw", text=linenum, fill="#fff", font=14)
+            i = self.textwidget.index("%s+1line" % i)      
 
 
 IDE = Gui()
