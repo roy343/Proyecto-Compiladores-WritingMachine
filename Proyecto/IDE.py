@@ -40,16 +40,16 @@ class Gui:
         # Inserta las dos areas de texto
 
         self.CodeTextArea = Text(self.MainWindow, font = 14, bg='#227474', fg="white")
-        self.CodeTextArea.place(x=37, y=30, width=960, height=500)
+        self.CodeTextArea.place(x=40, y=30, width=960, height=500)
 
 
         self.OutputTextArea = Text(self.MainWindow, font = 14 ,bg='#227474', fg="white")
-        self.OutputTextArea.place(x=37, y=535, width=960, height=260)
+        self.OutputTextArea.place(x=40, y=535, width=960, height=260)
 
         # Crea el area de numeracion de linea del codigo
 
-        self.linenumbers = TextLineNumbers(self.MainWindow, width=30, bg='#227474')
-        self.linenumbers.place(x=5, y=30, height=500)
+        self.linenumbers = TextLineNumbers(self.MainWindow, width=35, bg='#227474')
+        self.linenumbers.place(x=0, y=30, height=500)
         self.linenumbers.attach(self.CodeTextArea)
 
         self.uniscrollbar= Scrollbar(self.MainWindow, orient=VERTICAL, command=self.CodeTextArea.yview)
