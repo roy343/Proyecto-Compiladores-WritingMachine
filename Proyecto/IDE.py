@@ -104,7 +104,7 @@ class Gui:
         self.CodeTextArea.insert(INSERT, output)
 
     def setOutputText(self, output):
-        self.OutputTextArea.insert(INSERT, cadena)
+        self.OutputTextArea.insert(INSERT, output)
 
     #################### Funciones numero de linea del codigo ####################################
 

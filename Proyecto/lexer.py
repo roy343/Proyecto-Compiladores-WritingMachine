@@ -122,21 +122,9 @@ def lexicalAnalizer(cadena):
             
         tok = analizador.token()
         if not tok: break
-        print(tok)
         prints.append(tok)
     return prints
     
-
-
-#def lexicalAnalizer(cadena):
- #   analizador = lex.lex()
-  #  analizador.input(cadena)
-   # prints=[]
-    #while True:
-     #   tok = analizador.token()
-      #  if not tok: break
-       # prints.append(tok)
-    #return prints
 
 
 
