@@ -6,11 +6,16 @@ from lexer import tokens
 from lexer import lexicalAnalizer
 from Semantic import runSemanticAnalizer
 import random
+import json
 
 from sys import stdin
 
 
 nombres = {}
+
+
+
+data = {}
 
 
 def p_Start(p):
@@ -476,6 +481,8 @@ def p_begin(p):
     '''
     p[0] = p[1]
     print("Begin")
+    data['Begin'] = 'Begin'
+    writeToJSONFile(path,fileName,data)
 
 def p_random(p):
     '''
@@ -492,6 +499,8 @@ def p_ContinueUp(p):
 
     p[0] = p[2]
     print("ContinueUp " + str(p[2]))
+    data['ContinueUp'] = str(p[2])
+    writeToJSONFile(path,fileName,data)
 
 def p_ContinueDown(p):
     '''
@@ -500,6 +509,8 @@ def p_ContinueDown(p):
 
     p[0] = p[2]
     print("ContinueDown " + str(p[2]))
+    data['ContinueDown'] = str(p[2])
+    writeToJSONFile(path,fileName,data)
 
 def p_ContinueRight(p):
     '''
@@ -508,6 +519,8 @@ def p_ContinueRight(p):
 
     p[0] = p[2]
     print("ContinueRight " + str(p[2]))
+    data['ContinueRight'] = str(p[2])
+    writeToJSONFile(path,fileName,data)
 
 def p_ContinueLeft(p):
     '''
@@ -516,6 +529,8 @@ def p_ContinueLeft(p):
 
     p[0] = p[2]
     print("ContinueLeft " + str(p[2]))
+    data['ContinueLeft'] = str(p[2])
+    writeToJSONFile(path,fileName,data)
 
 
 def p_Up(p):
@@ -525,6 +540,8 @@ def p_Up(p):
 
     p[0] = p[1]
     print(p[0])
+    data['Lapiz'] = 'Up'
+    writeToJSONFile(path,fileName,data)
 
 def p_Down(p):
     '''
@@ -533,6 +550,8 @@ def p_Down(p):
 
     p[0] = p[1]
     print(p[0])
+    data['Lapiz'] = 'Down'
+    writeToJSONFile(path,fileName,data)
 
 def p_Speed(p):
     '''
@@ -541,6 +560,8 @@ def p_Speed(p):
 
     p[0] = p[2]
     print("Velocidad = " + str(p[2]))
+    data['Speed'] = str(p[2])
+    writeToJSONFile(path,fileName,data)
 
 def p_Pos(p):
     '''
@@ -550,6 +571,8 @@ def p_Pos(p):
     p[0] = (p[3],p[5])
     print ("Coordenada X = "+ str(p[3]))
     print("Coordenada Y = "+ str(p[5]))
+    data['Pos'] = str(p[3]) + "," + str(p[5])
+    writeToJSONFile(path,fileName,data)
 
 def p_PosX(p):
     
@@ -559,6 +582,8 @@ def p_PosX(p):
 
     p[0] = p[2]
     print ("Coordenada X = "+ str(p[2]))
+    data['PosX'] = str(p[2])
+    writeToJSONFile(path,fileName,data)
  
 
 def p_PosY(p):
@@ -569,6 +594,8 @@ def p_PosY(p):
 
     p[0] = p[2]
     print ("Coordenada Y = "+ str(p[2]))
+    data['PosY'] = str(p[2])
+    writeToJSONFile(path,fileName,data)
 
 def p_UseColor(p):
     
@@ -580,6 +607,9 @@ def p_UseColor(p):
         print("UseColor funciona")
     else:
         print("Error")
+
+    data['Color'] = str(p[2])
+    writeToJSONFile(path,fileName,data)
 
 
 def p_Run(p):
@@ -616,6 +646,15 @@ def sintacticAnalizer(cadena):
     parser.parse(cadena)
 
 
+def writeToJSONFile(path, fileName, data):
+    filePathNameWExt = './' + path + '/' + fileName + '.json'
+    with open(filePathNameWExt, 'w') as fp:
+        json.dump(data,fp)
+
+path = './'
+fileName = 'compile'
+
+
 #################################### tester ############################################
 
 def buscarFichero(directorio):
@@ -637,23 +676,6 @@ def buscarFichero(directorio):
     return files[int(numArchivo) - 1]
 
 
-#def test():
-    # directorio = os.path.dirname(os.getcwd()) + "/Tests/"
-    # archivo = buscarFichero(directorio)
-    # test = directorio + archivo
 
-
- #   fp = codecs.open('C:/Users/Familia/Documents/Gabo/Lenguajes y Compi/Compi/Proyecto/Prueba.txt', "r", "utf-8")
-  #  cadena = fp.read()
-   # fp.close()
-
- #   lexicalAnalizer(cadena)
-  #  sintacticAnalizer(cadena)
-
-# documentar esta funcion si va a probar codigo en el GUI
-#\Users\Familia\Documents\Gabo\Lenguajes y Compi\Copia\Tests/test2
-#test()
-
-    
 
 
