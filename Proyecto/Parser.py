@@ -15,7 +15,7 @@ nombres = {}
 
 
 
-data = {}
+data = []
 
 
 def p_Start(p):
@@ -481,7 +481,8 @@ def p_begin(p):
     '''
     p[0] = p[1]
     print("Begin")
-    data['Begin'] = 'Begin'
+    data.append("Begin")
+    #data['Begin'] = 'Begin'
     writeToJSONFile(path,fileName,data)
 
 def p_random(p):
@@ -499,7 +500,8 @@ def p_ContinueUp(p):
 
     p[0] = p[2]
     print("ContinueUp " + str(p[2]))
-    data['ContinueUp'] = str(p[2])
+    #data['ContinueUp'] = str(p[2])
+    data.append("ContinueUp"+str(p[2]))
     writeToJSONFile(path,fileName,data)
 
 def p_ContinueDown(p):
@@ -509,7 +511,8 @@ def p_ContinueDown(p):
 
     p[0] = p[2]
     print("ContinueDown " + str(p[2]))
-    data['ContinueDown'] = str(p[2])
+    #data['ContinueDown'] = str(p[2])
+    data.append("ContinueDown"+str(p[2]))
     writeToJSONFile(path,fileName,data)
 
 def p_ContinueRight(p):
@@ -519,7 +522,8 @@ def p_ContinueRight(p):
 
     p[0] = p[2]
     print("ContinueRight " + str(p[2]))
-    data['ContinueRight'] = str(p[2])
+    #data['ContinueRight'] = str(p[2])
+    data.append("ContinueRight"+str(p[2]))
     writeToJSONFile(path,fileName,data)
 
 def p_ContinueLeft(p):
@@ -529,7 +533,8 @@ def p_ContinueLeft(p):
 
     p[0] = p[2]
     print("ContinueLeft " + str(p[2]))
-    data['ContinueLeft'] = str(p[2])
+    #data['ContinueLeft'] = str(p[2])
+    data.append("ContinueLeft"+str(p[2]))
     writeToJSONFile(path,fileName,data)
 
 
@@ -537,10 +542,11 @@ def p_Up(p):
     '''
     Up : UP PUNTOCOMA
     '''
-
+    data.append("Up")
     p[0] = p[1]
     print(p[0])
-    data['Lapiz'] = 'Up'
+    #data['Lapiz'] = 'Up'
+    
     writeToJSONFile(path,fileName,data)
 
 def p_Down(p):
@@ -550,7 +556,8 @@ def p_Down(p):
 
     p[0] = p[1]
     print(p[0])
-    data['Lapiz'] = 'Down'
+    #data['Lapiz'] = 'Down'
+    data.append("Down")
     writeToJSONFile(path,fileName,data)
 
 def p_Speed(p):
@@ -560,7 +567,9 @@ def p_Speed(p):
 
     p[0] = p[2]
     print("Velocidad = " + str(p[2]))
-    data['Speed'] = str(p[2])
+    #data['Speed'] = str(p[2])
+    data.append("Speed" + str(p[2]))
+
     writeToJSONFile(path,fileName,data)
 
 def p_Pos(p):
@@ -571,7 +580,8 @@ def p_Pos(p):
     p[0] = (p[3],p[5])
     print ("Coordenada X = "+ str(p[3]))
     print("Coordenada Y = "+ str(p[5]))
-    data['Pos'] = str(p[3]) + "," + str(p[5])
+    #data['Pos'] = str(p[3]) + "," + str(p[5])
+    data.append("Posicion" + str(p[3]) + "," + str(p[2]))
     writeToJSONFile(path,fileName,data)
 
 def p_PosX(p):
@@ -582,7 +592,8 @@ def p_PosX(p):
 
     p[0] = p[2]
     print ("Coordenada X = "+ str(p[2]))
-    data['PosX'] = str(p[2])
+    #data['PosX'] = str(p[2])
+    data.append("PosicionX"+ str(p[2]))
     writeToJSONFile(path,fileName,data)
  
 
@@ -594,7 +605,8 @@ def p_PosY(p):
 
     p[0] = p[2]
     print ("Coordenada Y = "+ str(p[2]))
-    data['PosY'] = str(p[2])
+    #data['PosY'] = str(p[2])
+    data.append("PosicionY"+ str(p[2]))
     writeToJSONFile(path,fileName,data)
 
 def p_UseColor(p):
@@ -608,7 +620,8 @@ def p_UseColor(p):
     else:
         print("Error")
 
-    data['Color'] = str(p[2])
+    #data['Color'] = str(p[2])
+    data.append("Color"+str(p[2]))
     writeToJSONFile(path,fileName,data)
 
 
