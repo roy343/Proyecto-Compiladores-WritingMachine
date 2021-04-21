@@ -7,7 +7,7 @@ from lexer import lexicalAnalizer
 from Semantic import runSemanticAnalizer
 import random
 import json
-
+import serial
 from sys import stdin
 
 
@@ -666,6 +666,9 @@ def writeToJSONFile(path, fileName, data):
 
 path = './'
 fileName = 'compile'
+
+ser = serial.Serial( '/dev/ttyACM0', 9600)
+ser.write(b'5')
 
 
 #################################### tester ############################################
