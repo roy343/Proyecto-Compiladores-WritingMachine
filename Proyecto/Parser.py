@@ -165,7 +165,6 @@ def p_condicion(p):
               | Menor expresion
               | Mayorigual expresion
               | Menorigual expresion 
-
     '''
     
 
@@ -468,7 +467,6 @@ def p_parametro(p):
               | NUMERO COMA parametro
               | NUMERO empty empty
               | empty empty empty
-
     '''
     if p[3] != '$' and p[2] != '$':
         p[0] = (p[1], p[3])
@@ -481,8 +479,8 @@ def p_begin(p):
     '''
     p[0] = p[1]
     print("Begin")
-    data.append("Begin")
-    #data['Begin'] = 'Begin'
+    data.append("Begin:")
+    data.append(str(0))
     writeToJSONFile(path,fileName,data)
 
 def p_random(p):
@@ -501,7 +499,8 @@ def p_ContinueUp(p):
     p[0] = p[2]
     print("ContinueUp " + str(p[2]))
     #data['ContinueUp'] = str(p[2])
-    data.append("ContinueUp"+str(p[2]))
+    data.append("ContinueUp:")
+    data.append(str(p[2]))
     writeToJSONFile(path,fileName,data)
 
 def p_ContinueDown(p):
@@ -512,7 +511,8 @@ def p_ContinueDown(p):
     p[0] = p[2]
     print("ContinueDown " + str(p[2]))
     #data['ContinueDown'] = str(p[2])
-    data.append("ContinueDown"+str(p[2]))
+    data.append("ContinueDown:")
+    data.append(str(p[2]))
     writeToJSONFile(path,fileName,data)
 
 def p_ContinueRight(p):
@@ -523,7 +523,8 @@ def p_ContinueRight(p):
     p[0] = p[2]
     print("ContinueRight " + str(p[2]))
     #data['ContinueRight'] = str(p[2])
-    data.append("ContinueRight"+str(p[2]))
+    data.append("ContinueRight:")
+    data.append(str(p[2]))
     writeToJSONFile(path,fileName,data)
 
 def p_ContinueLeft(p):
@@ -534,7 +535,8 @@ def p_ContinueLeft(p):
     p[0] = p[2]
     print("ContinueLeft " + str(p[2]))
     #data['ContinueLeft'] = str(p[2])
-    data.append("ContinueLeft"+str(p[2]))
+    data.append("ContinueLeft:")
+    data.append(str(p[2]))
     writeToJSONFile(path,fileName,data)
 
 
@@ -542,7 +544,8 @@ def p_Up(p):
     '''
     Up : UP PUNTOCOMA
     '''
-    data.append("Up")
+    data.append("Up:")
+    data.append(str(0))
     p[0] = p[1]
     print(p[0])
     #data['Lapiz'] = 'Up'
@@ -557,7 +560,8 @@ def p_Down(p):
     p[0] = p[1]
     print(p[0])
     #data['Lapiz'] = 'Down'
-    data.append("Down")
+    data.append("Down:")
+    data.append(str(0))
     writeToJSONFile(path,fileName,data)
 
 def p_Speed(p):
@@ -568,7 +572,8 @@ def p_Speed(p):
     p[0] = p[2]
     print("Velocidad = " + str(p[2]))
     #data['Speed'] = str(p[2])
-    data.append("Speed" + str(p[2]))
+    data.append("Speed:")
+    data.append(str(p[2]))
 
     writeToJSONFile(path,fileName,data)
 
@@ -581,7 +586,12 @@ def p_Pos(p):
     print ("Coordenada X = "+ str(p[3]))
     print("Coordenada Y = "+ str(p[5]))
     #data['Pos'] = str(p[3]) + "," + str(p[5])
-    data.append("Posicion" + str(p[3]) + "," + str(p[2]))
+    data.append("PosicionX:")
+    data.append(str(p[3]))
+    data.append("PosicionY:")
+    data.append(str(p[5]))
+
+
     writeToJSONFile(path,fileName,data)
 
 def p_PosX(p):
@@ -593,7 +603,8 @@ def p_PosX(p):
     p[0] = p[2]
     print ("Coordenada X = "+ str(p[2]))
     #data['PosX'] = str(p[2])
-    data.append("PosicionX"+ str(p[2]))
+    data.append("PosicionX:")
+    data.append(str(p[2]))
     writeToJSONFile(path,fileName,data)
  
 
@@ -606,7 +617,8 @@ def p_PosY(p):
     p[0] = p[2]
     print ("Coordenada Y = "+ str(p[2]))
     #data['PosY'] = str(p[2])
-    data.append("PosicionY"+ str(p[2]))
+    data.append("PosicionY:")
+    data.apend(str(p[2]))
     writeToJSONFile(path,fileName,data)
 
 def p_UseColor(p):
@@ -621,7 +633,8 @@ def p_UseColor(p):
         print("Error")
 
     #data['Color'] = str(p[2])
-    data.append("Color"+str(p[2]))
+    data.append("Color:")
+    data.append(str(p[2]))
     writeToJSONFile(path,fileName,data)
 
 
@@ -629,7 +642,6 @@ def p_Run(p):
 
     '''
     Run : RUN PARENTESISC_IZQ funcion PARENTESISC_DER
-
     '''
 
     p[0] = p[3]
@@ -665,10 +677,10 @@ def writeToJSONFile(path, fileName, data):
         json.dump(data,fp)
 
 path = './'
-fileName = 'compile'
+fileName = 'datosJSON'
 
-ser = serial.Serial( '/dev/ttyACM0', 9600)
-ser.write(b'5')
+#ser = serial.Serial( '/dev/ttyACM0', 9600)
+#ser.write(b'5')
 
 
 #################################### tester ############################################
@@ -690,8 +702,3 @@ def buscarFichero(directorio):
                 respuesta = True
                 break
     return files[int(numArchivo) - 1]
-
-
-
-
-

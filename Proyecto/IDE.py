@@ -3,7 +3,8 @@ import sys
 from tkinter import filedialog as fd
 from tkinter import messagebox as mb
 from lexer import lexicalAnalizer
-from Parser import sintacticAnalizer
+from Parser import *
+import serial
 
 
 class Gui:
@@ -87,6 +88,8 @@ class Gui:
 
     def compileButtonClick(self):
         cadena = self.CodeTextArea.get("1.0", END)
+        ser = serial.Serial( '/dev/ttyACM0', 9600)
+        ser.write(b'data')
 
         if cadena != "":
             lista = lexicalAnalizer(cadena)
