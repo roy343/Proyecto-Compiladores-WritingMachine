@@ -5,6 +5,7 @@ from tkinter import messagebox as mb
 from lexer import lexicalAnalizer
 from Parser import *
 import serial
+import time
 
 
 class Gui:
@@ -35,7 +36,7 @@ class Gui:
         Button(self.MainWindow, text="ABRIR", background = "white", foreground = "black" ,command=self.OpenButtonClick).place(x=5, y=1)
         Button(self.MainWindow, text="GUARDAR", background = "white", foreground = "black" ,command=self.SaveButtonClick).place(x=47.5, y=1)
         Button(self.MainWindow, text="COMPILAR", background = "yellow", foreground = "black" , command=self.compileButtonClick).place(x=550, y=1)
-        Button(self.MainWindow, text="CORRER", background = "yellow", foreground = "black" , command=self.compileButtonClick).place(x=620, y=1)
+        Button(self.MainWindow, text="CORRER", background = "yellow", foreground = "black" , command=self.runButtonClick).place(x=620, y=1)
         Button(self.MainWindow, text="SALIR", background = "red", foreground = "black" ,command=lambda: self.MainWindow.destroy()).place(x=945, y=1)
 
         # Inserta las dos areas de texto
@@ -88,26 +89,51 @@ class Gui:
 
     def compileButtonClick(self):
         cadena = self.CodeTextArea.get("1.0", END)
-        ser = serial.Serial( '/dev/ttyACM0', 9600)
-        ser.write(b'data')
+        self.OutputTextArea.delete("1.0",END)
+        #ser = serial.Serial( '/dev/ttyACM0', 9600)
+        #ser.write(b'data')
+
+    
+        if cadena != "":
+            lista = lexicalAnalizer(cadena)
+            #print(cadena)
+            sintacticAnalizer(cadena)
+            for i in lista:
+                self.OutputTextArea.insert(INSERT,errores)
+                self.OutputTextArea.insert(INSERT,'\n')
+
+        
+                
+                
+        else:
+            mb.showwarning("Error","Debes escribir código!!")
+
+    def runButtonClick(self):
+        cadena = self.CodeTextArea.get("1.0", END)
+        self.OutputTextArea.delete("1.0",END)
+
 
         if cadena != "":
             lista = lexicalAnalizer(cadena)
             #print(cadena)
             sintacticAnalizer(cadena)
             for i in lista:
-                self.OutputTextArea.insert(INSERT,i)
+                self.OutputTextArea.insert(INSERT,errores)
                 self.OutputTextArea.insert(INSERT,'\n')
+
+        
+                
                 
         else:
             mb.showwarning("Error","Debes escribir código!!")
+
 
     def setCodeTextArea(self, output):
         self.CodeTextArea.delete('1.0', END)
         self.CodeTextArea.insert(INSERT, output)
 
     def setOutputText(self, output):
-        self.OutputTextArea.insert(INSERT, output)
+        self.OutputTextArea.insert(INSERT, errores)
 
     #################### Funciones numero de linea del codigo ####################################
 

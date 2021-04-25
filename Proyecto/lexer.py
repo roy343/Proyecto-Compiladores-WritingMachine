@@ -1,7 +1,7 @@
 import ply.lex as lex
 
 tokens = [
-    'COMA', 'PUNTOCOMA', 'DOSPUNTOS', 'LLAVE_IZQ', 'LLAVE_DER', 'IGUAL', 'PARENTESIS_IZQ', 'PARENTESIS_DER', 'PARENTESISC_IZQ', 'PARENTESISC_DER',  # SIMBOLOS
+    'COMA', 'PUNTOCOMA', 'DOSPUNTOS', 'IGUAL', 'PARENTESIS_IZQ', 'PARENTESIS_DER', 'PARENTESISC_IZQ', 'PARENTESISC_DER',  # SIMBOLOS
 
     'ID', 'NUMERO',  # IDENTIDFICADOR, NUMERO
 
@@ -11,15 +11,14 @@ tokens = [
 ]
                 
 reservadas = {
-    'Def': 'DEF', 'Put': 'PUT' ,'Start': 'START', 'Add': 'ADD',
-    'DEFAULT': 'DEFAULT',
-    'If': 'IF', 'while': 'WHILE', 'then': 'THEN', 'IfElse': 'IFELSE',
+    'Def': 'DEF', 'Put': 'PUT' , 'Start': 'START' , 'Add': 'ADD',
+    'If': 'IF', 'while': 'WHILE','IfElse': 'IFELSE',
     'EndIf': 'ENDIF', 'Repeat': 'REPEAT', 'Until': 'UNTIL',
     'And': 'AND','Or': 'OR','ContinueRight': 'CONTINUERIGHT',
     'Run': 'RUN', 'Print':'PRINT',
     'End': 'END', 'Fin': 'FIN', 'Para': 'PARA',
-    'Inc': 'INC', 'Dec': 'DEC', 'Ini': 'INI', 'Mover': 'MOVER', 'Random': 'RANDOM',
-    'Proc': 'PROC','PosX': 'POSX', 'PosY': 'POSY','Pos': 'POS','Speed': 'SPEED',
+    'Random': 'RANDOM',
+    'PosX': 'POSX', 'PosY': 'POSY','Pos': 'POS','Speed': 'SPEED',
     'Equal': 'EQUAL','Greater': 'GREATER', 'Smaller': 'SMALLER','Substr': 'SUBSTR',
     'Mult': 'MULT','Power': 'POWER','Div': 'DIV','Sum': 'SUM'
     }
@@ -38,8 +37,6 @@ t_ignore = '  \t'
 t_COMA = r','
 t_PUNTOCOMA = r';'
 t_DOSPUNTOS = r':'
-t_LLAVE_IZQ = r'\{'
-t_LLAVE_DER = r'\}'
 t_IGUAL = r'='
 t_PARENTESIS_IZQ = r'\('
 t_PARENTESIS_DER = r'\)'
@@ -58,7 +55,11 @@ t_DIVIDE = r'\/'
 t_POTENCIA = r'\^'
 
 
-
+def t_START(t):
+    r'\--.*'
+    t.value = "START"
+    t.type = t.value
+    return t
 
 
 def t_PARA(t):

@@ -13,7 +13,7 @@ from sys import stdin
 
 nombres = {}
 
-
+errores = []
 
 data = []
 
@@ -141,10 +141,14 @@ def p_funcion(p):
             | UseColor
             | Run
             | If
+            | IfElse
+            | Repeat
+            | Until
             | While
             | Print
             | And
             | Or
+            | Add
          
             
             
@@ -321,9 +325,10 @@ def p_And(p):
     ''' And : AND PARENTESIS_IZQ expresion COMA expresion PARENTESIS_DER PUNTOCOMA '''
     
     if p[3] == True and p[5] == True:
-        print("And correcto")
+        p[0] = True
     else:
-        print("And malo")
+        p[0] = False
+
 
 
 
@@ -331,7 +336,8 @@ def p_Or(p):
     ''' Or : OR PARENTESIS_IZQ expresion COMA expresion PARENTESIS_DER PUNTOCOMA '''
 
     p[0] = p[2] or p[5]
-    print("Or correcto")
+
+
 
 
 def p_Igual(p):
@@ -427,7 +433,7 @@ def p_Menorigual (p):
 def p_If(p):
 
     '''
-    If : IF PARENTESIS_IZQ condicion PARENTESIS_DER LLAVE_IZQ funcion LLAVE_DER ENDIF
+    If : IF  condicion  PARENTESISC_IZQ funcion PARENTESISC_DER ENDIF
     '''
 
     print(p[3])
@@ -435,25 +441,56 @@ def p_If(p):
     if(p[3]):
         p[0] = p[6]
 
+def p_IfElse(p):
+
+    '''
+    IfElse : IFELSE condicion PARENTESISC_IZQ funcion PARENTESISC_DER PARENTESISC_IZQ funcion PARENTESISC_DER
+
+    '''
+
+    if p[2]:
+        p[0] = p[4]
+    else:
+        p[0] = p[7]
+
 def p_While(p):
 
-    ''' While : WHILE PARENTESIS_IZQ condicion PARENTESIS_DER LLAVE_IZQ funcion LLAVE_DER'''
+    ''' While : WHILE PARENTESISC_IZQ condicion PARENTESISC_DER PARENTESISC_IZQ funcion PARENTESISC_DER '''
 
 
     print(p[3])
 
     while(p[3]):
         p[0] = p[6]
+
+def p_Repeat(p):
+
+    ''' Repeat : REPEAT NUMERO funcion
+    '''
+
+    p[0] = p[3]*p[2]
+
+def p_until(p):
+
+    ''' Until : UNTIL PARENTESISC_IZQ funcion PARENTESISC_DER PARENTESISC_IZQ condicion PARENTESISC_DER    '''
+
+def p_add(p):
+
+    '''Add : ADD PARENTESISC_IZQ NUMERO empty PARENTESISC_DER
+           | ADD PARENTESISC_IZQ NUMERO  NUMERO PARENTESISC_DER
+    '''
+
+    p[0]= p[3]+ p[4]
     
 
 def p_procedimiento(p):
     
     '''
-        procedimiento : PROC ID PARENTESIS_IZQ parametro PARENTESIS_DER PARA  PUNTOCOMA procedimiento
+        procedimiento : PARA ID PARENTESISC_IZQ condicion   PARENTESISC_DER  funcion   FIN
                      | empty empty empty empty empty empty empty empty empty empty empty
     '''
     if p[11] != '$':
-        p[0] = (p[1], p[2], p[4], p[6], p[8], p[9], p[11])
+        p[0] = (p[1], p[2], p[4], p[6], p[8], p[9], p[10])
     elif p[11] == '$' and p[1] != '$':
         p[0] = (p[1], p[2], p[4], p[6], p[8], p[9])
     else:
@@ -618,7 +655,7 @@ def p_PosY(p):
     print ("Coordenada Y = "+ str(p[2]))
     #data['PosY'] = str(p[2])
     data.append("PosicionY:")
-    data.apend(str(p[2]))
+    data.append(str(p[2]))
     writeToJSONFile(path,fileName,data)
 
 def p_UseColor(p):
@@ -628,7 +665,7 @@ def p_UseColor(p):
     '''
 
     if p[2] in range(1,4):
-        print("UseColor funciona")
+        print("UseColor "+ str(p[2]))
     else:
         print("Error")
 
@@ -662,6 +699,8 @@ def p_empty(p):
 
 
 def p_error(p):
+    errores.append("Error de sintáxis en linea "+str(p.lineno//2))
+    #errores.pop[len(errores)]
     print("error de sintaxis " + str(p))
     print("error en la linea " + str(p.lineno))
 
@@ -679,8 +718,6 @@ def writeToJSONFile(path, fileName, data):
 path = './'
 fileName = 'datosJSON'
 
-#ser = serial.Serial( '/dev/ttyACM0', 9600)
-#ser.write(b'5')
 
 
 #################################### tester ############################################
