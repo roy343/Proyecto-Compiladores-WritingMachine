@@ -1,4 +1,4 @@
-Start:
+Para x [ y ]
 
 ContinueLeft 100;
 
@@ -28,4 +28,5 @@ ContinueRight 100;
 
 ContinueDown 20;
 
-End;
+Fin
+
