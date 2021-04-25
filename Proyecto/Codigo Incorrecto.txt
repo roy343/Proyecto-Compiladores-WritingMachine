@@ -1,0 +1,133 @@
+	
+	 
+	
+	
+	
+Para miProc1[var1]	
+	
+// Esto es un comentario	 
+-- Error con simbolo de comentario
+
+Definicion var1 = 5;	 
+-- Error en Palabra reservada
+
+Def var2 = "Hola";	 
+-- Error en tipo de datos y valor
+
+Def v1 = 1;	 
+-- Error minimo 3
+
+Def Var2 = 2;	 
+-- Error Inicia Mayuscula
+
+Def variable101 = 1;	 
+-- Error maximo 10
+
+Def var#1;	 
+-- Error simbolo no aceptado
+	
+fin;	
+	
+Para miProc1[var1]	 
+-- Error procedimiento duplicado
+Def myVar = 5;	
+fin;	
+	
+Para MAIN[var1]	 
+-- El MAIN no debe llevar parametros
+Para MAINX[var1]	 
+-- Un procedimiento no debe contener otro procedimiento
+ Def v1 = 1;	
+fin	
+	
+	
+Para MAIN[]	 
+-- No debe existir más de un MAIN
+Def var1 = 5;	
+Put var1 = FALSE;	 
+-- Error semantico. Incorrecto tipo de datos
+
+Def var2 ;	 
+-- Error No se asignó valor en definición
+	
+Add [vXYz];	 
+-- Error Incrementa variable no existente
+	
+Add [5];	 
+-- Error Siempre debe contener una variable
+	
+ContinueUp vXXYx;	 
+-- Variable no existente	
+	
+ContinueDown vXXYx;	 
+-- Variable no existente
+		
+ContinueRight vXXYx;	 
+-- Variable no existente	
+	
+ContinueLeft vXXYx;	 
+-- Variable no existente	
+	
+Pos [vxxxY,1] ;	 
+-- Variable no existente
+		
+UseColor 20;	 
+-- Error Compartimiento no Existente
+	
+Run [ ];	
+ -- Error No puede ejecutar si no hay sentencias
+	
+Repeat  [Down; Up; ];	 
+-- Error no indica cantidad de veces
+	
+Repeat  [];	 
+-- Error No puede ejecutar si no hay sentencias	
+	
+SI [PoxY 10; ContinueRight 9;] ;	 
+-- Error No posee expresión 
+	
+IfElse (var1=1)
+[RE 25 GD 10];   	 
+-- Error Sentencia incompleta. Falta Else
+	
+Until
+[bucle = 1];	 
+-- Error Sentencia incompleta. Falta Else
+		
+While 
+[Go 10 TurnRight 90];  	 
+-- Error Sentencia incompleta. Falta Else	
+	
+SI Equal(10) [PoxY 10; ContinueRight 9;] ;	 
+-- Error Sintaxis, falta valor
+	
+SI And(10>2) [PoxY 10; ContinueRight 9;] ;	 
+-- Error Sintaxis, falta valor
+	
+SI Or(10>2) [PoxY 10; ContinueRight 9;] ;	 
+-- Error Sintaxis, falta valor
+	
+SI Greater(10) [PoxY 10; ContinueRight 9;] ;	 
+-- Error Sintaxis, falta valor
+	
+SI Smaller(10) [PoxY 10; ContinueRight 9;] ;	 
+-- Error Sintaxis, falta valor
+	
+TurnLeft Substr(100) ;	 
+-- Error Sintaxis.  Falta un valor
+	
+TurnLeft Random() ;	 
+-- Error Sintaxis. Falta un valor
+	
+Put var1 = Mult(2);	 
+-- Error Sintaxis. Falta un valor
+	
+Back Power(3);	 
+-- Error Sintaxis. Falta un valor
+	
+Put var1 = Div(12);	 
+-- Error Sintaxis. Falta un valor
+	
+Back Sum(1);	 
+-- Error Sintaxis. Falta un valor	
+fin;

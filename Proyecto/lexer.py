@@ -86,7 +86,7 @@ def t_ENDIF(t):
 
 
 def t_ID(t):
-    r'[a-zA-Z_][a-zA-Z0-9_#@]*'
+    r'[a-zA-Z_][a-zA-Z0-9_#&@]*'
     if t.value.upper() in reservadas.values():
         t.value = t.value.upper()
         t.type = t.value

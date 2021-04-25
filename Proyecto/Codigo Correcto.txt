@@ -1,0 +1,106 @@
+-- Inicio del programa		
+		
+		
+Para miProc1[var1]		
+		
+Def myVar = 5;	 
+-- MAXIMO 10 POSICIONES MINIMO 3	
+Def MyVar2 = TRUE;	 
+-- Iniciar con letras minúsculas	
+Def miIdenti = FALSE;	 
+-- Solo letras, numeros y _, &, @	
+Def ident_1 = 1;		
+Def ident@1 = 1;		
+Def ident&2 = 1;		
+Def ident@_& = 1;		
+ -- Fin del procedimiento		
+fin;		
+		
+ -- Continua el programa		
+		
+Para miProc1[var1, var2]		
+Def myVar = 5;		
+fin;		
+				
+Para MAIN[]		
+Def var1 = 5;		
+Put var1 = 6;		
+Put var1 = Diferencia 90 75;		
+		
+Add [var1];		
+Add [var1 5];		
+Add [var1 myVar];		
+		
+ContinueUp 5;		
+ContinueUp var1;		
+ContinueUp 5*2;		
+		
+ContinueDown 5;		
+ContinueDown var1;		
+ContinueDown 5*2;		
+		
+ContinueRight 5;		
+ContinueRight var1;		
+ContinueRight 5*2;		
+		
+ContinueLeft 5;		
+ContinueLeft var1;		
+ContinueLeft 5*2;		
+		
+Pos [1,1] ;		
+Pos [var1,var1] ;		
+		
+PosX 5;		
+		
+PosY 5;		
+		
+UseColor 1;		
+UseColor 2;		
+UseColor 3;		
+		
+Down;		
+Up;		
+Begin;		
+		
+Speed 100;		
+		
+Run [Pos[1,1]; Down; Up; Begin ];		
+		
+Repeat n [Pos[1,1]; Down; Up; Begin] ;		
+		
+SI (10>2) [PoxY 10; ContinueRight 9;] ;		
+		
+IfElse (var1=1)
+[RE 10 GD 20]
+[RE 25 GD 10];		
+		
+Until
+[Go 10 TurnRight 90]
+[bucle = 1];		
+				
+While [bucle=1]
+[Go 10 TurnRight 90];		
+				
+SI Equal(10,2*5) [PoxY 10; ContinueRight 9;] ;		
+		
+SI And(10>2,2>5) [PoxY 10; ContinueRight 9;] ;		
+		
+SI Or(10>2,2>5) [PoxY 10; ContinueRight 9;] ;		
+		
+SI Greater(10,2*5) [PoxY 10; ContinueRight 9;] ;		
+		
+SI Smaller(10,2*5) [PoxY 10; ContinueRight 9;] ;		
+		
+TurnLeft Substr(100, 45) ;		
+		
+TurnLeft Random(360);		
+		
+Put var1 = Mult(2,5);		
+		
+Back Power(2,3);		
+		
+Put var1 = Div(12, 4);		
+		
+Back Sum(1, 2);		
+		
+fin;		

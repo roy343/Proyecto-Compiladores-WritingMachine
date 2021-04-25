@@ -26,10 +26,9 @@ def p_Start(p):
 
 def p_Code(p):
     '''
-    code : START DOSPUNTOS cuerpo END PUNTOCOMA procedimiento
+    code : PARA ID PARENTESISC_IZQ ID PARENTESISC_DER  cuerpo
     '''
-    p[0] = (p[3], p[6])
-    #print(p[3])
+    p[0] =  p[6]
     
 
 
@@ -699,7 +698,7 @@ def p_empty(p):
 
 
 def p_error(p):
-    errores.append("Error de sintáxis en linea "+str(p.lineno//2))
+    errores.append("Error de sintáxis en linea "+str(p.lineno))
     #errores.pop[len(errores)]
     print("error de sintaxis " + str(p))
     print("error en la linea " + str(p.lineno))
