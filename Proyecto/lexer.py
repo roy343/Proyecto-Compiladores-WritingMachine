@@ -1,5 +1,7 @@
 import ply.lex as lex
 
+# Definicion de Tokens
+
 tokens = [
     'COMA', 'PUNTOCOMA', 'DOSPUNTOS', 'IGUAL', 'PARENTESIS_IZQ', 'PARENTESIS_DER', 'PARENTESISC_IZQ', 'PARENTESISC_DER',  # SIMBOLOS
 
@@ -9,6 +11,8 @@ tokens = [
     
     'SUMA',  'RESTA', 'MULTIPLICA', 'DIVIDE', 'POTENCIA'    
 ]
+
+# Definicion de palabras reservadas
                 
 reservadas = {
     'Def': 'DEF', 'Put': 'PUT' , 'Start': 'START' , 'Add': 'ADD',
@@ -22,6 +26,9 @@ reservadas = {
     'Equal': 'EQUAL','Greater': 'GREATER', 'Smaller': 'SMALLER','Substr': 'SUBSTR',
     'Mult': 'MULT','Power': 'POWER','Div': 'DIV','Sum': 'SUM'
     }
+
+
+    # Definicion de movimientos del hardware
                                                                                 
 movimientos = {'ContinueUp': 'CONTINUEUP', 'ContinueDown': 'CONTINUEDOWN', 'ContinueLeft': 'CONTINUELEFT',
                'ContinueRight': 'CONTINUERIGHT', 'UseColor': 'USECOLOR', 'Down': 'DOWN','Up': 'UP',
@@ -33,6 +40,8 @@ reservadas.update(movimientos)
 tokens = list(reservadas.values()) + tokens
 
 t_ignore = '  \t'
+
+# Asignacion de caracteres
 
 t_COMA = r','
 t_PUNTOCOMA = r';'
@@ -54,6 +63,7 @@ t_MULTIPLICA = r'\*'
 t_DIVIDE = r'\/'
 t_POTENCIA = r'\^'
 
+# Funciones
 
 def t_START(t):
     r'\--.*'
@@ -114,6 +124,7 @@ def t_COMMENT(t):
     pass
     # No return value. Token discarded
 
+# Define al analizador lexico
 
 def lexicalAnalizer(cadena):
     analizador = lex.lex()

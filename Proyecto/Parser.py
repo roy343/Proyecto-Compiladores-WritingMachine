@@ -10,6 +10,7 @@ import json
 import serial
 from sys import stdin
 
+# Define las listas necesarias
 
 nombres = {}
 
@@ -17,6 +18,7 @@ errores = []
 
 data = []
 
+# Funciones para el arbol
 
 def p_Start(p):
     '''

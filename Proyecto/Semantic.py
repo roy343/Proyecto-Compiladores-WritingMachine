@@ -1,3 +1,5 @@
+# Funcion para correr el analizador semantico
+
 def runSemanticAnalizer(parse):
     try:
         inicio(parse[1])
