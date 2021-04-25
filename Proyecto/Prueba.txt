@@ -1,26 +1,31 @@
 Start:
 
-Begin;
+ContinueLeft 100;
 
-ContinueUp 2;
+ContinueUp 10;
 
-ContinueDown 3;
+ContinueDown 20;
 
-ContinueLeft 5;
+ContinueRight 100;
 
-ContinueRight 1;
+ContinueDown 10;
 
-Up;
+ContinueUp 10;
 
-Down;
+ContinueLeft 50;
 
-UseColor 2;
+ContinueDown 10;
 
-PosX 3;
+ContinueUp 10;
 
-PosY 9;
+ContinueLeft 50;
 
-Pos(  6 , 7 );
+ContinueDown 40;
+
+ContinueUp 20;
+
+ContinueRight 100;
+
+ContinueDown 20;
 
 End;
-

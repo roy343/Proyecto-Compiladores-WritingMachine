@@ -130,7 +130,7 @@ Rule 124   Repeat -> REPEAT NUMERO funcion
 Rule 125   Until -> UNTIL PARENTESISC_IZQ funcion PARENTESISC_DER PARENTESISC_IZQ condicion PARENTESISC_DER
 Rule 126   Add -> ADD PARENTESISC_IZQ NUMERO empty PARENTESISC_DER
 Rule 127   Add -> ADD PARENTESISC_IZQ NUMERO NUMERO PARENTESISC_DER
-Rule 128   procedimiento -> PARA ID PARENTESISC_IZQ parametro PARENTESISC_DER procedimiento FIN
+Rule 128   procedimiento -> PARA ID PARENTESISC_IZQ condicion PARENTESISC_DER funcion FIN
 Rule 129   procedimiento -> empty empty empty empty empty empty empty empty empty empty empty
 Rule 130   parametro -> ID COMA parametro
 Rule 131   parametro -> ID empty empty
@@ -258,15 +258,15 @@ Up                   : 33
 UseColor             : 39
 While                : 45
 code                 : 1
-condicion            : 18 121 122 123 125
+condicion            : 18 121 122 123 125 128
 cuerpo               : 2 5 6 7 8
 empty                : 9 9 26 26 126 129 129 129 129 129 129 129 129 129 129 129 131 131 133 133 134 134 134
 expresion            : 4 15 16 17 18 19 20 21 22 23 24 25 50 51 52 53 54 55 56 57 58 95 95 96 96 149
 expresion_alge1      : 13 19 64 64 65 65 66 66 67 67 68 68 70 70 73 73 78 78 83 83 88 88
 expresion_alge2      : 14 20
-funcion              : 16 121 122 122 123 124 125 148
-parametro            : 128 130 132
-procedimiento        : 2 128
+funcion              : 16 121 122 122 123 124 125 128 148
+parametro            : 130 132
+procedimiento        : 2
 variable             : 3
 variable1            : 5
 variable2            : 6
@@ -4754,6 +4754,7 @@ state 26
     PARENTESISC_DER reduce using rule 27 (funcion -> Random .)
     PARENTESIS_DER  reduce using rule 27 (funcion -> Random .)
     COMA            reduce using rule 27 (funcion -> Random .)
+    FIN             reduce using rule 27 (funcion -> Random .)
 
 
 state 27
@@ -4799,6 +4800,7 @@ state 27
     PARENTESISC_DER reduce using rule 28 (funcion -> Begin .)
     PARENTESIS_DER  reduce using rule 28 (funcion -> Begin .)
     COMA            reduce using rule 28 (funcion -> Begin .)
+    FIN             reduce using rule 28 (funcion -> Begin .)
 
 
 state 28
@@ -4844,6 +4846,7 @@ state 28
     PARENTESISC_DER reduce using rule 29 (funcion -> ContinueUp .)
     PARENTESIS_DER  reduce using rule 29 (funcion -> ContinueUp .)
     COMA            reduce using rule 29 (funcion -> ContinueUp .)
+    FIN             reduce using rule 29 (funcion -> ContinueUp .)
 
 
 state 29
@@ -4889,6 +4892,7 @@ state 29
     PARENTESISC_DER reduce using rule 30 (funcion -> ContinueDown .)
     PARENTESIS_DER  reduce using rule 30 (funcion -> ContinueDown .)
     COMA            reduce using rule 30 (funcion -> ContinueDown .)
+    FIN             reduce using rule 30 (funcion -> ContinueDown .)
 
 
 state 30
@@ -4934,6 +4938,7 @@ state 30
     PARENTESISC_DER reduce using rule 31 (funcion -> ContinueRight .)
     PARENTESIS_DER  reduce using rule 31 (funcion -> ContinueRight .)
     COMA            reduce using rule 31 (funcion -> ContinueRight .)
+    FIN             reduce using rule 31 (funcion -> ContinueRight .)
 
 
 state 31
@@ -4979,6 +4984,7 @@ state 31
     PARENTESISC_DER reduce using rule 32 (funcion -> ContinueLeft .)
     PARENTESIS_DER  reduce using rule 32 (funcion -> ContinueLeft .)
     COMA            reduce using rule 32 (funcion -> ContinueLeft .)
+    FIN             reduce using rule 32 (funcion -> ContinueLeft .)
 
 
 state 32
@@ -5024,6 +5030,7 @@ state 32
     PARENTESISC_DER reduce using rule 33 (funcion -> Up .)
     PARENTESIS_DER  reduce using rule 33 (funcion -> Up .)
     COMA            reduce using rule 33 (funcion -> Up .)
+    FIN             reduce using rule 33 (funcion -> Up .)
 
 
 state 33
@@ -5069,6 +5076,7 @@ state 33
     PARENTESISC_DER reduce using rule 34 (funcion -> Down .)
     PARENTESIS_DER  reduce using rule 34 (funcion -> Down .)
     COMA            reduce using rule 34 (funcion -> Down .)
+    FIN             reduce using rule 34 (funcion -> Down .)
 
 
 state 34
@@ -5114,6 +5122,7 @@ state 34
     PARENTESISC_DER reduce using rule 35 (funcion -> Speed .)
     PARENTESIS_DER  reduce using rule 35 (funcion -> Speed .)
     COMA            reduce using rule 35 (funcion -> Speed .)
+    FIN             reduce using rule 35 (funcion -> Speed .)
 
 
 state 35
@@ -5159,6 +5168,7 @@ state 35
     PARENTESISC_DER reduce using rule 36 (funcion -> Pos .)
     PARENTESIS_DER  reduce using rule 36 (funcion -> Pos .)
     COMA            reduce using rule 36 (funcion -> Pos .)
+    FIN             reduce using rule 36 (funcion -> Pos .)
 
 
 state 36
@@ -5204,6 +5214,7 @@ state 36
     PARENTESISC_DER reduce using rule 37 (funcion -> PosX .)
     PARENTESIS_DER  reduce using rule 37 (funcion -> PosX .)
     COMA            reduce using rule 37 (funcion -> PosX .)
+    FIN             reduce using rule 37 (funcion -> PosX .)
 
 
 state 37
@@ -5249,6 +5260,7 @@ state 37
     PARENTESISC_DER reduce using rule 38 (funcion -> PosY .)
     PARENTESIS_DER  reduce using rule 38 (funcion -> PosY .)
     COMA            reduce using rule 38 (funcion -> PosY .)
+    FIN             reduce using rule 38 (funcion -> PosY .)
 
 
 state 38
@@ -5294,6 +5306,7 @@ state 38
     PARENTESISC_DER reduce using rule 39 (funcion -> UseColor .)
     PARENTESIS_DER  reduce using rule 39 (funcion -> UseColor .)
     COMA            reduce using rule 39 (funcion -> UseColor .)
+    FIN             reduce using rule 39 (funcion -> UseColor .)
 
 
 state 39
@@ -5339,6 +5352,7 @@ state 39
     PARENTESISC_DER reduce using rule 40 (funcion -> Run .)
     PARENTESIS_DER  reduce using rule 40 (funcion -> Run .)
     COMA            reduce using rule 40 (funcion -> Run .)
+    FIN             reduce using rule 40 (funcion -> Run .)
 
 
 state 40
@@ -5384,6 +5398,7 @@ state 40
     PARENTESISC_DER reduce using rule 41 (funcion -> If .)
     PARENTESIS_DER  reduce using rule 41 (funcion -> If .)
     COMA            reduce using rule 41 (funcion -> If .)
+    FIN             reduce using rule 41 (funcion -> If .)
 
 
 state 41
@@ -5429,6 +5444,7 @@ state 41
     PARENTESISC_DER reduce using rule 42 (funcion -> IfElse .)
     PARENTESIS_DER  reduce using rule 42 (funcion -> IfElse .)
     COMA            reduce using rule 42 (funcion -> IfElse .)
+    FIN             reduce using rule 42 (funcion -> IfElse .)
 
 
 state 42
@@ -5474,6 +5490,7 @@ state 42
     PARENTESISC_DER reduce using rule 43 (funcion -> Repeat .)
     PARENTESIS_DER  reduce using rule 43 (funcion -> Repeat .)
     COMA            reduce using rule 43 (funcion -> Repeat .)
+    FIN             reduce using rule 43 (funcion -> Repeat .)
 
 
 state 43
@@ -5519,6 +5536,7 @@ state 43
     PARENTESISC_DER reduce using rule 44 (funcion -> Until .)
     PARENTESIS_DER  reduce using rule 44 (funcion -> Until .)
     COMA            reduce using rule 44 (funcion -> Until .)
+    FIN             reduce using rule 44 (funcion -> Until .)
 
 
 state 44
@@ -5564,6 +5582,7 @@ state 44
     PARENTESISC_DER reduce using rule 45 (funcion -> While .)
     PARENTESIS_DER  reduce using rule 45 (funcion -> While .)
     COMA            reduce using rule 45 (funcion -> While .)
+    FIN             reduce using rule 45 (funcion -> While .)
 
 
 state 45
@@ -5609,6 +5628,7 @@ state 45
     PARENTESISC_DER reduce using rule 46 (funcion -> Print .)
     PARENTESIS_DER  reduce using rule 46 (funcion -> Print .)
     COMA            reduce using rule 46 (funcion -> Print .)
+    FIN             reduce using rule 46 (funcion -> Print .)
 
 
 state 46
@@ -5654,6 +5674,7 @@ state 46
     PARENTESISC_DER reduce using rule 47 (funcion -> And .)
     PARENTESIS_DER  reduce using rule 47 (funcion -> And .)
     COMA            reduce using rule 47 (funcion -> And .)
+    FIN             reduce using rule 47 (funcion -> And .)
 
 
 state 47
@@ -5699,6 +5720,7 @@ state 47
     PARENTESISC_DER reduce using rule 48 (funcion -> Or .)
     PARENTESIS_DER  reduce using rule 48 (funcion -> Or .)
     COMA            reduce using rule 48 (funcion -> Or .)
+    FIN             reduce using rule 48 (funcion -> Or .)
 
 
 state 48
@@ -5744,6 +5766,7 @@ state 48
     PARENTESISC_DER reduce using rule 49 (funcion -> Add .)
     PARENTESIS_DER  reduce using rule 49 (funcion -> Add .)
     COMA            reduce using rule 49 (funcion -> Add .)
+    FIN             reduce using rule 49 (funcion -> Add .)
 
 
 state 49
@@ -9990,6 +10013,7 @@ state 144
     PARENTESISC_DER reduce using rule 135 (Begin -> BEGIN PUNTOCOMA .)
     PARENTESIS_DER  reduce using rule 135 (Begin -> BEGIN PUNTOCOMA .)
     COMA            reduce using rule 135 (Begin -> BEGIN PUNTOCOMA .)
+    FIN             reduce using rule 135 (Begin -> BEGIN PUNTOCOMA .)
 
 
 state 145
@@ -10063,6 +10087,7 @@ state 149
     PARENTESISC_DER reduce using rule 141 (Up -> UP PUNTOCOMA .)
     PARENTESIS_DER  reduce using rule 141 (Up -> UP PUNTOCOMA .)
     COMA            reduce using rule 141 (Up -> UP PUNTOCOMA .)
+    FIN             reduce using rule 141 (Up -> UP PUNTOCOMA .)
 
 
 state 150
@@ -10108,6 +10133,7 @@ state 150
     PARENTESISC_DER reduce using rule 142 (Down -> DOWN PUNTOCOMA .)
     PARENTESIS_DER  reduce using rule 142 (Down -> DOWN PUNTOCOMA .)
     COMA            reduce using rule 142 (Down -> DOWN PUNTOCOMA .)
+    FIN             reduce using rule 142 (Down -> DOWN PUNTOCOMA .)
 
 
 state 151
@@ -11233,7 +11259,7 @@ state 170
 state 171
 
     (2) code -> START DOSPUNTOS cuerpo END PUNTOCOMA . procedimiento
-    (128) procedimiento -> . PARA ID PARENTESISC_IZQ parametro PARENTESISC_DER procedimiento FIN
+    (128) procedimiento -> . PARA ID PARENTESISC_IZQ condicion PARENTESISC_DER funcion FIN
     (129) procedimiento -> . empty empty empty empty empty empty empty empty empty empty empty
     (150) empty -> .
 
@@ -12892,6 +12918,7 @@ state 221
     PARENTESISC_DER reduce using rule 137 (ContinueUp -> CONTINUEUP NUMERO PUNTOCOMA .)
     PARENTESIS_DER  reduce using rule 137 (ContinueUp -> CONTINUEUP NUMERO PUNTOCOMA .)
     COMA            reduce using rule 137 (ContinueUp -> CONTINUEUP NUMERO PUNTOCOMA .)
+    FIN             reduce using rule 137 (ContinueUp -> CONTINUEUP NUMERO PUNTOCOMA .)
 
 
 state 222
@@ -12937,6 +12964,7 @@ state 222
     PARENTESISC_DER reduce using rule 138 (ContinueDown -> CONTINUEDOWN NUMERO PUNTOCOMA .)
     PARENTESIS_DER  reduce using rule 138 (ContinueDown -> CONTINUEDOWN NUMERO PUNTOCOMA .)
     COMA            reduce using rule 138 (ContinueDown -> CONTINUEDOWN NUMERO PUNTOCOMA .)
+    FIN             reduce using rule 138 (ContinueDown -> CONTINUEDOWN NUMERO PUNTOCOMA .)
 
 
 state 223
@@ -12982,6 +13010,7 @@ state 223
     PARENTESISC_DER reduce using rule 139 (ContinueRight -> CONTINUERIGHT NUMERO PUNTOCOMA .)
     PARENTESIS_DER  reduce using rule 139 (ContinueRight -> CONTINUERIGHT NUMERO PUNTOCOMA .)
     COMA            reduce using rule 139 (ContinueRight -> CONTINUERIGHT NUMERO PUNTOCOMA .)
+    FIN             reduce using rule 139 (ContinueRight -> CONTINUERIGHT NUMERO PUNTOCOMA .)
 
 
 state 224
@@ -13027,6 +13056,7 @@ state 224
     PARENTESISC_DER reduce using rule 140 (ContinueLeft -> CONTINUELEFT NUMERO PUNTOCOMA .)
     PARENTESIS_DER  reduce using rule 140 (ContinueLeft -> CONTINUELEFT NUMERO PUNTOCOMA .)
     COMA            reduce using rule 140 (ContinueLeft -> CONTINUELEFT NUMERO PUNTOCOMA .)
+    FIN             reduce using rule 140 (ContinueLeft -> CONTINUELEFT NUMERO PUNTOCOMA .)
 
 
 state 225
@@ -13072,6 +13102,7 @@ state 225
     PARENTESISC_DER reduce using rule 143 (Speed -> SPEED NUMERO PUNTOCOMA .)
     PARENTESIS_DER  reduce using rule 143 (Speed -> SPEED NUMERO PUNTOCOMA .)
     COMA            reduce using rule 143 (Speed -> SPEED NUMERO PUNTOCOMA .)
+    FIN             reduce using rule 143 (Speed -> SPEED NUMERO PUNTOCOMA .)
 
 
 state 226
@@ -13124,6 +13155,7 @@ state 227
     PARENTESISC_DER reduce using rule 145 (PosX -> POSX NUMERO PUNTOCOMA .)
     PARENTESIS_DER  reduce using rule 145 (PosX -> POSX NUMERO PUNTOCOMA .)
     COMA            reduce using rule 145 (PosX -> POSX NUMERO PUNTOCOMA .)
+    FIN             reduce using rule 145 (PosX -> POSX NUMERO PUNTOCOMA .)
 
 
 state 228
@@ -13169,6 +13201,7 @@ state 228
     PARENTESISC_DER reduce using rule 146 (PosY -> POSY NUMERO PUNTOCOMA .)
     PARENTESIS_DER  reduce using rule 146 (PosY -> POSY NUMERO PUNTOCOMA .)
     COMA            reduce using rule 146 (PosY -> POSY NUMERO PUNTOCOMA .)
+    FIN             reduce using rule 146 (PosY -> POSY NUMERO PUNTOCOMA .)
 
 
 state 229
@@ -13214,6 +13247,7 @@ state 229
     PARENTESISC_DER reduce using rule 147 (UseColor -> USECOLOR NUMERO PUNTOCOMA .)
     PARENTESIS_DER  reduce using rule 147 (UseColor -> USECOLOR NUMERO PUNTOCOMA .)
     COMA            reduce using rule 147 (UseColor -> USECOLOR NUMERO PUNTOCOMA .)
+    FIN             reduce using rule 147 (UseColor -> USECOLOR NUMERO PUNTOCOMA .)
 
 
 state 230
@@ -13466,6 +13500,7 @@ state 233
     PARENTESISC_DER reduce using rule 124 (Repeat -> REPEAT NUMERO funcion .)
     PARENTESIS_DER  reduce using rule 124 (Repeat -> REPEAT NUMERO funcion .)
     COMA            reduce using rule 124 (Repeat -> REPEAT NUMERO funcion .)
+    FIN             reduce using rule 124 (Repeat -> REPEAT NUMERO funcion .)
 
 
 state 234
@@ -13544,7 +13579,7 @@ state 243
 
 state 244
 
-    (128) procedimiento -> PARA . ID PARENTESISC_IZQ parametro PARENTESISC_DER procedimiento FIN
+    (128) procedimiento -> PARA . ID PARENTESISC_IZQ condicion PARENTESISC_DER funcion FIN
 
     ID              shift and go to state 284
 
@@ -13555,7 +13590,6 @@ state 245
     (150) empty -> .
 
     $end            reduce using rule 150 (empty -> .)
-    FIN             reduce using rule 150 (empty -> .)
 
     empty                          shift and go to state 285
 
@@ -13835,6 +13869,7 @@ state 271
     PARENTESISC_DER reduce using rule 148 (Run -> RUN PARENTESISC_IZQ funcion PARENTESISC_DER .)
     PARENTESIS_DER  reduce using rule 148 (Run -> RUN PARENTESISC_IZQ funcion PARENTESISC_DER .)
     COMA            reduce using rule 148 (Run -> RUN PARENTESISC_IZQ funcion PARENTESISC_DER .)
+    FIN             reduce using rule 148 (Run -> RUN PARENTESISC_IZQ funcion PARENTESISC_DER .)
 
 
 state 272
@@ -14335,7 +14370,7 @@ state 283
 
 state 284
 
-    (128) procedimiento -> PARA ID . PARENTESISC_IZQ parametro PARENTESISC_DER procedimiento FIN
+    (128) procedimiento -> PARA ID . PARENTESISC_IZQ condicion PARENTESISC_DER funcion FIN
 
     PARENTESISC_IZQ shift and go to state 332
 
@@ -14346,7 +14381,6 @@ state 285
     (150) empty -> .
 
     $end            reduce using rule 150 (empty -> .)
-    FIN             reduce using rule 150 (empty -> .)
 
     empty                          shift and go to state 333
 
@@ -14791,6 +14825,7 @@ state 318
     PARENTESISC_DER reduce using rule 136 (Random -> RANDOM PARENTESIS_IZQ NUMERO PARENTESIS_DER PUNTOCOMA .)
     PARENTESIS_DER  reduce using rule 136 (Random -> RANDOM PARENTESIS_IZQ NUMERO PARENTESIS_DER PUNTOCOMA .)
     COMA            reduce using rule 136 (Random -> RANDOM PARENTESIS_IZQ NUMERO PARENTESIS_DER PUNTOCOMA .)
+    FIN             reduce using rule 136 (Random -> RANDOM PARENTESIS_IZQ NUMERO PARENTESIS_DER PUNTOCOMA .)
 
 
 state 319
@@ -15014,6 +15049,7 @@ state 324
     PARENTESISC_DER reduce using rule 149 (Print -> PRINT PARENTESIS_IZQ expresion PARENTESIS_DER PUNTOCOMA .)
     PARENTESIS_DER  reduce using rule 149 (Print -> PRINT PARENTESIS_IZQ expresion PARENTESIS_DER PUNTOCOMA .)
     COMA            reduce using rule 149 (Print -> PRINT PARENTESIS_IZQ expresion PARENTESIS_DER PUNTOCOMA .)
+    FIN             reduce using rule 149 (Print -> PRINT PARENTESIS_IZQ expresion PARENTESIS_DER PUNTOCOMA .)
 
 
 state 325
@@ -15073,6 +15109,7 @@ state 327
     PARENTESISC_DER reduce using rule 127 (Add -> ADD PARENTESISC_IZQ NUMERO NUMERO PARENTESISC_DER .)
     PARENTESIS_DER  reduce using rule 127 (Add -> ADD PARENTESISC_IZQ NUMERO NUMERO PARENTESISC_DER .)
     COMA            reduce using rule 127 (Add -> ADD PARENTESISC_IZQ NUMERO NUMERO PARENTESISC_DER .)
+    FIN             reduce using rule 127 (Add -> ADD PARENTESISC_IZQ NUMERO NUMERO PARENTESISC_DER .)
 
 
 state 328
@@ -15118,6 +15155,7 @@ state 328
     PARENTESISC_DER reduce using rule 126 (Add -> ADD PARENTESISC_IZQ NUMERO empty PARENTESISC_DER .)
     PARENTESIS_DER  reduce using rule 126 (Add -> ADD PARENTESISC_IZQ NUMERO empty PARENTESISC_DER .)
     COMA            reduce using rule 126 (Add -> ADD PARENTESISC_IZQ NUMERO empty PARENTESISC_DER .)
+    FIN             reduce using rule 126 (Add -> ADD PARENTESISC_IZQ NUMERO empty PARENTESISC_DER .)
 
 
 state 329
@@ -15143,20 +15181,60 @@ state 331
 
 state 332
 
-    (128) procedimiento -> PARA ID PARENTESISC_IZQ . parametro PARENTESISC_DER procedimiento FIN
-    (130) parametro -> . ID COMA parametro
-    (131) parametro -> . ID empty empty
-    (132) parametro -> . NUMERO COMA parametro
-    (133) parametro -> . NUMERO empty empty
-    (134) parametro -> . empty empty empty
-    (150) empty -> .
+    (128) procedimiento -> PARA ID PARENTESISC_IZQ . condicion PARENTESISC_DER funcion FIN
+    (50) condicion -> . Equal expresion
+    (51) condicion -> . Greater expresion
+    (52) condicion -> . Smaller expresion
+    (53) condicion -> . Igual expresion
+    (54) condicion -> . Diferente expresion
+    (55) condicion -> . Mayor expresion
+    (56) condicion -> . Menor expresion
+    (57) condicion -> . Mayorigual expresion
+    (58) condicion -> . Menorigual expresion
+    (92) Equal -> . EQUAL PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER PUNTOCOMA
+    (93) Greater -> . GREATER PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER PUNTOCOMA
+    (94) Smaller -> . SMALLER PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER PUNTOCOMA
+    (97) Igual -> . NUMERO SIMILAR NUMERO
+    (98) Igual -> . ID SIMILAR ID
+    (99) Igual -> . NUMERO SIMILAR ID
+    (100) Igual -> . ID SIMILAR NUMERO
+    (101) Diferente -> . NUMERO DIFERENTE NUMERO
+    (102) Diferente -> . ID DIFERENTE ID
+    (103) Diferente -> . NUMERO DIFERENTE ID
+    (104) Diferente -> . ID DIFERENTE NUMERO
+    (105) Mayor -> . NUMERO MAYOR NUMERO
+    (106) Mayor -> . ID MAYOR ID
+    (107) Mayor -> . NUMERO MAYOR ID
+    (108) Mayor -> . ID MAYOR NUMERO
+    (109) Menor -> . NUMERO MENOR NUMERO
+    (110) Menor -> . ID MENOR ID
+    (111) Menor -> . NUMERO MENOR ID
+    (112) Menor -> . ID MENOR NUMERO
+    (113) Mayorigual -> . NUMERO MAYORIGUAL NUMERO
+    (114) Mayorigual -> . ID MAYORIGUAL ID
+    (115) Mayorigual -> . NUMERO MAYORIGUAL ID
+    (116) Mayorigual -> . ID MAYORIGUAL NUMERO
+    (117) Menorigual -> . NUMERO MENORIGUAL NUMERO
+    (118) Menorigual -> . ID MENORIGUAL ID
+    (119) Menorigual -> . NUMERO MENORIGUAL ID
+    (120) Menorigual -> . ID MENORIGUAL NUMERO
 
-    ID              shift and go to state 372
-    NUMERO          shift and go to state 375
-    PARENTESISC_DER reduce using rule 150 (empty -> .)
+    EQUAL           shift and go to state 87
+    GREATER         shift and go to state 88
+    SMALLER         shift and go to state 89
+    NUMERO          shift and go to state 158
+    ID              shift and go to state 159
 
-    parametro                      shift and go to state 373
-    empty                          shift and go to state 374
+    condicion                      shift and go to state 372
+    Equal                          shift and go to state 49
+    Greater                        shift and go to state 50
+    Smaller                        shift and go to state 51
+    Igual                          shift and go to state 52
+    Diferente                      shift and go to state 53
+    Mayor                          shift and go to state 54
+    Menor                          shift and go to state 55
+    Mayorigual                     shift and go to state 56
+    Menorigual                     shift and go to state 57
 
 state 333
 
@@ -15164,43 +15242,42 @@ state 333
     (150) empty -> .
 
     $end            reduce using rule 150 (empty -> .)
-    FIN             reduce using rule 150 (empty -> .)
 
-    empty                          shift and go to state 376
+    empty                          shift and go to state 373
 
 state 334
 
     (64) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER SUMA PARENTESIS_IZQ expresion_alge1 . PARENTESIS_DER
 
-    PARENTESIS_DER  shift and go to state 377
+    PARENTESIS_DER  shift and go to state 374
 
 
 state 335
 
     (65) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER RESTA PARENTESIS_IZQ expresion_alge1 . PARENTESIS_DER
 
-    PARENTESIS_DER  shift and go to state 378
+    PARENTESIS_DER  shift and go to state 375
 
 
 state 336
 
     (66) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER MULTIPLICA PARENTESIS_IZQ expresion_alge1 . PARENTESIS_DER
 
-    PARENTESIS_DER  shift and go to state 379
+    PARENTESIS_DER  shift and go to state 376
 
 
 state 337
 
     (67) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER DIVIDE PARENTESIS_IZQ expresion_alge1 . PARENTESIS_DER
 
-    PARENTESIS_DER  shift and go to state 380
+    PARENTESIS_DER  shift and go to state 377
 
 
 state 338
 
     (68) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER POTENCIA PARENTESIS_IZQ expresion_alge1 . PARENTESIS_DER
 
-    PARENTESIS_DER  shift and go to state 381
+    PARENTESIS_DER  shift and go to state 378
 
 
 state 339
@@ -16242,7 +16319,7 @@ state 362
 
     (144) Pos -> POS PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER . PUNTOCOMA
 
-    PUNTOCOMA       shift and go to state 382
+    PUNTOCOMA       shift and go to state 379
 
 
 state 363
@@ -16288,6 +16365,7 @@ state 363
     PARENTESISC_DER reduce using rule 121 (If -> IF condicion PARENTESISC_IZQ funcion PARENTESISC_DER ENDIF .)
     PARENTESIS_DER  reduce using rule 121 (If -> IF condicion PARENTESISC_IZQ funcion PARENTESISC_DER ENDIF .)
     COMA            reduce using rule 121 (If -> IF condicion PARENTESISC_IZQ funcion PARENTESISC_DER ENDIF .)
+    FIN             reduce using rule 121 (If -> IF condicion PARENTESISC_IZQ funcion PARENTESISC_DER ENDIF .)
 
 
 state 364
@@ -16365,7 +16443,7 @@ state 364
     OR              shift and go to state 85
     ADD             shift and go to state 86
 
-    funcion                        shift and go to state 383
+    funcion                        shift and go to state 380
     Random                         shift and go to state 26
     Begin                          shift and go to state 27
     ContinueUp                     shift and go to state 28
@@ -16394,100 +16472,68 @@ state 365
 
     (125) Until -> UNTIL PARENTESISC_IZQ funcion PARENTESISC_DER PARENTESISC_IZQ condicion . PARENTESISC_DER
 
-    PARENTESISC_DER shift and go to state 384
+    PARENTESISC_DER shift and go to state 381
 
 
 state 366
 
     (123) While -> WHILE PARENTESISC_IZQ condicion PARENTESISC_DER PARENTESISC_IZQ funcion . PARENTESISC_DER
 
-    PARENTESISC_DER shift and go to state 385
+    PARENTESISC_DER shift and go to state 382
 
 
 state 367
 
     (95) And -> AND PARENTESIS_IZQ expresion COMA expresion PARENTESIS_DER . PUNTOCOMA
 
-    PUNTOCOMA       shift and go to state 386
+    PUNTOCOMA       shift and go to state 383
 
 
 state 368
 
     (96) Or -> OR PARENTESIS_IZQ expresion COMA expresion PARENTESIS_DER . PUNTOCOMA
 
-    PUNTOCOMA       shift and go to state 387
+    PUNTOCOMA       shift and go to state 384
 
 
 state 369
 
     (92) Equal -> EQUAL PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER . PUNTOCOMA
 
-    PUNTOCOMA       shift and go to state 388
+    PUNTOCOMA       shift and go to state 385
 
 
 state 370
 
     (93) Greater -> GREATER PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER . PUNTOCOMA
 
-    PUNTOCOMA       shift and go to state 389
+    PUNTOCOMA       shift and go to state 386
 
 
 state 371
 
     (94) Smaller -> SMALLER PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER . PUNTOCOMA
 
-    PUNTOCOMA       shift and go to state 390
+    PUNTOCOMA       shift and go to state 387
 
 
 state 372
 
-    (130) parametro -> ID . COMA parametro
-    (131) parametro -> ID . empty empty
-    (150) empty -> .
+    (128) procedimiento -> PARA ID PARENTESISC_IZQ condicion . PARENTESISC_DER funcion FIN
 
-    COMA            shift and go to state 391
-    PARENTESISC_DER reduce using rule 150 (empty -> .)
+    PARENTESISC_DER shift and go to state 388
 
-    empty                          shift and go to state 392
 
 state 373
-
-    (128) procedimiento -> PARA ID PARENTESISC_IZQ parametro . PARENTESISC_DER procedimiento FIN
-
-    PARENTESISC_DER shift and go to state 393
-
-
-state 374
-
-    (134) parametro -> empty . empty empty
-    (150) empty -> .
-
-    PARENTESISC_DER reduce using rule 150 (empty -> .)
-
-    empty                          shift and go to state 394
-
-state 375
-
-    (132) parametro -> NUMERO . COMA parametro
-    (133) parametro -> NUMERO . empty empty
-    (150) empty -> .
-
-    COMA            shift and go to state 395
-    PARENTESISC_DER reduce using rule 150 (empty -> .)
-
-    empty                          shift and go to state 396
-
-state 376
 
     (129) procedimiento -> empty empty empty empty . empty empty empty empty empty empty empty
     (150) empty -> .
 
     $end            reduce using rule 150 (empty -> .)
-    FIN             reduce using rule 150 (empty -> .)
 
-    empty                          shift and go to state 397
+    empty                          shift and go to state 389
 
-state 377
+state 374
 
     (64) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER SUMA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER .
 
@@ -16533,7 +16579,7 @@ state 377
     PUNTOCOMA       reduce using rule 64 (expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER SUMA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER .)
 
 
-state 378
+state 375
 
     (65) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER RESTA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER .
 
@@ -16579,7 +16625,7 @@ state 378
     PUNTOCOMA       reduce using rule 65 (expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER RESTA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER .)
 
 
-state 379
+state 376
 
     (66) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER MULTIPLICA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER .
 
@@ -16625,7 +16671,7 @@ state 379
     PUNTOCOMA       reduce using rule 66 (expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER MULTIPLICA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER .)
 
 
-state 380
+state 377
 
     (67) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER DIVIDE PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER .
 
@@ -16671,7 +16717,7 @@ state 380
     PUNTOCOMA       reduce using rule 67 (expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER DIVIDE PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER .)
 
 
-state 381
+state 378
 
     (68) expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER POTENCIA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER .
 
@@ -16717,7 +16763,7 @@ state 381
     PUNTOCOMA       reduce using rule 68 (expresion_alge2 -> PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER POTENCIA PARENTESIS_IZQ expresion_alge1 PARENTESIS_DER .)
 
 
-state 382
+state 379
 
     (144) Pos -> POS PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER PUNTOCOMA .
 
@@ -16760,16 +16806,17 @@ state 382
     PARENTESISC_DER reduce using rule 144 (Pos -> POS PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER PUNTOCOMA .)
     PARENTESIS_DER  reduce using rule 144 (Pos -> POS PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER PUNTOCOMA .)
     COMA            reduce using rule 144 (Pos -> POS PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER PUNTOCOMA .)
+    FIN             reduce using rule 144 (Pos -> POS PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER PUNTOCOMA .)
 
 
-state 383
+state 380
 
     (122) IfElse -> IFELSE condicion PARENTESISC_IZQ funcion PARENTESISC_DER PARENTESISC_IZQ funcion . PARENTESISC_DER
 
-    PARENTESISC_DER shift and go to state 398
+    PARENTESISC_DER shift and go to state 390
 
 
-state 384
+state 381
 
     (125) Until -> UNTIL PARENTESISC_IZQ funcion PARENTESISC_DER PARENTESISC_IZQ condicion PARENTESISC_DER .
 
@@ -16812,9 +16859,10 @@ state 384
     PARENTESISC_DER reduce using rule 125 (Until -> UNTIL PARENTESISC_IZQ funcion PARENTESISC_DER PARENTESISC_IZQ condicion PARENTESISC_DER .)
     PARENTESIS_DER  reduce using rule 125 (Until -> UNTIL PARENTESISC_IZQ funcion PARENTESISC_DER PARENTESISC_IZQ condicion PARENTESISC_DER .)
     COMA            reduce using rule 125 (Until -> UNTIL PARENTESISC_IZQ funcion PARENTESISC_DER PARENTESISC_IZQ condicion PARENTESISC_DER .)
+    FIN             reduce using rule 125 (Until -> UNTIL PARENTESISC_IZQ funcion PARENTESISC_DER PARENTESISC_IZQ condicion PARENTESISC_DER .)
 
 
-state 385
+state 382
 
     (123) While -> WHILE PARENTESISC_IZQ condicion PARENTESISC_DER PARENTESISC_IZQ funcion PARENTESISC_DER .
 
@@ -16857,9 +16905,10 @@ state 385
     PARENTESISC_DER reduce using rule 123 (While -> WHILE PARENTESISC_IZQ condicion PARENTESISC_DER PARENTESISC_IZQ funcion PARENTESISC_DER .)
     PARENTESIS_DER  reduce using rule 123 (While -> WHILE PARENTESISC_IZQ condicion PARENTESISC_DER PARENTESISC_IZQ funcion PARENTESISC_DER .)
     COMA            reduce using rule 123 (While -> WHILE PARENTESISC_IZQ condicion PARENTESISC_DER PARENTESISC_IZQ funcion PARENTESISC_DER .)
+    FIN             reduce using rule 123 (While -> WHILE PARENTESISC_IZQ condicion PARENTESISC_DER PARENTESISC_IZQ funcion PARENTESISC_DER .)
 
 
-state 386
+state 383
 
     (95) And -> AND PARENTESIS_IZQ expresion COMA expresion PARENTESIS_DER PUNTOCOMA .
 
@@ -16902,9 +16951,10 @@ state 386
     PARENTESISC_DER reduce using rule 95 (And -> AND PARENTESIS_IZQ expresion COMA expresion PARENTESIS_DER PUNTOCOMA .)
     PARENTESIS_DER  reduce using rule 95 (And -> AND PARENTESIS_IZQ expresion COMA expresion PARENTESIS_DER PUNTOCOMA .)
     COMA            reduce using rule 95 (And -> AND PARENTESIS_IZQ expresion COMA expresion PARENTESIS_DER PUNTOCOMA .)
+    FIN             reduce using rule 95 (And -> AND PARENTESIS_IZQ expresion COMA expresion PARENTESIS_DER PUNTOCOMA .)
 
 
-state 387
+state 384
 
     (96) Or -> OR PARENTESIS_IZQ expresion COMA expresion PARENTESIS_DER PUNTOCOMA .
 
@@ -16947,9 +16997,10 @@ state 387
     PARENTESISC_DER reduce using rule 96 (Or -> OR PARENTESIS_IZQ expresion COMA expresion PARENTESIS_DER PUNTOCOMA .)
     PARENTESIS_DER  reduce using rule 96 (Or -> OR PARENTESIS_IZQ expresion COMA expresion PARENTESIS_DER PUNTOCOMA .)
     COMA            reduce using rule 96 (Or -> OR PARENTESIS_IZQ expresion COMA expresion PARENTESIS_DER PUNTOCOMA .)
+    FIN             reduce using rule 96 (Or -> OR PARENTESIS_IZQ expresion COMA expresion PARENTESIS_DER PUNTOCOMA .)
 
 
-state 388
+state 385
 
     (92) Equal -> EQUAL PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER PUNTOCOMA .
 
@@ -16994,7 +17045,7 @@ state 388
     COMA            reduce using rule 92 (Equal -> EQUAL PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER PUNTOCOMA .)
 
 
-state 389
+state 386
 
     (93) Greater -> GREATER PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER PUNTOCOMA .
 
@@ -17039,7 +17090,7 @@ state 389
     COMA            reduce using rule 93 (Greater -> GREATER PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER PUNTOCOMA .)
 
 
-state 390
+state 387
 
     (94) Smaller -> SMALLER PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER PUNTOCOMA .
 
@@ -17084,91 +17135,116 @@ state 390
     COMA            reduce using rule 94 (Smaller -> SMALLER PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER PUNTOCOMA .)
 
 
-state 391
+state 388
 
-    (130) parametro -> ID COMA . parametro
-    (130) parametro -> . ID COMA parametro
-    (131) parametro -> . ID empty empty
-    (132) parametro -> . NUMERO COMA parametro
-    (133) parametro -> . NUMERO empty empty
-    (134) parametro -> . empty empty empty
-    (150) empty -> .
+    (128) procedimiento -> PARA ID PARENTESISC_IZQ condicion PARENTESISC_DER . funcion FIN
+    (27) funcion -> . Random
+    (28) funcion -> . Begin
+    (29) funcion -> . ContinueUp
+    (30) funcion -> . ContinueDown
+    (31) funcion -> . ContinueRight
+    (32) funcion -> . ContinueLeft
+    (33) funcion -> . Up
+    (34) funcion -> . Down
+    (35) funcion -> . Speed
+    (36) funcion -> . Pos
+    (37) funcion -> . PosX
+    (38) funcion -> . PosY
+    (39) funcion -> . UseColor
+    (40) funcion -> . Run
+    (41) funcion -> . If
+    (42) funcion -> . IfElse
+    (43) funcion -> . Repeat
+    (44) funcion -> . Until
+    (45) funcion -> . While
+    (46) funcion -> . Print
+    (47) funcion -> . And
+    (48) funcion -> . Or
+    (49) funcion -> . Add
+    (136) Random -> . RANDOM PARENTESIS_IZQ NUMERO PARENTESIS_DER PUNTOCOMA
+    (135) Begin -> . BEGIN PUNTOCOMA
+    (137) ContinueUp -> . CONTINUEUP NUMERO PUNTOCOMA
+    (138) ContinueDown -> . CONTINUEDOWN NUMERO PUNTOCOMA
+    (139) ContinueRight -> . CONTINUERIGHT NUMERO PUNTOCOMA
+    (140) ContinueLeft -> . CONTINUELEFT NUMERO PUNTOCOMA
+    (141) Up -> . UP PUNTOCOMA
+    (142) Down -> . DOWN PUNTOCOMA
+    (143) Speed -> . SPEED NUMERO PUNTOCOMA
+    (144) Pos -> . POS PARENTESIS_IZQ NUMERO COMA NUMERO PARENTESIS_DER PUNTOCOMA
+    (145) PosX -> . POSX NUMERO PUNTOCOMA
+    (146) PosY -> . POSY NUMERO PUNTOCOMA
+    (147) UseColor -> . USECOLOR NUMERO PUNTOCOMA
+    (148) Run -> . RUN PARENTESISC_IZQ funcion PARENTESISC_DER
+    (121) If -> . IF condicion PARENTESISC_IZQ funcion PARENTESISC_DER ENDIF
+    (122) IfElse -> . IFELSE condicion PARENTESISC_IZQ funcion PARENTESISC_DER PARENTESISC_IZQ funcion PARENTESISC_DER
+    (124) Repeat -> . REPEAT NUMERO funcion
+    (125) Until -> . UNTIL PARENTESISC_IZQ funcion PARENTESISC_DER PARENTESISC_IZQ condicion PARENTESISC_DER
+    (123) While -> . WHILE PARENTESISC_IZQ condicion PARENTESISC_DER PARENTESISC_IZQ funcion PARENTESISC_DER
+    (149) Print -> . PRINT PARENTESIS_IZQ expresion PARENTESIS_DER PUNTOCOMA
+    (95) And -> . AND PARENTESIS_IZQ expresion COMA expresion PARENTESIS_DER PUNTOCOMA
+    (96) Or -> . OR PARENTESIS_IZQ expresion COMA expresion PARENTESIS_DER PUNTOCOMA
+    (126) Add -> . ADD PARENTESISC_IZQ NUMERO empty PARENTESISC_DER
+    (127) Add -> . ADD PARENTESISC_IZQ NUMERO NUMERO PARENTESISC_DER
 
-    ID              shift and go to state 372
-    NUMERO          shift and go to state 375
-    PARENTESISC_DER reduce using rule 150 (empty -> .)
+    RANDOM          shift and go to state 64
+    BEGIN           shift and go to state 65
+    CONTINUEUP      shift and go to state 66
+    CONTINUEDOWN    shift and go to state 67
+    CONTINUERIGHT   shift and go to state 68
+    CONTINUELEFT    shift and go to state 69
+    UP              shift and go to state 70
+    DOWN            shift and go to state 71
+    SPEED           shift and go to state 72
+    POS             shift and go to state 73
+    POSX            shift and go to state 74
+    POSY            shift and go to state 75
+    USECOLOR        shift and go to state 76
+    RUN             shift and go to state 77
+    IF              shift and go to state 78
+    IFELSE          shift and go to state 79
+    REPEAT          shift and go to state 80
+    UNTIL           shift and go to state 81
+    WHILE           shift and go to state 82
+    PRINT           shift and go to state 83
+    AND             shift and go to state 84
+    OR              shift and go to state 85
+    ADD             shift and go to state 86
 
-    parametro                      shift and go to state 399
-    empty                          shift and go to state 374
+    funcion                        shift and go to state 391
+    Random                         shift and go to state 26
+    Begin                          shift and go to state 27
+    ContinueUp                     shift and go to state 28
+    ContinueDown                   shift and go to state 29
+    ContinueRight                  shift and go to state 30
+    ContinueLeft                   shift and go to state 31
+    Up                             shift and go to state 32
+    Down                           shift and go to state 33
+    Speed                          shift and go to state 34
+    Pos                            shift and go to state 35
+    PosX                           shift and go to state 36
+    PosY                           shift and go to state 37
+    UseColor                       shift and go to state 38
+    Run                            shift and go to state 39
+    If                             shift and go to state 40
+    IfElse                         shift and go to state 41
+    Repeat                         shift and go to state 42
+    Until                          shift and go to state 43
+    While                          shift and go to state 44
+    Print                          shift and go to state 45
+    And                            shift and go to state 46
+    Or                             shift and go to state 47
+    Add                            shift and go to state 48
 
-state 392
-
-    (131) parametro -> ID empty . empty
-    (150) empty -> .
-
-    PARENTESISC_DER reduce using rule 150 (empty -> .)
-
-    empty                          shift and go to state 400
-
-state 393
-
-    (128) procedimiento -> PARA ID PARENTESISC_IZQ parametro PARENTESISC_DER . procedimiento FIN
-    (128) procedimiento -> . PARA ID PARENTESISC_IZQ parametro PARENTESISC_DER procedimiento FIN
-    (129) procedimiento -> . empty empty empty empty empty empty empty empty empty empty empty
-    (150) empty -> .
-
-    PARA            shift and go to state 244
-    FIN             reduce using rule 150 (empty -> .)
-
-    procedimiento                  shift and go to state 401
-    empty                          shift and go to state 245
-
-state 394
-
-    (134) parametro -> empty empty . empty
-    (150) empty -> .
-
-    PARENTESISC_DER reduce using rule 150 (empty -> .)
-
-    empty                          shift and go to state 402
-
-state 395
-
-    (132) parametro -> NUMERO COMA . parametro
-    (130) parametro -> . ID COMA parametro
-    (131) parametro -> . ID empty empty
-    (132) parametro -> . NUMERO COMA parametro
-    (133) parametro -> . NUMERO empty empty
-    (134) parametro -> . empty empty empty
-    (150) empty -> .
-
-    ID              shift and go to state 372
-    NUMERO          shift and go to state 375
-    PARENTESISC_DER reduce using rule 150 (empty -> .)
-
-    parametro                      shift and go to state 403
-    empty                          shift and go to state 374
-
-state 396
-
-    (133) parametro -> NUMERO empty . empty
-    (150) empty -> .
-
-    PARENTESISC_DER reduce using rule 150 (empty -> .)
-
-    empty                          shift and go to state 404
-
-state 397
+state 389
 
     (129) procedimiento -> empty empty empty empty empty . empty empty empty empty empty empty
     (150) empty -> .
 
     $end            reduce using rule 150 (empty -> .)
-    FIN             reduce using rule 150 (empty -> .)
 
-    empty                          shift and go to state 405
+    empty                          shift and go to state 392
 
-state 398
+state 390
 
     (122) IfElse -> IFELSE condicion PARENTESISC_IZQ funcion PARENTESISC_DER PARENTESISC_IZQ funcion PARENTESISC_DER .
 
@@ -17211,114 +17287,73 @@ state 398
     PARENTESISC_DER reduce using rule 122 (IfElse -> IFELSE condicion PARENTESISC_IZQ funcion PARENTESISC_DER PARENTESISC_IZQ funcion PARENTESISC_DER .)
     PARENTESIS_DER  reduce using rule 122 (IfElse -> IFELSE condicion PARENTESISC_IZQ funcion PARENTESISC_DER PARENTESISC_IZQ funcion PARENTESISC_DER .)
     COMA            reduce using rule 122 (IfElse -> IFELSE condicion PARENTESISC_IZQ funcion PARENTESISC_DER PARENTESISC_IZQ funcion PARENTESISC_DER .)
+    FIN             reduce using rule 122 (IfElse -> IFELSE condicion PARENTESISC_IZQ funcion PARENTESISC_DER PARENTESISC_IZQ funcion PARENTESISC_DER .)
 
 
-state 399
+state 391
 
-    (130) parametro -> ID COMA parametro .
+    (128) procedimiento -> PARA ID PARENTESISC_IZQ condicion PARENTESISC_DER funcion . FIN
 
-    PARENTESISC_DER reduce using rule 130 (parametro -> ID COMA parametro .)
-
-
-state 400
-
-    (131) parametro -> ID empty empty .
-
-    PARENTESISC_DER reduce using rule 131 (parametro -> ID empty empty .)
+    FIN             shift and go to state 393
 
 
-state 401
-
-    (128) procedimiento -> PARA ID PARENTESISC_IZQ parametro PARENTESISC_DER procedimiento . FIN
-
-    FIN             shift and go to state 406
-
-
-state 402
-
-    (134) parametro -> empty empty empty .
-
-    PARENTESISC_DER reduce using rule 134 (parametro -> empty empty empty .)
-
-
-state 403
-
-    (132) parametro -> NUMERO COMA parametro .
-
-    PARENTESISC_DER reduce using rule 132 (parametro -> NUMERO COMA parametro .)
-
-
-state 404
-
-    (133) parametro -> NUMERO empty empty .
-
-    PARENTESISC_DER reduce using rule 133 (parametro -> NUMERO empty empty .)
-
-
-state 405
+state 392
 
     (129) procedimiento -> empty empty empty empty empty empty . empty empty empty empty empty
     (150) empty -> .
 
     $end            reduce using rule 150 (empty -> .)
-    FIN             reduce using rule 150 (empty -> .)
 
-    empty                          shift and go to state 407
+    empty                          shift and go to state 394
 
-state 406
+state 393
 
-    (128) procedimiento -> PARA ID PARENTESISC_IZQ parametro PARENTESISC_DER procedimiento FIN .
+    (128) procedimiento -> PARA ID PARENTESISC_IZQ condicion PARENTESISC_DER funcion FIN .
 
-    $end            reduce using rule 128 (procedimiento -> PARA ID PARENTESISC_IZQ parametro PARENTESISC_DER procedimiento FIN .)
-    FIN             reduce using rule 128 (procedimiento -> PARA ID PARENTESISC_IZQ parametro PARENTESISC_DER procedimiento FIN .)
+    $end            reduce using rule 128 (procedimiento -> PARA ID PARENTESISC_IZQ condicion PARENTESISC_DER funcion FIN .)
 
 
-state 407
+state 394
 
     (129) procedimiento -> empty empty empty empty empty empty empty . empty empty empty empty
     (150) empty -> .
 
     $end            reduce using rule 150 (empty -> .)
-    FIN             reduce using rule 150 (empty -> .)
 
-    empty                          shift and go to state 408
+    empty                          shift and go to state 395
 
-state 408
+state 395
 
     (129) procedimiento -> empty empty empty empty empty empty empty empty . empty empty empty
     (150) empty -> .
 
     $end            reduce using rule 150 (empty -> .)
-    FIN             reduce using rule 150 (empty -> .)
 
-    empty                          shift and go to state 409
+    empty                          shift and go to state 396
 
-state 409
+state 396
 
     (129) procedimiento -> empty empty empty empty empty empty empty empty empty . empty empty
     (150) empty -> .
 
     $end            reduce using rule 150 (empty -> .)
-    FIN             reduce using rule 150 (empty -> .)
 
-    empty                          shift and go to state 410
+    empty                          shift and go to state 397
 
-state 410
+state 397
 
     (129) procedimiento -> empty empty empty empty empty empty empty empty empty empty . empty
     (150) empty -> .
 
     $end            reduce using rule 150 (empty -> .)
-    FIN             reduce using rule 150 (empty -> .)
 
-    empty                          shift and go to state 411
+    empty                          shift and go to state 398
 
-state 411
+state 398
 
     (129) procedimiento -> empty empty empty empty empty empty empty empty empty empty empty .
 
     $end            reduce using rule 129 (procedimiento -> empty empty empty empty empty empty empty empty empty empty empty .)
-    FIN             reduce using rule 129 (procedimiento -> empty empty empty empty empty empty empty empty empty empty empty .)
 
 WARNING: 
 WARNING: Conflicts:
